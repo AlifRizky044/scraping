@@ -1,3 +1,11 @@
+pendidikan_list = ["bachelor", "ph.d", "master", "magister", "doctor", "s.", "diploma", "sarjana", "associate", "s1"]
+
+level_pendidikan_list = [
+    {"level": 4, "title": ["doctor", "ph.d"]},
+    {"level": 3, "title": ["master", "magister"]},
+    {"level": 2, "title": ["s1", "s.", "sarjana", "bachelor"]},
+    {"level": 1, "title": ["diploma"]}
+]
 
 linkedin_urls = [
     "https://www.linkedin.com/in/sandhikagalih",
