@@ -184,7 +184,7 @@ for index, item in enumerate(nama):
     feature_vectors.append(features)
 
 # Apply k-means clustering
-k = 2
+k = 5
 seed = len(nama)/2
 clusters, centroids, owner = kmeans(feature_vectors, k, seed=seed)
 
