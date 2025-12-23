@@ -12,17 +12,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from bs4 import BeautifulSoup
 
-# Set up LinkedIn credentials (use environment variables or directly input them here)
-LINKEDIN_EMAIL = os.getenv("alif171401044@gmail.com")
-LINKEDIN_PASSWORD = os.getenv("Since2000.")
-
 # Set up the webdriver
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 # Function to log in to LinkedIn
-def login_to_linkedin(email, password, url):
+def login_to_linkedin(url):
     driver.get(url)
     time.sleep(5)
 
@@ -49,22 +45,26 @@ def scrape_details(profile_url, idBtn, id):
         time.sleep(5) 
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        ul_elements = soup.find('div', {"class":'scaffold-finite-scroll__content'}).find_all('ul')
-
+        uls = soup.find('div', {"class":'scaffold-finite-scroll__content'})
         job_titles = []
-        for ul in ul_elements:
-            li_elements = ul.find_all('li')
-            for li in li_elements:
-                span = li.select("div.display-flex.align-items-center.mr1.t-bold")
-                ed = ""
-                ed = li.find("span", {"class":'t-14 t-normal'})
+        if(uls):
+            ul_elements = uls.find_all('ul')
+            for ul in ul_elements:
+                li_elements = ul.find_all('li')
+                for li in li_elements:
+                    span = li.select("div.display-flex.align-items-center.mr1.t-bold")
+                    ed = ""
+                    ed = li.find("span", {"class":'t-14 t-normal'})
 
-                if(len(span) > 0):
-                    job_title = span[0].find('span', {"class":'visually-hidden'}).get_text().strip()
-                    if(ed):
-                        job_titles.append(job_title+" "+ed.get_text().strip())
-                    # elif(id == "experience"):
-                    #     job_titles.append(job_title)
+                    if(len(span) > 0):
+                        job_title = span[0].find('span', {"class":'visually-hidden'}).get_text().strip()
+                        if(ed):
+                            job_titles.append(job_title+" "+ed.get_text().strip())
+                        # elif(id == "experience"):
+                        #     job_titles.append(job_title)
+
+
+
         
 
         return job_titles
@@ -150,7 +150,7 @@ def scrape_linkedin_profile(profile_url):
 
     #ambil certifikat kalau skill tidak ada di list
     if(skills == ""):
-        skills = scrape_details(profile_url+"/details/certifications/", "navigation-index-see-all-education", "licenses_and_certifications")
+        skills = scrape_details(profile_url+"/details/certifications/", "navigation-index-see-all-licenses-and-certifications", "licenses_and_certifications")
 
     profile_data = {
         "Name": name_div,
@@ -166,7 +166,7 @@ def scrape_linkedin_profile(profile_url):
 if __name__ == "__main__":
     profile_url = linkedin_urls[0]
     print(profile_url)
-    login_to_linkedin(LINKEDIN_EMAIL, LINKEDIN_PASSWORD, profile_url)
+    login_to_linkedin(profile_url)
 
     profile_data = []
 
