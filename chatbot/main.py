@@ -1,6 +1,9 @@
 import joblib
 import re
 from sklearn.metrics.pairwise import cosine_similarity
+from utils import preprocess_user_input, init
+from config.redis import redis_client
+import json
 
 # LOAD MODELS
 vectorizer = joblib.load("models/vectorizer.pkl")
@@ -9,34 +12,84 @@ faq_intents = joblib.load("models/faq_intents.pkl")
 answers = joblib.load("models/answers.pkl")
 
 PAJAK_KEYWORDS = [
-    "hotel", "restoran", "hiburan", "reklame", "penerangan jalan",
-    "parkir", "air tanah", "mineral bukan logam", "walet", "pbb", "bphtb"
+    "hotel", "restoran", "hiburan", "reklame",
+    "parkir", "air tanah", "pbb"
 ]
 
-# 🔹 STATE RINGAN (SINGLE USER)
-waiting_pajak = False
-context = {}
+FAQ_THRESHOLD = 0.4
+
+import redis
+
+# ======================================================
+# CONTEXT STORE (MULTI USER - IN MEMORY FALLBACK)
+# ======================================================
+USER_CONTEXTS = {}
+PREFIX = "chatbot:ctx:"
+
+def get_context(user_id):
+    try:
+        data = redis_client.get(PREFIX + user_id)
+        return json.loads(data) if data else {}
+    except (redis.exceptions.ConnectionError, redis.exceptions.TimeoutError):
+        # Fallback to in-memory
+        return USER_CONTEXTS.get(user_id, {})
+
+def set_context(user_id, **kwargs):
+    ctx = get_context(user_id)
+    ctx.update(kwargs)
+    try:
+        redis_client.set(PREFIX + user_id, json.dumps(ctx), ex=1800)
+    except (redis.exceptions.ConnectionError, redis.exceptions.TimeoutError):
+        # Fallback to in-memory
+        USER_CONTEXTS[user_id] = ctx
+
+def reset_context(user_id):
+    try:
+        redis_client.delete(PREFIX + user_id)
+    except (redis.exceptions.ConnectionError, redis.exceptions.TimeoutError):
+        pass
+    # Always clear in-memory fallback too just in case
+    if user_id in USER_CONTEXTS:
+        del USER_CONTEXTS[user_id]
+
+# def get_context(user_id):
+#     return USER_CONTEXTS.setdefault(user_id, {})
+
+# def set_context(user_id, **kwargs):
+#     ctx = get_context(user_id)
+#     ctx.update(kwargs)
+
+# def reset_context(user_id):
+#     USER_CONTEXTS.pop(user_id, None)
+
 
 def get_nop(text):
     match = re.search(r"\b\d{18}\b", text)
+    return match.group() if match else None
+
+def get_npwpd(text):
+    match = re.search(r"\b\d{16}\b", text)
     return match.group() if match else None
 
 def get_nik(text):
     match = re.search(r"\b\d{16}\b", text)
     return match.group() if match else None
 
-def reset_context():
-    context.clear()
+def get_nib(text):
+    match = re.search(r"\b\d{13}\b", text)
+    return match.group() if match else None
 
-def set_context(**kwargs):
-    for k, v in kwargs.items():
-        context[k] = v
-def detect_pajak(text):
+# def detect_pajak(text):
+#     text = text.lower()
+#     for p in PAJAK_KEYWORDS:
+#         if p in text:
+#             return p
+#     return None
+
+def detect_pajaks(text):
     text = text.lower()
-    for p in PAJAK_KEYWORDS:
-        if p in text:
-            return p
-    return None
+    found = [p for p in PAJAK_KEYWORDS if p in text]
+    return found
 
 
 def detect_faq(question):
@@ -46,138 +99,290 @@ def detect_faq(question):
     idx = sim.argmax()
     score = sim.max()
 
-    if score < 0.5:
+    if score < FAQ_THRESHOLD:
         return None, None, score
 
     return faq_intents[idx], answers[idx], score
 
+def bayarNonPBB(status, pajak, context, user_id, q, messageMentah):
+    # 🔹 TANYA JENIS PAJAK
+    if status == "tanya_pajak":
+        set_context(user_id, pajak=pajak, status="input_nop")
+        return (
+            "Silakan masukkan Nomor Pokok Wajib Pajak Daerah (NPWPD) untuk pajak " + pajak + ".\n"
+            "Ketik 'batal' untuk keluar."
+        )
 
-def chat(question: str) -> str:
-    q = question.lower().strip()
+    # 🔹 INPUT NOP
+    if status == "input_nop":
+        nop = get_npwpd(messageMentah)
+        if not nop:
+            return (
+                "NPWPD tidak valid.\n"
+                "Silakan masukkan NPWPD yang benar.\n"
+                "Ketik 'batal' untuk keluar."
+            )
 
-    # 🔴 GLOBAL CANCEL
-    if context and "batal" in q:
-        reset_context()
-        return "Ok, pembayaran pajak dibatalkan. Ada yang bisa saya bantu lagi?"
+        set_context(user_id, status="input_nik", nop=nop)
+        return (
+            f"NPWPD Anda: {nop}\n"
+            "Silakan masukkan NIK/NIB anda.\n"
+            "Ketik 'batal' untuk keluar."
+        )
 
-    # ======================================================
-    # 🟡 CONTEXT FLOW (FSM)
-    # ======================================================
-    if context:
-        status = context.get("status")
+    # 🔹 INPUT NIK
+    if status == "input_nik":
+        nik = get_nik(messageMentah)
+        nib = get_nib(messageMentah)
 
-        # 🔹 TANYA JENIS PAJAK
+        if not nik and not nib:
+            return (
+                "NIK/NIB tidak valid.\n"
+                "Silakan masukkan NIK yang benar.\n"
+                "Ketik 'batal' untuk keluar."
+            )
+        
+        result = nik if nik else nib
+
+        if(len(result) == 16):
+            label = "NIK"
+        else:
+            label = "NIB"
+
+        set_context(user_id, status="input_masa", nik=result, label=label)
+        return (
+            f"NPWPD: {context.get('nop')}\n"
+            f"{label}: {result}\n"
+            "Silakan masukkan Masa Pajak (Bulan-Tahun).\n"
+            "Contoh: 01-2024\n"
+            "Ketik 'batal' untuk keluar."
+        )
+
+    # 🔹 INPUT MASA PAJAK
+    if status == "input_masa":
+        masa = messageMentah.strip()
+        # Regex simple check: MM-YYYY
+        if not re.match(r"^(0[1-9]|1[0-2])-\d{4}$", masa):
+            return (
+                "Format Masa Pajak tidak valid.\n"
+                "Gunakan format Bulan-Tahun (MM-YYYY), contoh: 01-2024.\n"
+                "Ketik 'batal' untuk keluar."
+            )
+
+        set_context(user_id, status="konfirmasi", masa=masa)
+        return (
+            f"NPWPD: {context.get('nop')}\n"
+            f"{context.get('label') or 'NIK/NIB'}: {context.get('nik')}\n"
+            f"Masa Pajak: {masa}\n"
+            "Apakah data sudah benar?\n"
+            "➡ ketik 'ya' untuk lanjut\n"
+            "➡ ketik 'tidak' untuk ulang\n"
+            "➡ ketik 'batal' untuk keluar"
+        )
+
+    # 🔹 KONFIRMASI
+    if status == "konfirmasi":
+        if messageMentah.lower() == "ya":
+            set_context(user_id, status="bayar_pajak")
+            reset_context(user_id)
+
+            return (
+                "Silakan lanjutkan pembayaran melalui link berikut:\n"
+                "https://pajak.medan.go.id/bayar/nonpbb"
+            )
+
+        if messageMentah.lower() == "tidak":
+            set_context(user_id,status="input_nop")
+            return (
+                "Baik, kita ulang dari awal.\n"
+                "Silakan masukkan Nomor Pokok Wajib Pajak Daerah (NPWPD).\nKetik 'batal' untuk keluar."
+            )
+
+        return "Silakan ketik 'ya' atau 'tidak'.\nKetik 'batal' untuk keluar."
+
+    # ❌ STATE TIDAK VALID
+    reset_context(user_id)
+    return "Terjadi kesalahan alur. Silakan ulangi dari awal.\n Ada yang bisa saya bantu lagi?"
+
+def bayarPBB(status, context, user_id, q, messageMentah):
+    # 🔹 TANYA JENIS PAJAK
+    if status == "tanya_pajak":
+        set_context(user_id, pajak="pbb", status="input_nop")
+        return (
+            "Silakan masukkan Nomor Objek Pajak (NOP).\n"
+            "Ketik 'batal' untuk keluar."
+        )
+
+    # 🔹 INPUT NOP
+    if status == "input_nop":
+        nop = get_nop(messageMentah)
+        if not nop:
+            return (
+                "NOP tidak valid.\n"
+                "Silakan masukkan NOP yang benar.\n"
+                "Ketik 'batal' untuk keluar."
+            )
+
+        set_context(user_id, status="input_nik", nop=nop)
+        return (
+            f"NOP Anda: {nop}\n"
+            "Silakan masukkan NIK.\n"
+            "Ketik 'batal' untuk keluar."
+        )
+
+    # 🔹 INPUT NIK
+    if status == "input_nik":
+        nik = get_nik(messageMentah)
+        if not nik:
+            return (
+                "NIK tidak valid.\n"
+                "Silakan masukkan NIK yang benar.\n"
+                "Ketik 'batal' untuk keluar."
+            )
+
+        set_context(user_id, status="input_tahun", nik=nik)
+        return (
+            f"NOP: {context.get('nop')}\n"
+            f"NIK: {nik}\n"
+            "Silakan masukkan Tahun Pajak yang ingin dibayar (contoh: 2024).\n"
+            "Ketik 'batal' untuk keluar."
+        )
+
+    # 🔹 INPUT TAHUN
+    if status == "input_tahun":
+        tahun = messageMentah.strip()
+        if not tahun.isdigit() or len(tahun) != 4:
+            return (
+                "Tahun tidak valid.\n"
+                "Silakan masukkan tahun yang benar (4 digit).\n"
+                "Ketik 'batal' untuk keluar."
+            )
+
+        set_context(user_id, status="konfirmasi", tahun=tahun)
+        return (
+            f"NOP: {context.get('nop')}\n"
+            f"NIK: {context.get('nik')}\n"
+            f"Tahun: {tahun}\n"
+            "Apakah data sudah benar?\n"
+            "➡ ketik 'ya' untuk lanjut\n"
+            "➡ ketik 'tidak' untuk ulang\n"
+            "➡ ketik 'batal' untuk keluar"
+        )
+
+    # 🔹 KONFIRMASI
+    if status == "konfirmasi":
+        if messageMentah.lower() == "ya":
+            set_context(user_id, status="bayar_pajak")
+            reset_context(user_id)
+            return (
+                "Silakan lanjutkan pembayaran melalui link berikut:\n"
+                "https://pajak.medan.go.id/bayar/pbb"
+            )
+
+        if messageMentah.lower() == "tidak":
+            set_context(user_id, status="input_nop")
+            return (
+                "Baik, kita ulang dari awal.\n"
+                "Silakan masukkan Nomor Objek Pajak (NOP).\nKetik 'batal' untuk keluar."
+            )
+
+        return "Silakan ketik 'ya' atau 'tidak'.\nKetik 'batal' untuk keluar."
+
+    # ❌ STATE TIDAK VALID
+    reset_context(user_id)
+    return "Terjadi kesalahan alur. Silakan ulangi dari awal.\n Ada yang bisa saya bantu lagi?"
+
+def chat(user_id: str, message: str) -> str:
+    q = preprocess_user_input(message)
+    messageMentah = message
+    ctx = get_context(user_id)
+
+    # GLOBAL CANCEL
+    if ctx and q == "batal":
+        reset_context(user_id)
+        return "Transaksi dibatalkan. Ada yang bisa saya bantu lagi?"
+    
+    if ctx:
+        status = ctx.get("status")
         if status == "tanya_pajak":
-            pajak = detect_pajak(q)
+            pajaks = detect_pajaks(q)
 
-            if not pajak:
+            if not pajaks:
                 return (
                     "Maaf, jenis pajak tidak dikenali.\n"
                     "Silakan sebutkan jenis pajak atau ketik 'batal'."
                 )
 
-            if pajak != "pbb":
-                reset_context()
+            if len(pajaks) > 1:
                 return (
-                    f"Baik, untuk pembayaran pajak {pajak.upper()} "
-                    f"silakan lanjutkan melalui link berikut:\n"
-                    f"https://pajak.medan.go.id/bayar/{pajak.replace(' ', '-')}"
+                    "Saya hanya bisa memproses satu pajak dalam satu waktu 🙏\n"
+                    "Silakan pilih salah satu:\n"
+                    "• Hotel\n"
+                    "• Restoran\n"
+                    "• Hiburan\n"
+                    "• Reklame\n"
+                    "• Parkir\n"
+                    "• Air Tanah\n"
+                    "• PBB"
                 )
 
-            set_context(pajak="pbb", status="input_nop")
-            return (
-                "Silakan masukkan Nomor Objek Pajak (NOP).\n"
-                "Ketik 'batal' untuk keluar."
-            )
+            pajak = pajaks[0]
 
-        # 🔹 INPUT NOP
-        if status == "input_nop":
-            nop = get_nop(q)
-            if not nop:
-                return (
-                    "NOP tidak valid.\n"
-                    "Silakan masukkan NOP yang benar.\n"
-                    "Ketik 'batal' untuk keluar."
-                )
+            set_context(user_id, pajak=pajak)
+            ctx['pajak'] = pajak # Fix: Update local context immediately
 
-            set_context(status="input_nik", nop=nop)
-            return (
-                f"NOP Anda: {nop}\n"
-                "Silakan masukkan NIK.\n"
-                "Ketik 'batal' untuk keluar."
-            )
+        pajak = ctx.get("pajak")
 
-        # 🔹 INPUT NIK
-        if status == "input_nik":
-            nik = get_nik(q)
-            if not nik:
-                return (
-                    "NIK tidak valid.\n"
-                    "Silakan masukkan NIK yang benar.\n"
-                    "Ketik 'batal' untuk keluar."
-                )
-
-            set_context(status="konfirmasi", nik=nik)
-            return (
-                f"NOP: {context.get('nop')}\n"
-                f"NIK: {nik}\n"
-                "Apakah data sudah benar?\n"
-                "➡ ketik 'ya' untuk lanjut\n"
-                "➡ ketik 'tidak' untuk ulang\n"
-                "➡ ketik 'batal' untuk keluar"
-            )
-
-        # 🔹 KONFIRMASI
-        if status == "konfirmasi":
-            if q == "ya":
-                set_context(status="bayar_pajak")
-                return (
-                    "Silakan lanjutkan pembayaran melalui link berikut:\n"
-                    "https://pajak.medan.go.id/bayar/pbb"
-                )
-
-            if q == "tidak":
-                reset_context()
-                set_context(status="input_nop")
-                return (
-                    "Baik, kita ulang dari awal.\n"
-                    "Silakan masukkan Nomor Objek Pajak (NOP).\nKetik 'batal' untuk keluar."
-                )
-
-            return "Silakan ketik 'ya' atau 'tidak'.\nKetik 'batal' untuk keluar."
-
-        # ❌ STATE TIDAK VALID
-        reset_context()
-        return "Terjadi kesalahan alur. Silakan ulangi dari awal.\n Ada yang bisa saya bantu lagi?"
-
-    # ======================================================
-    # 🟢 INTENT & FAQ (NO CONTEXT)
-    # ======================================================
+        if pajak in PAJAK_KEYWORDS and pajak != "pbb":
+            return bayarNonPBB(status, pajak, ctx, user_id, q, messageMentah)
+        
+        elif pajak == "pbb":
+            return bayarPBB(status, ctx, user_id, q, messageMentah)
+        
     intent, answer, score = detect_faq(q)
     print(f"Intent: {intent}, Score: {score}")
 
-    if not intent:
-        return "Maaf, saya belum memahami pertanyaan Anda."
 
     if intent == "bayar_pajak":
-        pajak = detect_pajak(q)
+        pajaks = detect_pajaks(q)
 
-        if pajak and pajak != "pbb":
+        if not pajaks:
+            set_context(user_id, status="tanya_pajak")
+            return "Baik, mau bayar pajak apa? (contoh: restoran, PBB, hotel)"
+        
+        if len(pajaks) > 1:
+            set_context(user_id, status="tanya_pajak")
             return (
-                f"Baik, untuk pembayaran pajak {pajak.upper()} "
-                f"silakan lanjutkan melalui link berikut:\n"
-                f"https://pajak.medan.go.id/bayar/{pajak.replace(' ', '-')}"
+                "Saya hanya bisa memproses satu pajak dalam satu waktu 🙏\n"
+                "Silakan pilih salah satu:\n"
+                "• Hotel\n"
+                "• Restoran\n"
+                "• Hiburan\n"
+                "• Reklame\n"
+                "• Parkir\n"
+                "• Air Tanah\n"
+                "• PBB"
+            )
+
+        pajak = pajaks[0]
+        if pajak and pajak != "pbb":
+            set_context(user_id,status="input_nop", pajak=pajak)
+            return (
+                "Silakan masukkan Nomor Pokok Wajib Pajak Daerah (NPWPD).\n"
+                "Ketik 'batal' untuk keluar."
             )
         
         elif pajak == "pbb":
-            set_context(status="input_nop")
+            set_context(user_id, status="input_nop", pajak=pajak)
             return (
                 "Silakan masukkan Nomor Objek Pajak (NOP).\n"
                 "Ketik 'batal' untuk keluar."
             )
         
-        set_context(status="tanya_pajak")
+        set_context(user_id, status="tanya_pajak")
         return "Baik, mau bayar pajak apa? (contoh: restoran, PBB, hotel)"
+    elif not intent:
+        return "Halo 👋 Ada yang bisa saya bantu terkait pajak?"
 
     return answer
 
@@ -185,8 +390,11 @@ def chat(question: str) -> str:
 
 # TEST
 if __name__ == "__main__":
+    init()
+    user_id = "test_user"
+    reset_context(user_id) # Reset context on startup
     while True:
         q = input("Anda: ")
         if q.lower() in ["exit", "quit"]:
             break
-        print("AI :", chat(q))
+        print("AI :", chat(user_id, q))

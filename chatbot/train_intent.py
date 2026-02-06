@@ -3,13 +3,15 @@ import joblib
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from utils import preprocess_id   # jika dipisah
 
 # =========================
 # LOAD DATASET
 # =========================
 df = pd.read_csv("data/faq_fixed.csv")
 
-df["question"] = df["question"].str.lower().str.strip()
+# df["question"] = df["question"].str.lower().str.strip()
+df["question"] = df["question"].astype(str).apply(preprocess_id)
 df["intent"] = df["intent"].str.lower().str.strip()
 
 # =========================

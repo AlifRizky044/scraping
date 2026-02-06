@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "title": "H3RO Esports 5.0",
+            "paragraphs": [
+                {
+                    "context": "The H3RO Esports 5.0 was an online Mobile Legends: Bang Bang tournament held from May 13 to May 26, 2024, in Indonesia. Organized by H3RO and sponsored by Tri Indonesia, the event featured 16 teams competing for a prize pool of Rp300,000,000 IDR (approximately $18,700 USD). The tournament had a group stage from May 13 to 16 and a playoff from May 22 to 26. The final match was a Best-of-Seven (Bo7). Fnatic ONIC won first place with Rp110,000,000 IDR in prize money. EVOS Holy secured second place, and Alter Ego finished third.",
+                    "qas": [
+                        {
+                            "question": "When was the H3RO Esports 5.0 held?",
+                            "answers": [
+                                {
+                                    "text": "May 13 to May 26, 2024",
+                                    "answer_start": 59
+                                }
+                            ],
+                            "id": "1"
+                        },
+                        {
+                            "question": "Which team won first place?",
+                            "answers": [
+                                {
+                                    "text": "Fnatic ONIC",
+                                    "answer_start": 339
+                                }
+                            ],
+                            "id": "2"
+                        },
+                        {
+                            "question": "What was the prize pool for the tournament?",
+                            "answers": [
+                                {
+                                    "text": "Rp300,000,000 IDR",
+                                    "answer_start": 151
+                                }
+                            ],
+                            "id": "3"
+                        },
+                        {
+                            "question": "Which team finished in second place?",
+                            "answers": [
+                                {
+                                    "text": "EVOS Holy",
+                                    "answer_start": 381
+                                }
+                            ],
+                            "id": "4"
+                        },
+                        {
+                            "question": "What format was used for the group stage?",
+                            "answers": [
+                                {
+                                    "text": "GSL (Global StarCraft II League) format",
+                                    "answer_start": 242
+                                }
+                            ],
+                            "id": "5"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

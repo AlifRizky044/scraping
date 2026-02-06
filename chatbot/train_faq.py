@@ -2,6 +2,8 @@ import pandas as pd
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from pathlib import Path
+from utils import preprocess_id   # jika dipisah
+
 
 DATA_PATH = "data/faq_fixed.csv"
 MODEL_DIR = Path("models")
@@ -25,8 +27,11 @@ vectorizer = TfidfVectorizer(
     stop_words=None
 )
 
+df["question"] = df["question"].astype(str).apply(preprocess_id)
+
+
 # training vector
-faq_vectors = vectorizer.fit_transform(df["question"].astype(str))
+faq_vectors = vectorizer.fit_transform(df["question"])
 
 # simpan semua yang dibutuhkan runtime
 joblib.dump(vectorizer, MODEL_DIR / "vectorizer.pkl")
