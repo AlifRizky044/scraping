@@ -2,6 +2,7 @@ import joblib
 import re
 from sklearn.metrics.pairwise import cosine_similarity
 from utils import preprocess_user_input, init
+from logger import log_conversation
 from config.redis import redis_client
 import json
 
@@ -10,13 +11,26 @@ vectorizer = joblib.load("models/vectorizer.pkl")
 faq_vectors = joblib.load("models/faq_vectors.pkl")
 faq_intents = joblib.load("models/faq_intents.pkl")
 answers = joblib.load("models/answers.pkl")
+try:
+    intent_model = joblib.load("models/intent.pkl")
+except Exception:
+    intent_model = None
 
 PAJAK_KEYWORDS = [
     "hotel", "restoran", "hiburan", "reklame",
     "parkir", "air tanah", "pbb"
 ]
 
-FAQ_THRESHOLD = 0.4
+FAQ_THRESHOLD = 0.35
+INTENT_FALLBACK_THRESHOLD = 0.6
+
+INTENT_ANSWER_MAP = {}
+for i, intent_name in enumerate(faq_intents):
+    if intent_name not in INTENT_ANSWER_MAP:
+        INTENT_ANSWER_MAP[intent_name] = answers[i]
+
+# Initialize normalization dictionary for typo correction in all runtimes (CLI/API/tests).
+init()
 
 import redis
 
@@ -91,18 +105,75 @@ def detect_pajaks(text):
     found = [p for p in PAJAK_KEYWORDS if p in text]
     return found
 
+def _answer_for(intent_name):
+    return INTENT_ANSWER_MAP.get(intent_name)
+
+def _is_transaction_intent(q):
+    if not re.search(r"\b(bayar|lunasi|setor)\b", q):
+        return False
+    # Kalau user bertanya cara/metode, anggap FAQ informatif.
+    if re.search(r"\b(cara|bagaimana|gimana|metode|dimana|tutorial)\b", q):
+        return False
+    return True
+
 
 def detect_faq(question):
+    q_lower = question.lower()
+
+    # High-priority rule overrides for known confusing patterns.
+    if "bphtb" in q_lower and re.search(r"\b(call|center|cs|kontak|nomor)\b", q_lower):
+        ans = _answer_for("call_center_bphtb")
+        if ans:
+            return "call_center_bphtb", ans, 0.99
+    if "pbb" in q_lower and "denda" in q_lower:
+        ans = _answer_for("pbb_denda")
+        if ans:
+            return "pbb_denda", ans, 0.99
+    if "pbb" in q_lower and re.search(r"\b(cek|tagihan|periksa)\b", q_lower):
+        ans = _answer_for("pbb_cek_tagihan")
+        if ans:
+            return "pbb_cek_tagihan", ans, 0.99
+    if "hiburan" in q_lower and re.search(r"\b(apa|pengertian)\b", q_lower):
+        ans = _answer_for("pajak_hiburan")
+        if ans:
+            return "pajak_hiburan", ans, 0.99
+    if "bphtb" in q_lower and "syarat" in q_lower:
+        ans = _answer_for("syarat_permohonan_bphtb")
+        if ans:
+            return "syarat_permohonan_bphtb", ans, 0.99
+    if "jatuh tempo" in q_lower and "restoran" not in q_lower and "pbb" not in q_lower:
+        ans = _answer_for("jatuh_tempo_umum")
+        if ans:
+            return "jatuh_tempo_umum", ans, 0.99
+
     q_vec = vectorizer.transform([question])
     sim = cosine_similarity(q_vec, faq_vectors)
 
     idx = sim.argmax()
     score = sim.max()
+    predicted_intent = faq_intents[idx]
+    predicted_answer = answers[idx]
 
-    if score < FAQ_THRESHOLD:
-        return None, None, score
+    if score >= FAQ_THRESHOLD:
+        # Avoid overfitting "call center" intents on generic contact queries.
+        if predicted_intent == "call_center_pbb" and "pbb" not in q_lower:
+            pass
+        elif predicted_intent == "call_center_bphtb" and "bphtb" not in q_lower:
+            pass
+        else:
+            return predicted_intent, predicted_answer, score
 
-    return faq_intents[idx], answers[idx], score
+    # Fallback multiclass intent model for broader intent generalization.
+    if intent_model is not None:
+        probs = intent_model.predict_proba([question])[0]
+        best_idx = probs.argmax()
+        intent_score = float(probs[best_idx])
+        intent_name = intent_model.classes_[best_idx]
+        answer = INTENT_ANSWER_MAP.get(intent_name)
+        if answer and intent_score >= INTENT_FALLBACK_THRESHOLD:
+            return intent_name, answer, intent_score
+
+    return None, None, score
 
 def bayarNonPBB(status, pajak, context, user_id, q, messageMentah):
     # 🔹 TANYA JENIS PAJAK
@@ -297,10 +368,21 @@ def chat(user_id: str, message: str) -> str:
     messageMentah = message
     ctx = get_context(user_id)
 
+    # 🔹 LOGGING HELPER
+    # successful=True means the bot successfully handled/understood the request.
+    # We only log when successful=False (i.e. we need training data).
+    def reply(msg, intent="UNKNOWN", score=0.0, successful=True):
+        if not successful:
+            # Handle None intent
+            safe_intent = intent if intent else "NONE"
+            log_conversation(user_id, message, safe_intent, score, msg)
+        return msg
+
     # GLOBAL CANCEL
-    if ctx and q == "batal":
+    if ctx and (q == "batal" or messageMentah.strip().lower() == "batal"):
         reset_context(user_id)
-        return "Transaksi dibatalkan. Ada yang bisa saya bantu lagi?"
+        # Cancellation is a "successful" flow command, usually no need to train on it.
+        return reply("Transaksi dibatalkan. Ada yang bisa saya bantu lagi?", "CANCEL", 1.0, successful=True)
     
     if ctx:
         status = ctx.get("status")
@@ -308,13 +390,14 @@ def chat(user_id: str, message: str) -> str:
             pajaks = detect_pajaks(q)
 
             if not pajaks:
-                return (
+                return reply(
                     "Maaf, jenis pajak tidak dikenali.\n"
-                    "Silakan sebutkan jenis pajak atau ketik 'batal'."
+                    "Silakan sebutkan jenis pajak atau ketik 'batal'.",
+                    "FLOW_ERROR_TAX", 1.0, successful=False
                 )
 
             if len(pajaks) > 1:
-                return (
+                return reply(
                     "Saya hanya bisa memproses satu pajak dalam satu waktu 🙏\n"
                     "Silakan pilih salah satu:\n"
                     "• Hotel\n"
@@ -323,7 +406,8 @@ def chat(user_id: str, message: str) -> str:
                     "• Reklame\n"
                     "• Parkir\n"
                     "• Air Tanah\n"
-                    "• PBB"
+                    "• PBB",
+                    "FLOW_AMBIGUOUS", 1.0, successful=False
                 )
 
             pajak = pajaks[0]
@@ -334,25 +418,39 @@ def chat(user_id: str, message: str) -> str:
         pajak = ctx.get("pajak")
 
         if pajak in PAJAK_KEYWORDS and pajak != "pbb":
-            return bayarNonPBB(status, pajak, ctx, user_id, q, messageMentah)
+            return reply(bayarNonPBB(status, pajak, ctx, user_id, q, messageMentah), f"FLOW_{pajak.upper()}", 1.0, successful=True)
         
         elif pajak == "pbb":
-            return bayarPBB(status, ctx, user_id, q, messageMentah)
+            return reply(bayarPBB(status, ctx, user_id, q, messageMentah), "FLOW_PBB", 1.0, successful=True)
         
     intent, answer, score = detect_faq(q)
     print(f"Intent: {intent}, Score: {score}")
 
-
-    if intent == "bayar_pajak":
+    # Direct payment-flow trigger for transactional utterances (even when FAQ intent matched cara_bayar_*).
+    if _is_transaction_intent(q):
         pajaks = detect_pajaks(q)
-
-        if not pajaks:
-            set_context(user_id, status="tanya_pajak")
-            return "Baik, mau bayar pajak apa? (contoh: restoran, PBB, hotel)"
-        
+        if len(pajaks) == 1:
+            pajak = pajaks[0]
+            if pajak == "pbb":
+                set_context(user_id, status="input_nop", pajak=pajak)
+                return reply(
+                    "Silakan masukkan Nomor Objek Pajak (NOP).\n"
+                    "Ketik 'batal' untuk keluar.",
+                    "FLOW_PBB",
+                    1.0,
+                    successful=True,
+                )
+            set_context(user_id, status="input_nop", pajak=pajak)
+            return reply(
+                "Silakan masukkan Nomor Pokok Wajib Pajak Daerah (NPWPD).\n"
+                "Ketik 'batal' untuk keluar.",
+                f"FLOW_{pajak.upper()}",
+                1.0,
+                successful=True,
+            )
         if len(pajaks) > 1:
             set_context(user_id, status="tanya_pajak")
-            return (
+            return reply(
                 "Saya hanya bisa memproses satu pajak dalam satu waktu 🙏\n"
                 "Silakan pilih salah satu:\n"
                 "• Hotel\n"
@@ -361,30 +459,58 @@ def chat(user_id: str, message: str) -> str:
                 "• Reklame\n"
                 "• Parkir\n"
                 "• Air Tanah\n"
-                "• PBB"
+                "• PBB",
+                "FLOW_AMBIGUOUS",
+                1.0,
+                successful=False,
+            )
+
+
+    if intent == "bayar_pajak":
+        pajaks = detect_pajaks(q)
+
+        if not pajaks:
+            set_context(user_id, status="tanya_pajak")
+            return reply("Baik, mau bayar pajak apa? (contoh: restoran, PBB, hotel)", intent, score, successful=True)
+        
+        if len(pajaks) > 1:
+            set_context(user_id, status="tanya_pajak")
+            return reply(
+                "Saya hanya bisa memproses satu pajak dalam satu waktu 🙏\n"
+                "Silakan pilih salah satu:\n"
+                "• Hotel\n"
+                "• Restoran\n"
+                "• Hiburan\n"
+                "• Reklame\n"
+                "• Parkir\n"
+                "• Air Tanah\n"
+                "• PBB",
+                intent, score, successful=False # Ambiguous initial request
             )
 
         pajak = pajaks[0]
         if pajak and pajak != "pbb":
             set_context(user_id,status="input_nop", pajak=pajak)
-            return (
+            return reply(
                 "Silakan masukkan Nomor Pokok Wajib Pajak Daerah (NPWPD).\n"
-                "Ketik 'batal' untuk keluar."
+                "Ketik 'batal' untuk keluar.",
+                intent, score, successful=True
             )
         
         elif pajak == "pbb":
             set_context(user_id, status="input_nop", pajak=pajak)
-            return (
+            return reply(
                 "Silakan masukkan Nomor Objek Pajak (NOP).\n"
-                "Ketik 'batal' untuk keluar."
+                "Ketik 'batal' untuk keluar.",
+                intent, score, successful=True
             )
         
         set_context(user_id, status="tanya_pajak")
-        return "Baik, mau bayar pajak apa? (contoh: restoran, PBB, hotel)"
+        return reply("Baik, mau bayar pajak apa? (contoh: restoran, PBB, hotel)", intent, score, successful=True)
     elif not intent:
-        return "Halo 👋 Ada yang bisa saya bantu terkait pajak?"
+        return reply("Halo 👋 Ada yang bisa saya bantu terkait pajak?", "NO_INTENT", 0.0, successful=False)
 
-    return answer
+    return reply(answer, intent, score, successful=True)
 
 
 

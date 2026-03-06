@@ -1,1 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
 venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# ML artifacts and checkpoints
+qa_model/checkpoint-*/
+qa_model/runs/
+qa_model/*.safetensors
+qa_model/*.bin
+qa_model/*.pt
+
+# Logs
+*.log
+chatbot/logs/*.csv

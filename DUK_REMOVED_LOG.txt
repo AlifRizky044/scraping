@@ -1,0 +1,28 @@
+Log pengisian ulang berdasarkan jabatanTerakhir + urutan template
+Total slot terisi: 255
+Total slot kosong (dihapus): 3
+Total slot diganti personil: 8
+
+Total ditambahkan di bawah: 1
+=== TAMBAHAN DI BAWAH TEMPLATE ===
+Row 246: insert UPT III -> 'DEWI LAURA SIMANJUNTAK, S.AK'
+
+=== SLOT DISISIPKAN ===
+Inserted Kepala Bidang Hotel at row 49.
+
+=== SLOT DIGANTI PERSONIL ===
+Row 60: slot 'PENELAAH TEKNIS KEBIJAKAN' diganti -> 'DIMPOS YUSTINUS SORMIN , M.PD'
+Row 104: slot 'KEPALA SUB BIDANG TEKNIS PARKIR, REKLAME, PENERANGAN JALAN, AIR TANAH, SARANG BURUNG WALET, DAN RETRIBUSI BADAN PENDAPATAN DAERAH KOTA MEDAN' diganti -> 'YUDHI HERIANTO, S.T.,M.M.'
+Row 147: 'HENDRA ASMILAN, S.IP., M.A.P.' dipindahkan ke slot lain sesuai jabatan terbaru, slot lama dikosongkan.
+Row 227: slot 'KEPALA UPT PAJAK DAN RETRIBUSI WILAYAH II BADAN PENDAPATAN DAERAH KOTA MEDAN' diganti -> 'ARI DWI MIRZA HARAHAP, S.IP'
+Row 237: slot 'KEPALA UPT PAJAK DAN RETRIBUSI WILAYAH III BADAN PENDAPATAN DAERAH KOTA MEDAN' diganti -> 'ANANDA DOLY PUTRA NASUTION, S.AP, M.M.'
+Row 246: slot 'KEPALA UPT PAJAK DAN RETRIBUSI WILAYAH IV BADAN PENDAPATAN DAERAH KOTA MEDAN' diganti -> 'MHA MUSTAQIIM SIREGAR, S.STP'
+Row 257: slot 'PENELAAH TEKNIS KEBIJAKAN' diganti -> 'DINDA SHAFIRA RASULY, S.TR.IP'
+Inserted 'DIMPOS YUSTINUS SORMIN' as new row 212 in target block.
+
+=== SLOT KOSONG / DIHAPUS ===
+Total dihapus: 3
+
+Row 35: YUDHI HERIANTO, S.T.,M.M. | 198006122010011029 | PENGOLAH DATA DAN INFORMASI -> Pegawai lama pindah jabatan dan tidak ada pengganti pada slot ini. Jabatan terbaru='KEPALA SUB BIDANG TEKNIS PARKIR, REKLAME, PENERANGAN JALAN, AIR TANAH, SARANG BURUNG WALET, DAN RETRIBUSI BADAN PENDAPATAN DAERAH KOTA MEDAN'.
+Row 161: AMRIADI, S.E. | 196712031993031004 | PENGOLAH DATA DAN INFORMASI -> Tidak ada pegawai aktif (PNS/CPNS) yang bisa dipasang pada slot jabatan ini.
+Row 200: DEDY RUSTAM ALAMSYAH NASUTION, S.STP, M.SP | 198212222001121001 | PENGOLAH DATA DAN INFORMASI -> Tidak ada pegawai aktif (PNS/CPNS) yang bisa dipasang pada slot jabatan ini.

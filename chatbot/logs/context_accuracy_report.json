@@ -1,0 +1,435 @@
+{
+  "faq_intent": {
+    "suite": "faq_intent",
+    "passed": 20,
+    "total": 20,
+    "accuracy": 100.0,
+    "details": [
+      {
+        "text": "apa itu bapenda medan",
+        "normalized": "apa itu bapenda medan",
+        "expected": "apa_itu_bapenda",
+        "predicted": "apa_itu_bapenda",
+        "score": 0.7314456336713812,
+        "pass": true
+      },
+      {
+        "text": "jam pelayanan bapenda kapan",
+        "normalized": "jam layanan bapenda kapan",
+        "expected": "jam_layanan",
+        "predicted": "jam_layanan",
+        "score": 0.4706398073644083,
+        "pass": true
+      },
+      {
+        "text": "alamat kantor bapenda dimana",
+        "normalized": "alamat kantor bapenda dimana",
+        "expected": "alamat_kantor",
+        "predicted": "alamat_kantor",
+        "score": 0.8075034959161344,
+        "pass": true
+      },
+      {
+        "text": "kontak resmi bapenda medan",
+        "normalized": "kontak resmi bapenda medan",
+        "expected": "kontak_resmi",
+        "predicted": "kontak_resmi",
+        "score": 0.6630716798857145,
+        "pass": true
+      },
+      {
+        "text": "jenis pajak daerah apa saja",
+        "normalized": "jenis pajak daerah apa saja",
+        "expected": "jenis_pajak",
+        "predicted": "jenis_pajak",
+        "score": 0.7788456852098713,
+        "pass": true
+      },
+      {
+        "text": "siapa wajib pajak",
+        "normalized": "siapa wajib pajak",
+        "expected": "wajib_pajak",
+        "predicted": "wajib_pajak",
+        "score": 0.8817340151673879,
+        "pass": true
+      },
+      {
+        "text": "kapan jatuh tempo pajak daerah",
+        "normalized": "kapan jatuh tempo pajak daerah",
+        "expected": "jatuh_tempo_umum",
+        "predicted": "jatuh_tempo_umum",
+        "score": 0.99,
+        "pass": true
+      },
+      {
+        "text": "cek tagihan pbb dimana",
+        "normalized": "periksa tagihan pbb dimana",
+        "expected": "pbb_cek_tagihan",
+        "predicted": "pbb_cek_tagihan",
+        "score": 0.99,
+        "pass": true
+      },
+      {
+        "text": "denda pbb berapa",
+        "normalized": "denda pbb berapa",
+        "expected": "pbb_denda",
+        "predicted": "pbb_denda",
+        "score": 0.99,
+        "pass": true
+      },
+      {
+        "text": "cara mutasi pbb",
+        "normalized": "cara mutasi pbb",
+        "expected": "pbb_mutasi",
+        "predicted": "pbb_mutasi",
+        "score": 0.8463044892865769,
+        "pass": true
+      },
+      {
+        "text": "cara bayar pajak daerah",
+        "normalized": "cara bayar pajak daerah",
+        "expected": "cara_bayar_umum",
+        "predicted": "cara_bayar_umum",
+        "score": 1.0,
+        "pass": true
+      },
+      {
+        "text": "cara bayar pbb",
+        "normalized": "cara bayar pbb",
+        "expected": "cara_bayar_pbb",
+        "predicted": "cara_bayar_pbb",
+        "score": 1.0000000000000002,
+        "pass": true
+      },
+      {
+        "text": "bayar pajak online lewat apa",
+        "normalized": "bayar pajak online lewat apa",
+        "expected": "bayar_online",
+        "predicted": "bayar_online",
+        "score": 1.0,
+        "pass": true
+      },
+      {
+        "text": "apa itu pajak restoran",
+        "normalized": "apa itu pajak restoran",
+        "expected": "pajak_restoran",
+        "predicted": "pajak_restoran",
+        "score": 1.0000000000000002,
+        "pass": true
+      },
+      {
+        "text": "apa itu pajak hotel",
+        "normalized": "apa itu pajak hotel",
+        "expected": "pajak_hotel",
+        "predicted": "pajak_hotel",
+        "score": 1.0,
+        "pass": true
+      },
+      {
+        "text": "apa itu pajak hiburan",
+        "normalized": "apa itu pajak hiburan",
+        "expected": "pajak_hiburan",
+        "predicted": "pajak_hiburan",
+        "score": 0.99,
+        "pass": true
+      },
+      {
+        "text": "mau bayar pajak",
+        "normalized": "mau bayar pajak",
+        "expected": "bayar_pajak",
+        "predicted": "bayar_pajak",
+        "score": 1.0,
+        "pass": true
+      },
+      {
+        "text": "call center pbb berapa",
+        "normalized": "panggilan pusat pbb berapa",
+        "expected": "call_center_pbb",
+        "predicted": "call_center_pbb",
+        "score": 0.4710997294332648,
+        "pass": true
+      },
+      {
+        "text": "call center bphtb berapa",
+        "normalized": "panggilan pusat bphtb berapa",
+        "expected": "call_center_bphtb",
+        "predicted": "call_center_bphtb",
+        "score": 0.496133352388042,
+        "pass": true
+      },
+      {
+        "text": "syarat permohonan bphtb apa",
+        "normalized": "syarat mohon bphtb apa",
+        "expected": "syarat_permohonan_bphtb",
+        "predicted": "syarat_permohonan_bphtb",
+        "score": 0.99,
+        "pass": true
+      }
+    ]
+  },
+  "typo_slang_intent": {
+    "suite": "typo_slang_intent",
+    "passed": 6,
+    "total": 6,
+    "accuracy": 100.0,
+    "details": [
+      {
+        "text": "jem berpaa bapenda buka",
+        "normalized": "jam berpa bapenda buka",
+        "expected": "jam_layanan",
+        "predicted": "jam_layanan",
+        "score": 0.573278383148748,
+        "pass": true
+      },
+      {
+        "text": "gmn cekk pbb onlen",
+        "normalized": "bagaimana periksa pbb online",
+        "expected": "pbb_cek_tagihan",
+        "predicted": "pbb_cek_tagihan",
+        "score": 0.99,
+        "pass": true
+      },
+      {
+        "text": "brp dnda pbb klu telatt",
+        "normalized": "berapa denda pbb klu telatt",
+        "expected": "pbb_denda",
+        "predicted": "pbb_denda",
+        "score": 0.99,
+        "pass": true
+      },
+      {
+        "text": "mau byr pjk restoran",
+        "normalized": "mau bayar pajak restoran",
+        "expected": "bayar_pajak",
+        "predicted": "bayar_pajak",
+        "score": 0.8302829644930833,
+        "pass": true
+      },
+      {
+        "text": "nomer cs bphtb berpa",
+        "normalized": "nomor kontak bphtb berpa",
+        "expected": "call_center_bphtb",
+        "predicted": "call_center_bphtb",
+        "score": 0.99,
+        "pass": true
+      },
+      {
+        "text": "jam puasa bapenda buka kapan",
+        "normalized": "jam ramadhan bapenda buka kapan",
+        "expected": "jam_layanan",
+        "predicted": "jam_layanan",
+        "score": 0.5381001897740404,
+        "pass": true
+      }
+    ]
+  },
+  "conversation_flow": {
+    "suite": "conversation_flow",
+    "scenario_passed": 5,
+    "scenario_total": 5,
+    "step_passed": 18,
+    "step_total": 18,
+    "scenario_accuracy": 100.0,
+    "step_accuracy": 100.0,
+    "details": [
+      {
+        "scenario": "pbb_happy_path",
+        "pass": true,
+        "steps": [
+          {
+            "user_id": "u_pbb",
+            "message": "mau bayar pbb",
+            "must_contain": [
+              "nomor objek pajak",
+              "nop"
+            ],
+            "reply": "Silakan masukkan Nomor Objek Pajak (NOP).\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_pbb",
+            "message": "123456789012345678",
+            "must_contain": [
+              "nop anda",
+              "masukkan nik"
+            ],
+            "reply": "NOP Anda: 123456789012345678\nSilakan masukkan NIK.\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_pbb",
+            "message": "1234567890123456",
+            "must_contain": [
+              "masukkan tahun pajak"
+            ],
+            "reply": "NOP: 123456789012345678\nNIK: 1234567890123456\nSilakan masukkan Tahun Pajak yang ingin dibayar (contoh: 2024).\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_pbb",
+            "message": "2024",
+            "must_contain": [
+              "apakah data sudah benar"
+            ],
+            "reply": "NOP: 123456789012345678\nNIK: 1234567890123456\nTahun: 2024\nApakah data sudah benar?\n➡ ketik 'ya' untuk lanjut\n➡ ketik 'tidak' untuk ulang\n➡ ketik 'batal' untuk keluar",
+            "pass": true
+          },
+          {
+            "user_id": "u_pbb",
+            "message": "ya",
+            "must_contain": [
+              "https://pajak.medan.go.id/bayar/pbb"
+            ],
+            "reply": "Silakan lanjutkan pembayaran melalui link berikut:\nhttps://pajak.medan.go.id/bayar/pbb",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "scenario": "nonpbb_happy_path_restoran",
+        "pass": true,
+        "steps": [
+          {
+            "user_id": "u_nonpbb",
+            "message": "aku mau bayar pajak restoran",
+            "must_contain": [
+              "nomor pokok wajib pajak daerah",
+              "npwpd"
+            ],
+            "reply": "Silakan masukkan Nomor Pokok Wajib Pajak Daerah (NPWPD).\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_nonpbb",
+            "message": "1234567890123456",
+            "must_contain": [
+              "npwpd anda",
+              "masukkan nik/nib"
+            ],
+            "reply": "NPWPD Anda: 1234567890123456\nSilakan masukkan NIK/NIB anda.\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_nonpbb",
+            "message": "1234567890123456",
+            "must_contain": [
+              "masa pajak",
+              "bulan-tahun"
+            ],
+            "reply": "NPWPD: 1234567890123456\nNIK: 1234567890123456\nSilakan masukkan Masa Pajak (Bulan-Tahun).\nContoh: 01-2024\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_nonpbb",
+            "message": "04-2025",
+            "must_contain": [
+              "apakah data sudah benar"
+            ],
+            "reply": "NPWPD: 1234567890123456\nNIK: 1234567890123456\nMasa Pajak: 04-2025\nApakah data sudah benar?\n➡ ketik 'ya' untuk lanjut\n➡ ketik 'tidak' untuk ulang\n➡ ketik 'batal' untuk keluar",
+            "pass": true
+          },
+          {
+            "user_id": "u_nonpbb",
+            "message": "ya",
+            "must_contain": [
+              "https://pajak.medan.go.id/bayar/nonpbb"
+            ],
+            "reply": "Silakan lanjutkan pembayaran melalui link berikut:\nhttps://pajak.medan.go.id/bayar/nonpbb",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "scenario": "cancel_mid_flow",
+        "pass": true,
+        "steps": [
+          {
+            "user_id": "u_cancel",
+            "message": "bayar pbb",
+            "must_contain": [
+              "nomor objek pajak"
+            ],
+            "reply": "Silakan masukkan Nomor Objek Pajak (NOP).\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_cancel",
+            "message": "batal",
+            "must_contain": [
+              "transaksi dibatalkan"
+            ],
+            "reply": "Transaksi dibatalkan. Ada yang bisa saya bantu lagi?",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "scenario": "ambiguous_tax_selection",
+        "pass": true,
+        "steps": [
+          {
+            "user_id": "u_amb",
+            "message": "saya mau bayar pajak",
+            "must_contain": [
+              "mau bayar pajak apa"
+            ],
+            "reply": "Baik, mau bayar pajak apa? (contoh: restoran, PBB, hotel)",
+            "pass": true
+          },
+          {
+            "user_id": "u_amb",
+            "message": "restoran dan hotel",
+            "must_contain": [
+              "satu pajak",
+              "pilih salah satu"
+            ],
+            "reply": "Saya hanya bisa memproses satu pajak dalam satu waktu 🙏\nSilakan pilih salah satu:\n• Hotel\n• Restoran\n• Hiburan\n• Reklame\n• Parkir\n• Air Tanah\n• PBB",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "scenario": "interleaved_context_two_users",
+        "pass": true,
+        "steps": [
+          {
+            "user_id": "u_a",
+            "message": "bayar pbb",
+            "must_contain": [
+              "nomor objek pajak"
+            ],
+            "reply": "Silakan masukkan Nomor Objek Pajak (NOP).\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_b",
+            "message": "bayar pajak restoran",
+            "must_contain": [
+              "npwpd"
+            ],
+            "reply": "Silakan masukkan Nomor Pokok Wajib Pajak Daerah (NPWPD).\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_a",
+            "message": "123456789012345678",
+            "must_contain": [
+              "nop anda"
+            ],
+            "reply": "NOP Anda: 123456789012345678\nSilakan masukkan NIK.\nKetik 'batal' untuk keluar.",
+            "pass": true
+          },
+          {
+            "user_id": "u_b",
+            "message": "1234567890123456",
+            "must_contain": [
+              "npwpd anda"
+            ],
+            "reply": "NPWPD Anda: 1234567890123456\nSilakan masukkan NIK/NIB anda.\nKetik 'batal' untuk keluar.",
+            "pass": true
+          }
+        ]
+      }
+    ]
+  }
+}
