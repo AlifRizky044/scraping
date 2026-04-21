@@ -579,7 +579,7 @@ def scrape(profile_url):
     password_input = driver.find_element(By.NAME, "password")
 
     username_input.send_keys("admin_skpd_3182")
-    password_input.send_keys("Bapenda1234.")
+    password_input.send_keys("PemkoMedan12345678.")
 
     # Find the button and click
     login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
@@ -595,7 +595,7 @@ def scrape(profile_url):
     # time.sleep(10) 
 
     # 3. Loop through each row and click the <img> tag inside
-    for i in range(848):
+    for i in range(842):
 
         time.sleep(3)
         dropdown = Select(driver.find_element(By.NAME, "DataTables_Table_0_length"))
@@ -607,7 +607,7 @@ def scrape(profile_url):
         time.sleep(1)
         next_button = driver.find_element(By.ID, "DataTables_Table_0_next")
 
-        index = i + 764
+        index = i + 750
 
         if index >= 100:
             steps = index // 100  # contoh: 350 -> 3
@@ -886,7 +886,7 @@ def scrape(profile_url):
                 "links": result
             }
 
-            appendToFile("DUKPNSFULL.json", data)
+            appendToFile("DUKPNSFULLapril.json", data)
             # soup = BeautifulSoup(driver.page_source, 'html.parser')
 
             # table = soup.find("table", {"id":"DataTables_Table_0"})

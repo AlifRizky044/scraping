@@ -1,0 +1,16 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Trained model artifacts
+models/*.pkl
+
+# Runtime logs
+logs/
+
+models/
+
+
+__pycache__/
+*.py[cod]

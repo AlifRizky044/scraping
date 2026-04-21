@@ -16,7 +16,12 @@ qa_model/runs/
 qa_model/*.safetensors
 qa_model/*.bin
 qa_model/*.pt
+chatbot/models/*.pkl
 
 # Logs
 *.log
 chatbot/logs/*.csv
+
+# Environment files
+.env
+chatbot/.env

@@ -38,6 +38,7 @@ Ketik `exit` atau `quit` untuk berhenti.
 ## 5) Jalankan API chatbot
 ```bash
 cd /Users/nevv/Documents/scraping/chatbot
+export API_KEY='change-this-to-a-strong-secret'
 /Users/nevv/Documents/scraping/venv/bin/python -m uvicorn api:app --reload --host 0.0.0.0 --port 8000
 ```
 
@@ -49,6 +50,19 @@ Contoh body:
   "user_id": "u1",
   "message": "mau bayar pbb"
 }
+```
+
+Header wajib:
+
+```text
+x-api-key: <API_KEY>
+```
+
+Health checks:
+
+```bash
+curl http://127.0.0.1:8000/healthz
+curl -i http://127.0.0.1:8000/readyz
 ```
 
 ## 6) Test flow utama

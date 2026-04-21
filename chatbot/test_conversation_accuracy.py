@@ -137,6 +137,7 @@ def build_suites() -> Tuple[List[IntentCase], List[IntentCase], List[FlowCase]]:
         IntentCase("call center pbb berapa", "call_center_pbb"),
         IntentCase("call center bphtb berapa", "call_center_bphtb"),
         IntentCase("syarat permohonan bphtb apa", "syarat_permohonan_bphtb"),
+        IntentCase("gimana cara daftar pajak restoran", "syarat_permohonan_hrh"),
     ]
 
     typo_cases = [

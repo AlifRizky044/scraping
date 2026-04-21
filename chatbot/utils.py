@@ -1,11 +1,28 @@
 import re
 import csv
 from pathlib import Path
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-from rapidfuzz import process, fuzz
+try:
+    from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+except Exception:  # pragma: no cover - fallback for environments without Sastrawi
+    StemmerFactory = None
 
-factory = StemmerFactory()
-stemmer = factory.create_stemmer()
+try:
+    from rapidfuzz import process, fuzz
+except Exception:  # pragma: no cover - fallback for environments without rapidfuzz
+    process = None
+    fuzz = None
+
+
+class _NoopStemmer:
+    def stem(self, text):
+        return text
+
+
+if StemmerFactory is not None:
+    factory = StemmerFactory()
+    stemmer = factory.create_stemmer()
+else:
+    stemmer = _NoopStemmer()
 
 
 
@@ -24,6 +41,10 @@ SLANG_DICT = {
     "gmn": "bagaimana",
     "bgmn": "bagaimana",
     "gimana": "bagaimana",
+    "giman": "bagaimana",
+    "gim": "bagaimana",
+    "gimanan": "bagaimana",
+    "gmnna": "bagaimana",
     "brp": "berapa",
     "brrp": "berapa",
     "kpn": "kapan",
@@ -33,6 +54,7 @@ SLANG_DICT = {
     "mana": "dimana",
     "knp": "kenapa",
     "pjk": "pajak",
+    "pjak": "pajak",
     "mdn": "medan",
     "npwpd": "npwpd",
     "nop": "npwpd",
@@ -243,6 +265,9 @@ def correct_typo(word):
         cutoff = 75
     else:
         cutoff = 82
+
+    if process is None or fuzz is None:
+        return word
 
     match = process.extractOne(word, KAMUS_KATA, scorer=fuzz.ratio, score_cutoff=cutoff)
     if not match:

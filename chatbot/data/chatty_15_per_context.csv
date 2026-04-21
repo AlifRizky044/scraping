@@ -1,0 +1,556 @@
+intent,question
+alamat_kantor,alamat kantor bapenda kota medan
+alamat_kantor,min dmn lokasi bapenda medan
+alamat_kantor,bang kantor bapenda medan dmn dong
+alamat_kantor,kak alamat lengkap bapenda medan ya
+alamat_kantor,permisi cara menuju kantor bapenda medan
+alamat_kantor,kantornya dmn bg ya
+alamat_kantor,min share loc kantornya dong
+alamat_kantor,bang lokasi kantor bapenda dmn ya
+alamat_kantor,kak kalo mau ke dinas pendapatan medan lewat mana ya
+alamat_kantor,permisi alamat kantor bapenda medan dmn ya
+alamat_kantor,alamat kantor bapenda kota medan dong
+alamat_kantor,min dmn lokasi bapenda medan ya
+alamat_kantor,bang kantor bapenda medan dimana dong
+alamat_kantor,kak alamat lengkap bapenda medan dong
+alamat_kantor,permisi cara menuju kantor bapenda medan dong
+apa_itu_bapenda,apa itu bapenda kota medan
+apa_itu_bapenda,min bapenda medan itu apa
+apa_itu_bapenda,bang apa fungsi bapenda kota medan dong
+apa_itu_bapenda,kak tugas utama bapenda medan apa ya
+apa_itu_bapenda,permisi bapenda medan mengurus apa saja
+apa_itu_bapenda,bapenda tu apaan sih ya
+apa_itu_bapenda,min sebenernya bapenda itu apa sih dong
+apa_itu_bapenda,bang bapenda medan tu ngurusin apa aja ya
+apa_itu_bapenda,kak apa itu bapenda kota medan ya
+apa_itu_bapenda,permisi bapenda medan itu apa ya
+apa_itu_bapenda,apa fungsi bapenda kota medan dong
+apa_itu_bapenda,min tugas utama bapenda medan apa ya
+apa_itu_bapenda,bang bapenda medan mengurus apa saja dong
+apa_itu_bapenda,kak bapenda tu apaan sih dong
+apa_itu_bapenda,permisi sebenernya bapenda itu apa sih dong
+bayar_online,apakah pajak bisa dibayar online
+bayar_online,min bayar pajak online gimana
+bayar_online,bang apa ada pembayaran pajak online dong
+bayar_online,kak bayar pajak lewat aplikasi ya
+bayar_online,permisi cara bayar pajak secara online
+bayar_online,bisa bayar lewat gopay gak ya
+bayar_online,min bayar pke ovo bisa dong
+bayar_online,bang ada aplikasi buat bayar pajak ya
+bayar_online,kak bayar pajak online lewat apa ya
+bayar_online,permisi apa pajak bisa dibayar online ya
+bayar_online,bayar pajak online gimana dong
+bayar_online,min apa ada pembayaran pajak online ya
+bayar_online,bang bayar pajak lewat aplikasi dong
+bayar_online,kak cara bayar pajak secara online dong
+bayar_online,permisi bisa bayar lewat gopay gak dong
+bayar_pajak,bayar pajak
+bayar_pajak,min mau bayar pajak
+bayar_pajak,bang ingin bayar pajak dong
+bayar_pajak,kak pembayaran pajak ya
+bayar_pajak,permisi setor pajak
+bayar_pajak,lunasi pajak ya
+bayar_pajak,min bayar pajak lewat wa dong
+bayar_pajak,bang mau bayar pajak ya
+bayar_pajak,kak bayar pajak dmn ya
+bayar_pajak,permisi aku mau bayar pajak ya
+bayar_pajak,pembayaran pajak ya
+bayar_pajak,min bayar pajak dmn ya
+bayar_pajak,bang tolong bantu bayar pajak dong
+bayar_pajak,permisi bayar pajak dong
+bayar_pajak,mau bayar pajak ya
+call_center_bphtb,nomor call center bphtb berapa
+call_center_bphtb,min cs bphtb medan brp
+call_center_bphtb,bang wa bphtb ada dong
+call_center_bphtb,kak nomor petugas bphtb yang bisa dihubungi ya
+call_center_bphtb,permisi kontak bphtb untuk cek proses berkas
+call_center_bphtb,nomer cs bphtb berpa ya
+call_center_bphtb,min nomor call center bphtb brp dong
+call_center_bphtb,bang cs bphtb medan brp ya
+call_center_bphtb,kak wa bphtb ada ya
+call_center_bphtb,permisi nomor petugas bphtb yang bisa dihubungi ya
+call_center_bphtb,kontak bphtb untuk cek proses berkas dong
+call_center_bphtb,min nomer cs bphtb berpa ya
+call_center_bphtb,bang nomor call center bphtb berapa dong
+call_center_bphtb,kak cs bphtb medan brp dong
+call_center_bphtb,permisi wa bphtb ada dong
+call_center_pbb,nomor call center pbb berapa
+call_center_pbb,min cs pbb medan nomor brp
+call_center_pbb,bang nomor wa pbb ada gak dong
+call_center_pbb,kak hubungi petugas pbb kemana ya
+call_center_pbb,permisi kontak pbb untuk tanya berkas dimana
+call_center_pbb,nomor call center pbb brp ya
+call_center_pbb,min cs pbb medan nomor brp dong
+call_center_pbb,bang nomor wa pbb ada gak ya
+call_center_pbb,permisi kontak pbb untuk tanya berkas dmn ya
+call_center_pbb,nomor call center pbb brp dong
+call_center_pbb,min cs pbb medan nomor brp ya
+call_center_pbb,permisi kontak pbb untuk tanya berkas dmn dong
+call_center_pbb,min cs pbb medan nomor berapa nih
+call_center_pbb,bang nomor wa pbb ada gak nih
+call_center_pbb,min nomor call center pbb brp dong
+cara_bayar_pbb,bagaimana cara bayar pbb
+cara_bayar_pbb,min dmn bayar pbb
+cara_bayar_pbb,bang cara pembayaran pbb dong
+cara_bayar_pbb,kak bayar pbb lewat apa ya
+cara_bayar_pbb,permisi metode bayar pbb
+cara_bayar_pbb,bayar pbb pake apa ya
+cara_bayar_pbb,min tempat pembayaran pbb terdekat dong
+cara_bayar_pbb,bang pbb bisa dibayar dmn aja ya
+cara_bayar_pbb,kak bayar pbb pakai apa ya
+cara_bayar_pbb,permisi gimana cara bayar pbb ya
+cara_bayar_pbb,dmn bayar pbb dong
+cara_bayar_pbb,min cara pembayaran pbb ya
+cara_bayar_pbb,bang bayar pbb lewat apa dong
+cara_bayar_pbb,kak metode bayar pbb dong
+cara_bayar_pbb,permisi bayar pbb pake apa dong
+cara_bayar_restoran,bagaimana cara bayar pajak restoran
+cara_bayar_restoran,min dmn bayar pajak restoran
+cara_bayar_restoran,bang dmn bayar pajak restoran ya
+cara_bayar_restoran,kak dmn bayar pajak restoran ya
+cara_bayar_restoran,permisi cara setor pajak restoran
+cara_bayar_restoran,bayar pajak restoran lewat apa ya
+cara_bayar_restoran,min metode pembayaran pajak restoran dong
+cara_bayar_restoran,bang proses pembayaran pajak rumah makan ya
+cara_bayar_restoran,kak bayar pajak resto kemana ya
+cara_bayar_restoran,permisi bayar pajak resto kemana ya
+cara_bayar_restoran,gimana cara bayar pajak restoran dong
+cara_bayar_restoran,min dmn bayar pajak restoran ya
+cara_bayar_restoran,bang dimana bayar pajak restoran ya
+cara_bayar_restoran,kak dmn bayar pajak restoran dong
+cara_bayar_restoran,permisi cara setor pajak restoran dong
+cara_bayar_umum,mau tanya cara bayar pajak
+cara_bayar_umum,min gimana cara bayar pajak daerah
+cara_bayar_umum,bang dmn bayar pajak daerah dong
+cara_bayar_umum,kak cara pembayaran pajak daerah ya
+cara_bayar_umum,permisi bayar pajak daerah lewat apa
+cara_bayar_umum,metode pembayaran pajak daerah ya
+cara_bayar_umum,min cara bayar pajak dong
+cara_bayar_umum,bang bayar pajak daerah ya
+cara_bayar_umum,kak cara bayar gmn ya
+cara_bayar_umum,permisi gimana sih cara bayar pajaknya ya
+cara_bayar_umum,bayar pajak bisa dmn aja dong
+cara_bayar_umum,min mau tanya cara bayar pajak ya
+cara_bayar_umum,bang bagaimana cara bayar pajak daerah dong
+cara_bayar_umum,kak dmn bayar pajak daerah dong
+cara_bayar_umum,permisi cara pembayaran pajak daerah dong
+denda,apa itu denda pajak
+denda,min brp denda pajak
+denda,bang cara menghitung denda pajak dong
+denda,kak kapan denda pajak dikenakan ya
+denda,permisi apakah semua pajak kena denda
+denda,gimana rumus hitung denda ya
+denda,min cara hitung denda pajak daerah gimana dong
+denda,bang denda pajak daerah itu dihitung dari apa ya
+denda,kak apa itu denda pajak ya
+denda,permisi brp denda pajak ya
+denda,cara menghitung denda pajak dong
+denda,min kapan denda pajak dikenakan ya
+denda,bang apakah semua pajak kena denda dong
+denda,kak gimana rumus hitung denda dong
+denda,permisi cara hitung denda pajak daerah gimana dong
+jam_layanan,jam pelayanan bapenda medan
+jam_layanan,min bapenda medan buka jam brp
+jam_layanan,bang kapan jam kerja bapenda medan dong
+jam_layanan,kak bapenda medan buka hari apa saja ya
+jam_layanan,permisi apakah bapenda buka saat weekend
+jam_layanan,bapenda buka jam brp ya
+jam_layanan,min hari sabtu buka gak dong
+jam_layanan,bang jam layanan bapenda medan sekarang brp ya
+jam_layanan,kak jam pelayanan saat ramadhan bagaimana ya
+jam_layanan,permisi hari ini sampe jam brp pelayanannya ya
+jam_layanan,jam layanan bapenda medan dong
+jam_layanan,min bapenda medan buka jam brp ya
+jam_layanan,kak bapenda medan buka hari apa saja dong
+jam_layanan,permisi apa bapenda buka saat weekend dong
+jam_layanan,min hari sabtu buka gak nih
+jatuh_tempo_restoran,kapan jatuh tempo pajak restoran
+jatuh_tempo_restoran,min batas waktu bayar pajak restoran
+jatuh_tempo_restoran,bang pajak restoran dibayar paling lambat kapan dong
+jatuh_tempo_restoran,kak kapan terakhir bayar pajak restoran ya
+jatuh_tempo_restoran,permisi deadline pajak restoran
+jatuh_tempo_restoran,pajak resto kapan harus dibayar ya
+jatuh_tempo_restoran,min batas akhir setor pajak restoran bulan ini dong
+jatuh_tempo_restoran,bang kapan deadline pajak restoran ya
+jatuh_tempo_restoran,kak batas waktu bayar pajak restoran ya
+jatuh_tempo_restoran,permisi pajak restoran dibayar paling lambat kapan ya
+jatuh_tempo_restoran,kapan terakhir bayar pajak restoran dong
+jatuh_tempo_restoran,min deadline pajak restoran ya
+jatuh_tempo_restoran,bang pajak resto kapan harus dibayar dong
+jatuh_tempo_restoran,kak batas akhir setor pajak restoran bulan ini dong
+jatuh_tempo_restoran,permisi kapan deadline pajak restoran dong
+jatuh_tempo_umum,mau tanya jatuh tempo pajak
+jatuh_tempo_umum,min kapan deadline pembayaran pajak daerah
+jatuh_tempo_umum,bang batas waktu bayar pajak daerah dong
+jatuh_tempo_umum,kak pajak daerah dibayar paling lambat kapan ya
+jatuh_tempo_umum,permisi kapan terakhir bayar pajak daerah
+jatuh_tempo_umum,deadline bayar pajak daerah ya
+jatuh_tempo_umum,min deadline pembayaran pajak kapan dong
+jatuh_tempo_umum,bang jangan sampe telat bayar emang kapan tgl terakhir ya
+jatuh_tempo_umum,kak kapan jatuh tempo pajak daerah ya
+jatuh_tempo_umum,permisi mau tanya deadline pajak ya
+jatuh_tempo_umum,kapan deadline pembayaran pajak daerah dong
+jatuh_tempo_umum,min batas waktu bayar pajak daerah ya
+jatuh_tempo_umum,bang pajak daerah dibayar paling lambat kapan dong
+jatuh_tempo_umum,kak kapan terakhir bayar pajak daerah dong
+jatuh_tempo_umum,permisi deadline bayar pajak daerah dong
+jenis_pajak,apa saja jenis pajak daerah
+jenis_pajak,min jenis pajak apa yang dikelola bapenda
+jenis_pajak,bang pajak daerah apa saja di medan dong
+jenis_pajak,kak daftar pajak daerah kota medan ya
+jenis_pajak,permisi pajak apa saja yang harus dibayar
+jenis_pajak,sebutin dong jenis2 pajak daerah ya
+jenis_pajak,min bapenda ngurusi pajak apa aja dong
+jenis_pajak,bang pajak apa aja yg ada di medan ya
+jenis_pajak,kak apa saja jenis pajak daerah ya
+jenis_pajak,permisi jenis pajak apa yang dikelola bapenda ya
+jenis_pajak,pajak daerah apa saja di medan dong
+jenis_pajak,min daftar pajak daerah kota medan ya
+jenis_pajak,bang pajak apa saja yang harus dibayar dong
+jenis_pajak,kak sebutin dong jenis2 pajak daerah dong
+jenis_pajak,permisi bapenda ngurusi pajak apa aja dong
+kontak_resmi,nomor kontak bapenda medan
+kontak_resmi,min telepon bapenda medan
+kontak_resmi,bang email resmi bapenda medan dong
+kontak_resmi,kak gimana menghubungi bapenda medan ya
+kontak_resmi,permisi ada nomor wa gak min
+kontak_resmi,ada call center yg bisa dihubungi ya
+kontak_resmi,min ada panggilan pusat yang bisa dihubungi dong
+kontak_resmi,bang email resmi bapenda medan apa ya
+kontak_resmi,kak website resmi bapenda medan apa ya
+kontak_resmi,permisi minta nomor wa admin dong
+kontak_resmi,nomor wa admin bapenda ada dong
+kontak_resmi,min wa bapenda kota medan brp ya
+kontak_resmi,bang nomor kontak bapenda medan dong
+kontak_resmi,kak telepon bapenda medan dong
+kontak_resmi,permisi email resmi bapenda medan dong
+pajak_hiburan,apa itu pajak hiburan
+pajak_hiburan,min siapa wajib bayar pajak hiburan
+pajak_hiburan,bang objek pajak hiburan apa dong
+pajak_hiburan,kak brp tarif pajak hiburan ya
+pajak_hiburan,permisi pajak hiburan dikenakan pada apa
+pajak_hiburan,pajak hiburan tu apa ya
+pajak_hiburan,min tiket bioskop udah termasuk pajak hiburan dong
+pajak_hiburan,bang yg wajib bayar pajak hiburan siapa ya
+pajak_hiburan,kak tarif pajak hotel restoran hiburan berapa ya
+pajak_hiburan,permisi apa itu pajak hiburan ya
+pajak_hiburan,apa itu pajak hiburan dong
+pajak_hiburan,min siapa wajib bayar pajak hiburan ya
+pajak_hiburan,kak brp tarif pajak hiburan dong
+pajak_hiburan,permisi pajak hiburan dikenakan pada apa dong
+pajak_hiburan,min tiket bioskop udah termasuk pajak hiburan nih
+pajak_hotel,apa itu pajak hotel
+pajak_hotel,min siapa wajib bayar pajak hotel
+pajak_hotel,bang objek pajak hotel apa dong
+pajak_hotel,kak brp tarif pajak hotel ya
+pajak_hotel,permisi pajak hotel dikenakan pada apa
+pajak_hotel,pengertian pajak hotel ya
+pajak_hotel,min tamu hotel kena pajak gak dong
+pajak_hotel,bang apa itu pajak hotel ya
+pajak_hotel,kak siapa wajib bayar pajak hotel ya
+pajak_hotel,permisi objek pajak hotel apa ya
+pajak_hotel,brp tarif pajak hotel dong
+pajak_hotel,min pajak hotel dikenakan pada apa ya
+pajak_hotel,bang pengertian pajak hotel dong
+pajak_hotel,kak tamu hotel kena pajak gak dong
+pajak_hotel,permisi apa itu pajak hotel dong
+pajak_parkir,apa itu pajak parkir
+pajak_parkir,min siapa wajib bayar pajak parkir
+pajak_parkir,bang objek pajak parkir apa dong
+pajak_parkir,kak brp tarif pajak parkir ya
+pajak_parkir,permisi pajak parkir dikenakan pada apa
+pajak_parkir,pajak parkir itu apa sih ya
+pajak_parkir,min tukang parkir kena pajak gak dong
+pajak_parkir,bang apa itu pajak parkir ya
+pajak_parkir,kak siapa wajib bayar pajak parkir ya
+pajak_parkir,permisi objek pajak parkir apa ya
+pajak_parkir,brp tarif pajak parkir dong
+pajak_parkir,min pajak parkir dikenakan pada apa ya
+pajak_parkir,bang pajak parkir itu apa sih dong
+pajak_parkir,kak tukang parkir kena pajak gak dong
+pajak_parkir,permisi apa itu pajak parkir dong
+pajak_restoran,apa itu pajak restoran
+pajak_restoran,min siapa wajib bayar pajak restoran
+pajak_restoran,bang objek pajak restoran apa dong
+pajak_restoran,kak brp tarif pajak restoran ya
+pajak_restoran,permisi pajak restoran dikenakan pada apa
+pajak_restoran,pajak resto itu yg bayar siapa ya
+pajak_restoran,min apa itu pajak restoran dong
+pajak_restoran,bang siapa wajib bayar pajak restoran ya
+pajak_restoran,kak objek pajak restoran apa ya
+pajak_restoran,permisi brp tarif pajak restoran ya
+pajak_restoran,pajak restoran dikenakan pada apa dong
+pajak_restoran,min pajak resto itu yg bayar siapa ya
+pajak_restoran,bang apa itu pajak restoran dong
+pajak_restoran,kak siapa wajib bayar pajak restoran dong
+pajak_restoran,permisi objek pajak restoran apa dong
+pbb_cek_tagihan,bagaimana cara cek tagihan pbb
+pbb_cek_tagihan,min dmn cek tagihan pbb
+pbb_cek_tagihan,bang cara mengetahui tagihan pbb dong
+pbb_cek_tagihan,kak apa bisa cek pbb online ya
+pbb_cek_tagihan,permisi cek pbb pakai apa
+pbb_cek_tagihan,gmn cara cek pbb ya
+pbb_cek_tagihan,min liat tagihan pbb dmn dong
+pbb_cek_tagihan,bang gmn cara liat tagihan pbb saya ya
+pbb_cek_tagihan,kak tolong cekin pbb rumah saya dong
+pbb_cek_tagihan,permisi cek tagihan pbb dmn ya
+pbb_cek_tagihan,gimana cara cek tagihan pbb dong
+pbb_cek_tagihan,min dmn cek tagihan pbb ya
+pbb_cek_tagihan,kak apa bisa cek pbb online dong
+pbb_cek_tagihan,permisi cek pbb pakai apa dong
+pbb_cek_tagihan,min liat tagihan pbb dmn nih
+pbb_denda,apakah ada denda pbb
+pbb_denda,min brp denda telat bayar pbb
+pbb_denda,bang denda pbb dihitung gimana dong
+pbb_denda,kak jika telat bayar pbb gimana ya
+pbb_denda,permisi apakah pbb kena sanksi
+pbb_denda,kena denda brp kalo telat bayar pbb ya
+pbb_denda,min telat pbb setahun dendanya gede gak dong
+pbb_denda,bang hitung denda pbb gimana caranya ya
+pbb_denda,kak brp dnda pbb klu telatt ya
+pbb_denda,permisi apa ada denda pbb ya
+pbb_denda,brp denda telat bayar pbb dong
+pbb_denda,min denda pbb dihitung gimana ya
+pbb_denda,bang jika telat bayar pbb bagaimana dong
+pbb_denda,kak apa pbb kena sanksi dong
+pbb_denda,permisi kena denda brp kalo telat bayar pbb dong
+pbb_mutasi,bagaimana cara mutasi pbb
+pbb_mutasi,min cara balik nama pbb
+pbb_mutasi,bang apa syarat mutasi pbb dong
+pbb_mutasi,kak dmn mengurus mutasi pbb ya
+pbb_mutasi,permisi prosedur mutasi pbb
+pbb_mutasi,mau ganti nama di sppt pbb ya
+pbb_mutasi,min gimana cara mutasi pbb dong
+pbb_mutasi,bang cara balik nama pbb ya
+pbb_mutasi,kak apa syarat mutasi pbb ya
+pbb_mutasi,permisi dmn mengurus mutasi pbb ya
+pbb_mutasi,prosedur mutasi pbb dong
+pbb_mutasi,min mau ganti nama di sppt pbb ya
+pbb_mutasi,bang bagaimana cara mutasi pbb dong
+pbb_mutasi,kak cara balik nama pbb dong
+pbb_mutasi,permisi apa syarat mutasi pbb dong
+pengaduan_layanan,kalau mau ngadu layanan pajak kemana
+pengaduan_layanan,min mau lapor keluhan layanan pajak
+pengaduan_layanan,bang cara bikin pengaduan ke bapenda gimana dong
+pengaduan_layanan,kak aduan online bapenda lewat mana ya
+pengaduan_layanan,permisi kalau pelayanan lambat ngadu kemana
+pengaduan_layanan,kalau mau ngadu layanan pajak kemana ya
+pengaduan_layanan,min mau lapor keluhan layanan pajak dong
+pengaduan_layanan,bang cara bikin pengaduan ke bapenda gimana ya
+pengaduan_layanan,permisi kalau layanan lambat ngadu kemana ya
+pengaduan_layanan,kalau mau ngadu layanan pajak kemana dong
+pengaduan_layanan,min mau lapor keluhan layanan pajak ya
+pengaduan_layanan,kak aduan online bapenda lewat mana dong
+pengaduan_layanan,permisi kalau layanan lambat ngadu kemana dong
+pengaduan_layanan,min mau lapor keluhan pelayanan pajak nih
+pengaduan_layanan,bang cara bikin pengaduan ke bapenda gimana nih
+sanksi,apa sanksi jika tidak bayar pajak
+sanksi,min sanksi keterlambatan bayar pajak
+sanksi,bang apa ada sanksi pajak daerah dong
+sanksi,kak hukuman tidak bayar pajak ya
+sanksi,permisi hukuman tidak bayar pajak ya
+sanksi,hukuman tidak bayar pajak ya
+sanksi,min konsekuensi tidak bayar pajak dong
+sanksi,bang kalo gak bayar pajak hukumannya apa ya
+sanksi,kak akibat nunggak pajak daerah ya
+sanksi,permisi resiko kalo telat bayar ya
+sanksi,apa sanksi jika tidak bayar pajak dong
+sanksi,min sanksi keterlambatan bayar pajak ya
+sanksi,bang apakah ada sanksi pajak daerah dong
+sanksi,kak hukuman tidak bayar pajak dong
+sanksi,min konsekuensi tidak bayar pajak nih
+skm_bapenda,survey kepuasan masyarakat bapenda ada
+skm_bapenda,min link skm bapenda medan dmn
+skm_bapenda,bang isi survei kepuasan masyarakat dmn dong
+skm_bapenda,kak form penilaian layanan bapenda ada ya
+skm_bapenda,permisi mau kasih feedback layanan bapenda
+skm_bapenda,survey kepuasan masyarakat bapenda ada ya
+skm_bapenda,min link skm bapenda medan dmn dong
+skm_bapenda,bang isi survei kepuasan masyarakat dmn ya
+skm_bapenda,permisi mau kasih feedback layanan bapenda ya
+skm_bapenda,survey kepuasan masyarakat bapenda ada dong
+skm_bapenda,min link skm bapenda medan dmn ya
+skm_bapenda,bang isi survei kepuasan masyarakat dimana dong
+skm_bapenda,kak form penilaian layanan bapenda ada dong
+skm_bapenda,permisi mau kasih feedback layanan bapenda dong
+skm_bapenda,min link skm bapenda medan dimana nih
+standar_pelayanan_pbb,alur permohonan pbb baru gimana
+standar_pelayanan_pbb,min langkah urus pbb baru apa aja
+standar_pelayanan_pbb,bang prosedur pengajuan pbb baru di kantor dong
+standar_pelayanan_pbb,kak alur layanan pbb baru dari awal sampai bayar ya
+standar_pelayanan_pbb,permisi setelah daftar pbb baru nanti dihubungi ya
+standar_pelayanan_pbb,alur permohonan pbb baru gimana ya
+standar_pelayanan_pbb,min langkah urus pbb baru apa aja dong
+standar_pelayanan_pbb,bang prosedur pengajuan pbb baru di kantor ya
+standar_pelayanan_pbb,kak alur pelayanan pbb baru dari awal sampai bayar ya
+standar_pelayanan_pbb,alur permohonan pbb baru gimana dong
+standar_pelayanan_pbb,min langkah urus pbb baru apa aja ya
+standar_pelayanan_pbb,kak alur layanan pbb baru dari awal sampai bayar dong
+standar_pelayanan_pbb,min langkah urus pbb baru apa aja nih
+standar_pelayanan_pbb,bang prosedur pengajuan pbb baru di kantor nih
+standar_pelayanan_pbb,min alur permohonan pbb baru gimana dong
+syarat_permohonan_air_tanah,syarat daftar pajak air tanah apa aja
+syarat_permohonan_air_tanah,min berkas pajak air tanah apa saja
+syarat_permohonan_air_tanah,bang daftar npwpd air tanah syaratnya dong
+syarat_permohonan_air_tanah,kak izin usaha wajib untuk pajak air tanah ya
+syarat_permohonan_air_tanah,permisi kalau diwakilkan urus air tanah bisa gak
+syarat_permohonan_air_tanah,syarat daftar pajak air tanah apa aja ya
+syarat_permohonan_air_tanah,min berkas pajak air tanah apa saja dong
+syarat_permohonan_air_tanah,bang daftar npwpd air tanah syaratnya ya
+syarat_permohonan_air_tanah,permisi kalau diwakilkan urus air tanah bisa gak ya
+syarat_permohonan_air_tanah,syarat daftar pajak air tanah apa aja dong
+syarat_permohonan_air_tanah,min berkas pajak air tanah apa saja ya
+syarat_permohonan_air_tanah,kak izin usaha wajib untuk pajak air tanah dong
+syarat_permohonan_air_tanah,permisi kalau diwakilkan urus air tanah bisa gak dong
+syarat_permohonan_air_tanah,min berkas pajak air tanah apa saja nih
+syarat_permohonan_air_tanah,bang daftar npwpd air tanah syaratnya nih
+syarat_permohonan_bphtb,syarat bphtb jual beli apa saja
+syarat_permohonan_bphtb,min brp lama proses bphtb
+syarat_permohonan_bphtb,bang berkas bphtb yang wajib dibawa apa dong
+syarat_permohonan_bphtb,kak dokumen bphtb jual beli rumah apa aja ya
+syarat_permohonan_bphtb,permisi proses bphtb berapa hari kerja
+syarat_permohonan_bphtb,bphtb pake verifikasi lapangan brp lama ya
+syarat_permohonan_bphtb,min syarat permohonan bphtb apa dong
+syarat_permohonan_bphtb,bang syarat bphtb jual beli apa saja ya
+syarat_permohonan_bphtb,kak berapa lama proses bphtb ya
+syarat_permohonan_bphtb,permisi berkas bphtb yang wajib dibawa apa ya
+syarat_permohonan_bphtb,dokumen bphtb jual beli rumah apa aja dong
+syarat_permohonan_bphtb,min proses bphtb brp hari kerja ya
+syarat_permohonan_bphtb,bang bphtb pake verifikasi lapangan berapa lama dong
+syarat_permohonan_bphtb,kak syarat permohonan bphtb apa dong
+syarat_permohonan_bphtb,permisi syarat bphtb jual beli apa saja dong
+syarat_permohonan_hrh,syarat pajak hotel restoran hiburan apa
+syarat_permohonan_hrh,min syarat daftar npwpd hotel restoran hiburan
+syarat_permohonan_hrh,bang gimana cara daftar pajak restoran dong
+syarat_permohonan_hrh,kak cara daftar pajak restoran ya
+syarat_permohonan_hrh,permisi mau daftar pajak restoran
+syarat_permohonan_hrh,pendaftaran pajak restoran syaratnya apa ya
+syarat_permohonan_hrh,min gimana daftar npwpd restoran dong
+syarat_permohonan_hrh,bang dokumen wajib pajak restoran baru apa ya
+syarat_permohonan_hrh,kak berapa lama urus daftar pajak restoran ya
+syarat_permohonan_hrh,permisi daftar pajak hiburan harus ke upt ya
+syarat_permohonan_hrh,syarat pajak hotel restoran hiburan apa dong
+syarat_permohonan_hrh,min syarat daftar npwpd hotel restoran hiburan ya
+syarat_permohonan_hrh,kak cara daftar pajak restoran dong
+syarat_permohonan_hrh,permisi mau daftar pajak restoran dong
+syarat_permohonan_hrh,min gimana daftar npwpd restoran nih
+syarat_permohonan_parkir,syarat daftar pajak parkir apa
+syarat_permohonan_parkir,min berkas pajak parkir yang dibutuhkan apa
+syarat_permohonan_parkir,bang cara daftar npwpd parkir dong
+syarat_permohonan_parkir,kak syarat izin pajak parkir baru apa aja ya
+syarat_permohonan_parkir,permisi kalau pakai portal parkir wajib izin gak
+syarat_permohonan_parkir,syarat daftar pajak parkir apa ya
+syarat_permohonan_parkir,min berkas pajak parkir yang dibutuhkan apa dong
+syarat_permohonan_parkir,bang cara daftar npwpd parkir ya
+syarat_permohonan_parkir,permisi kalau pakai portal parkir wajib izin gak ya
+syarat_permohonan_parkir,syarat daftar pajak parkir apa dong
+syarat_permohonan_parkir,min berkas pajak parkir yang dibutuhkan apa ya
+syarat_permohonan_parkir,kak syarat izin pajak parkir baru apa aja dong
+syarat_permohonan_parkir,permisi kalau pakai portal parkir wajib izin gak dong
+syarat_permohonan_parkir,min berkas pajak parkir yang dibutuhkan apa nih
+syarat_permohonan_parkir,bang cara daftar npwpd parkir nih
+syarat_permohonan_pbb,syarat permohonan data baru sspt pbb apa aja
+syarat_permohonan_pbb,min brp lama proses permohonan pbb
+syarat_permohonan_pbb,bang dokumen buat pecah sppt pbb apa dong
+syarat_permohonan_pbb,kak syarat ganti nama pbb apa saja ya
+syarat_permohonan_pbb,permisi pengajuan pembetulan sppt pbb syaratnya apa
+syarat_permohonan_pbb,brp hari urus berkas pbb baru ya
+syarat_permohonan_pbb,min syarat permohonan data baru sspt pbb apa aja dong
+syarat_permohonan_pbb,bang brp lama proses permohonan pbb ya
+syarat_permohonan_pbb,kak dokumen buat pecah sppt pbb apa ya
+syarat_permohonan_pbb,permisi syarat ganti nama pbb apa saja ya
+syarat_permohonan_pbb,pengajuan pembetulan sppt pbb syaratnya apa dong
+syarat_permohonan_pbb,min brp hari urus berkas pbb baru ya
+syarat_permohonan_pbb,bang syarat permohonan data baru sspt pbb apa aja dong
+syarat_permohonan_pbb,kak brp lama proses permohonan pbb dong
+syarat_permohonan_pbb,permisi dokumen buat pecah sppt pbb apa dong
+syarat_permohonan_reklame,syarat daftar pajak reklame baru apa
+syarat_permohonan_reklame,min syarat perpanjang reklame apa
+syarat_permohonan_reklame,bang berkas pengajuan reklame baru apa aja dong
+syarat_permohonan_reklame,kak syarat urus perpanjangan pajak reklame ya
+syarat_permohonan_reklame,permisi daftar reklame harus bawa apa
+syarat_permohonan_reklame,buat perpanjang reklame perlu bukti bayar lama gak ya
+syarat_permohonan_reklame,min syarat daftar pajak reklame baru apa dong
+syarat_permohonan_reklame,bang syarat perpanjang reklame apa ya
+syarat_permohonan_reklame,kak berkas pengajuan reklame baru apa aja ya
+syarat_permohonan_reklame,permisi syarat urus perpanjangan pajak reklame ya
+syarat_permohonan_reklame,daftar reklame harus bawa apa dong
+syarat_permohonan_reklame,min buat perpanjang reklame perlu bukti bayar lama gak ya
+syarat_permohonan_reklame,bang syarat daftar pajak reklame baru apa dong
+syarat_permohonan_reklame,kak syarat perpanjang reklame apa dong
+syarat_permohonan_reklame,permisi berkas pengajuan reklame baru apa aja dong
+tanya_faq,mau tanya pajak
+tanya_faq,min mau tanya pbb
+tanya_faq,bang saya mau tanya pajak daerah dong
+tanya_faq,kak aku mau nanya pajak restoran ya
+tanya_faq,permisi mau tanya denda pajak
+tanya_faq,mau tanya syarat bayar pajak ya
+tanya_faq,min bg mau nanya pajak dong
+tanya_faq,bang mau tanya soal pbb ya
+tanya_faq,kak nanya denda pajak gimana ya
+tanya_faq,permisi mau tanya pajak ya
+tanya_faq,mau tanya pbb dong
+tanya_faq,min saya mau tanya pajak daerah ya
+tanya_faq,bang aku mau nanya pajak restoran dong
+tanya_faq,kak mau tanya denda pajak dong
+tanya_faq,permisi mau tanya syarat bayar pajak dong
+tarif_bphtb,tarif bphtb kota medan berapa
+tarif_bphtb,min bphtb persen brp
+tarif_bphtb,bang tarif bphtb terbaru kota medan dong
+tarif_bphtb,kak brp persen bphtb jual beli rumah ya
+tarif_bphtb,permisi hitungan tarif bphtb itu berapa
+tarif_bphtb,tarif bphtb kota medan brp ya
+tarif_bphtb,min bphtb persen brp dong
+tarif_bphtb,bang tarif bphtb terbaru kota medan ya
+tarif_bphtb,kak berapa persen bphtb jual beli rumah ya
+tarif_bphtb,permisi hitungan tarif bphtb itu brp ya
+tarif_bphtb,tarif bphtb kota medan brp dong
+tarif_bphtb,min bphtb persen brp ya
+tarif_bphtb,kak brp persen bphtb jual beli rumah dong
+tarif_bphtb,permisi hitungan tarif bphtb itu brp dong
+tarif_bphtb,min bphtb persen berapa nih
+tarif_pbb,tarif pbb p2 di medan berapa
+tarif_pbb,min pbb medan tarifnya brp persen
+tarif_pbb,bang brp tarif pbb p2 sekarang dong
+tarif_pbb,kak range tarif pbb p2 medan ya
+tarif_pbb,permisi njop sekian masuk tarif pbb berapa
+tarif_pbb,tarif pbb p2 di medan brp ya
+tarif_pbb,min pbb medan tarifnya brp persen dong
+tarif_pbb,bang brp tarif pbb p2 sekarang ya
+tarif_pbb,permisi njop sekian masuk tarif pbb brp ya
+tarif_pbb,tarif pbb p2 di medan brp dong
+tarif_pbb,min pbb medan tarifnya brp persen ya
+tarif_pbb,bang berapa tarif pbb p2 sekarang dong
+tarif_pbb,kak range tarif pbb p2 medan dong
+tarif_pbb,permisi njop sekian masuk tarif pbb brp dong
+tarif_pbb,min pbb medan tarifnya berapa persen nih
+tugas_fungsi,fungsi bapenda ap
+tugas_fungsi,min apa tugas bapenda kota medan
+tugas_fungsi,bang fungsi bapenda medan apa saja dong
+tugas_fungsi,kak peran bapenda dalam pajak daerah ya
+tugas_fungsi,permisi apa kewenangan bapenda medan
+tugas_fungsi,bapenda bertanggung jawab atas apa ya
+tugas_fungsi,min kasih tau dong fungsi bapenda medan dong
+tugas_fungsi,bang fungsi bapenda ap ya
+tugas_fungsi,kak apa tugas bapenda kota medan ya
+tugas_fungsi,permisi fungsi bapenda medan apa saja ya
+tugas_fungsi,peran bapenda dalam pajak daerah dong
+tugas_fungsi,min apa kewenangan bapenda medan ya
+tugas_fungsi,bang bapenda bertanggung jawab atas apa dong
+tugas_fungsi,kak kasih tau dong fungsi bapenda medan dong
+tugas_fungsi,permisi fungsi bapenda ap dong
+wajib_pajak,siapa yang disebut wajib pajak
+wajib_pajak,min siapa wajib pajak daerah
+wajib_pajak,bang apa usaha kecil termasuk wajib pajak dong
+wajib_pajak,kak kapan seseorang menjadi wajib pajak ya
+wajib_pajak,permisi siapa saja yang wajib bayar pajak
+wajib_pajak,siapa aja yg harus bayar pajak ya
+wajib_pajak,min aku kena pajak gak ya
+wajib_pajak,bang siapa yang disebut wajib pajak ya
+wajib_pajak,kak siapa wajib pajak daerah ya
+wajib_pajak,permisi apa usaha kecil termasuk wajib pajak ya
+wajib_pajak,kapan seseorang menjadi wajib pajak dong
+wajib_pajak,min siapa saja yang wajib bayar pajak ya
+wajib_pajak,bang siapa aja yg harus bayar pajak dong
+wajib_pajak,kak aku kena pajak gak ya
+wajib_pajak,permisi siapa yang disebut wajib pajak dong

@@ -1,11 +1,20 @@
 import re
-import joblib
-from sklearn.metrics.pairwise import cosine_similarity
+try:
+    import joblib
+except Exception:  # pragma: no cover
+    joblib = None
+
+try:
+    from sklearn.metrics.pairwise import cosine_similarity
+except Exception:  # pragma: no cover
+    cosine_similarity = None
 
 # ======================================================
 # LOAD MODEL (OPTIONAL - JIKA PAKAI ML FAQ)
 # ======================================================
 try:
+    if joblib is None or cosine_similarity is None:
+        raise RuntimeError("Dependencies unavailable")
     vectorizer = joblib.load("models/vectorizer.pkl")
     faq_vectors = joblib.load("models/faq_vectors.pkl")
     faq_intents = joblib.load("models/faq_intents.pkl")

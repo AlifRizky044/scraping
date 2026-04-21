@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.log
+logs/
+venv/
+.venv/
+.git/
+.gitignore
+.DS_Store
+.env
+
+# test files are not needed in runtime image
+test_*.py
