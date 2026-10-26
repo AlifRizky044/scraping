@@ -1,7 +1,10 @@
+import argparse
 import base64
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import itertools
 import os
 import re
+import threading
 import time
 import json
 import pandas as pd
@@ -18,39 +21,72 @@ from urllib.parse import urlparse, parse_qs
 
 from bs4 import BeautifulSoup
 
-# Set up the webdriver
-options = webdriver.ChromeOptions()
-options.add_argument("--start-maximized")
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
 pattern = r"Episode (\d+(\.\d+)?|Spesial)"
+file_lock = threading.Lock()
+
+
+def detect_browser():
+    """Find Google Chrome without falling back to another browser."""
+    custom_binary = os.getenv("CHROME_BINARY") or os.getenv("BROWSER_BINARY")
+    if custom_binary:
+        if not os.path.isfile(custom_binary):
+            raise FileNotFoundError(
+                f"CHROME_BINARY tidak ditemukan: {custom_binary}"
+            )
+        return custom_binary
+
+    browser_candidates = [
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        os.path.expanduser(
+            "~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        ),
+        (
+            "/Applications/Google Chrome for Testing.app/Contents/MacOS/"
+            "Google Chrome for Testing"
+        ),
+    ]
+
+    for browser_binary in browser_candidates:
+        if os.path.isfile(browser_binary):
+            return browser_binary
+
+    raise FileNotFoundError(
+        "Google Chrome tidak ditemukan. Instal Google Chrome atau atur lokasinya "
+        "melalui environment variable CHROME_BINARY."
+    )
+
+
+def create_driver(driver_path, browser_binary):
+    """Create an isolated browser for one scraping worker."""
+    options = webdriver.ChromeOptions()
+    options.binary_location = browser_binary
+    options.add_argument("--start-maximized")
+    return webdriver.Chrome(service=Service(driver_path), options=options)
 
 
 def appendToFile(file_path, data):
-    new_data = data  # assuming `result` is a dictionary or list
+    # Every worker writes to the same JSON file, so the complete read/modify/write
+    # operation must be protected from other threads.
+    with file_lock:
+        if os.path.exists(file_path):
+            with open(file_path, "r") as json_file:
+                try:
+                    existing_data = json.load(json_file)
+                except json.JSONDecodeError:
+                    existing_data = []
+        else:
+            existing_data = []
 
-    # Step 1: Load existing data if file exists
-    if os.path.exists(file_path):
-        with open(file_path, "r") as json_file:
-            try:
-                existing_data = json.load(json_file)
-            except json.JSONDecodeError:
-                existing_data = []
-    else:
-        existing_data = []
+        if isinstance(existing_data, list):
+            existing_data.append(data)
+        else:
+            existing_data = [existing_data, data]
 
-    # Step 2: Append new data
-    if isinstance(existing_data, list):
-        existing_data.append(new_data)
-    else:
-        # if existing data is not a list, convert it to list
-        existing_data = [existing_data, new_data]
+        with open(file_path, "w") as json_file:
+            json.dump(existing_data, json_file, indent=4)
 
-    # Step 3: Save updated data
-    with open(file_path, "w") as json_file:
-        json.dump(existing_data, json_file, indent=4)
 
-def scrappingAllDiklatStruktural():
+def scrappingAllDiklatStruktural(driver):
     latest_li = driver.find_element(By.XPATH, '//ul[@class="nav navbar-nav"]/li[last()]')
     latest_li.click()
     driver.find_element(By.XPATH, '//a[contains(text(), "Riwayat Diklat")]').click()
@@ -130,7 +166,7 @@ def scrappingAllDiklatStruktural():
 
     return all_data
 
-def scrappingAllDiklatLainnya():
+def scrappingAllDiklatLainnya(driver):
     latest_li = driver.find_element(By.XPATH, '//ul[@class="nav navbar-nav"]/li[last()]')
     latest_li.click()
     driver.find_element(By.XPATH, '//a[contains(text(), "Riwayat Diklat")]').click()
@@ -213,7 +249,7 @@ def scrappingAllDiklatLainnya():
 
     return all_data
 
-def scrappingAllJabatan():
+def scrappingAllJabatan(driver):
     latest_li = driver.find_element(By.XPATH, '//ul[@class="nav navbar-nav"]/li[last()]')
     latest_li.click()
     driver.find_element(By.XPATH, '//a[contains(text(), "Riwayat Jabatan")]').click()
@@ -290,7 +326,7 @@ def scrappingAllJabatan():
         all_data.append(data)
 
     return all_data
-def scrappingAllPangkat():
+def scrappingAllPangkat(driver):
     latest_li = driver.find_element(By.XPATH, '//ul[@class="nav navbar-nav"]/li[last()]')
     latest_li.click()
     driver.find_element(By.XPATH, '//a[contains(text(), "Riwayat Pangkat")]').click()
@@ -363,7 +399,7 @@ def scrappingAllPangkat():
         all_data.append(data)
 
     return all_data
-def scrappingLatestPangkat():
+def scrappingLatestPangkat(driver):
     latest_li = driver.find_element(By.XPATH, '//ul[@class="nav navbar-nav"]/li[last()]')
     latest_li.click()
     driver.find_element(By.XPATH, '//a[contains(text(), "Riwayat Pangkat")]').click()
@@ -435,7 +471,7 @@ def scrappingLatestPangkat():
 
     return data
 
-def scrappingAllPendidikan():
+def scrappingAllPendidikan(driver):
     latest_li = driver.find_element(By.XPATH, '//ul[@class="nav navbar-nav"]/li[last()]')
     latest_li.click()
     driver.find_element(By.XPATH, '//a[contains(text(), "Riwayat Pendidikan")]').click()
@@ -500,7 +536,7 @@ def scrappingAllPendidikan():
 
     return all_education_data
 
-def scrappingLatestPendidikan():
+def scrappingLatestPendidikan(driver):
     """
     Get only the latest (most recent) education record
     Returns a single education record object or empty dict if no data
@@ -569,10 +605,11 @@ def scrappingLatestPendidikan():
     return data
 
 
-# Function to scrape a LinkedIn profile
-def scrape(profile_url):
-    
+# Scrape the employee indexes assigned to one browser/worker.
+def _scrape_indices(driver, profile_url, employee_indices, output_file, worker_id):
     driver.get(profile_url)
+
+    time.sleep(5)
 
     # Find input fields and fill them
     username_input = driver.find_element(By.NAME, "username")
@@ -585,7 +622,7 @@ def scrape(profile_url):
     login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
     login_button.click()
 
-    time.sleep(5)
+    time.sleep(20)
 
     driver.get(profile_url)
 
@@ -594,8 +631,8 @@ def scrape(profile_url):
     # time.sleep(5)
     # time.sleep(10) 
 
-    # 3. Loop through each row and click the <img> tag inside
-    for i in range(842):
+    # Loop through only the rows assigned to this worker.
+    for employee_index in employee_indices:
 
         time.sleep(3)
         dropdown = Select(driver.find_element(By.NAME, "DataTables_Table_0_length"))
@@ -607,7 +644,7 @@ def scrape(profile_url):
         time.sleep(1)
         next_button = driver.find_element(By.ID, "DataTables_Table_0_next")
 
-        index = i + 750
+        index = employee_index
 
         if index >= 100:
             steps = index // 100  # contoh: 350 -> 3
@@ -824,12 +861,12 @@ def scrape(profile_url):
             riwayatDiklatStruktural = ""
             riwayatDiklatLainnya = ""
             if "PNS" in kedudukan:
-                riwayatPangkat = scrappingAllPangkat()
-                riwayatJabatan = scrappingAllJabatan()
-                riwayatDiklatStruktural = scrappingAllDiklatStruktural()
-                riwayatDiklatLainnya = scrappingAllDiklatLainnya()
+                riwayatPangkat = scrappingAllPangkat(driver)
+                riwayatJabatan = scrappingAllJabatan(driver)
+                riwayatDiklatStruktural = scrappingAllDiklatStruktural(driver)
+                riwayatDiklatLainnya = scrappingAllDiklatLainnya(driver)
             
-            riwayatPendidikan = scrappingAllPendidikan()
+            riwayatPendidikan = scrappingAllPendidikan(driver)
 
             data = {
                 "nip": nipValue,
@@ -886,7 +923,8 @@ def scrape(profile_url):
                 "links": result
             }
 
-            appendToFile("DUKPNSFULLapril.json", data)
+            appendToFile(output_file, data)
+            print(f"Worker {worker_id}: data index {employee_index} selesai")
             # soup = BeautifulSoup(driver.page_source, 'html.parser')
 
             # table = soup.find("table", {"id":"DataTables_Table_0"})
@@ -905,20 +943,99 @@ def scrape(profile_url):
             # driver.back()
 
         except Exception as e:
-            print(f"Error in row: {e}")
-    driver.close()
-    return
+            print(f"Worker {worker_id}: error di index {employee_index}: {e}")
 
 
+def _scrape_worker(
+    profile_url,
+    employee_indices,
+    driver_path,
+    browser_binary,
+    output_file,
+    worker_id,
+):
+    """Run one index chunk in an independent Selenium session."""
+    driver = create_driver(driver_path, browser_binary)
+    try:
+        first_indexes = ", ".join(str(index) for index in employee_indices[:3])
+        print(
+            f"Worker {worker_id}: memproses index {first_indexes}, ... "
+            f"sampai {employee_indices[-1]} ({len(employee_indices)} data)"
+        )
+        _scrape_indices(
+            driver, profile_url, employee_indices, output_file, worker_id
+        )
+        return len(employee_indices)
+    finally:
+        driver.quit()
 
 
+def _split_index_range(start_index, total_data, worker_count):
+    """Distribute indexes round-robin: worker 1 gets loops 1, 5, 9, etc."""
+    worker_count = min(worker_count, total_data)
+    stop_index = start_index + total_data
+    return [
+        range(start_index + worker_number, stop_index, worker_count)
+        for worker_number in range(worker_count)
+    ]
 
-    return "success"
+
+def scrape(
+    profile_url,
+    workers=4,
+    start_index=0,
+    total_data=841,
+    output_file="DUKPNSFULLapril.json",
+):
+    """Scrape employee data concurrently with one browser per worker."""
+    if workers < 1:
+        raise ValueError("Jumlah worker minimal 1")
+    if total_data < 1:
+        raise ValueError("Jumlah data minimal 1")
+
+    # Resolve/install the matching driver once to avoid concurrent installations.
+    browser_binary = detect_browser()
+    driver_path = ChromeDriverManager().install()
+    print(f"Browser yang digunakan: {browser_binary}")
+    chunks = _split_index_range(start_index, total_data, workers)
+
+    with ThreadPoolExecutor(max_workers=len(chunks)) as executor:
+        futures = [
+            executor.submit(
+                _scrape_worker,
+                profile_url,
+                chunk,
+                driver_path,
+                browser_binary,
+                output_file,
+                worker_id,
+            )
+            for worker_id, chunk in enumerate(chunks, start=1)
+        ]
+
+        for future in as_completed(futures):
+            future.result()
+
+    print(f"Selesai memproses {total_data} index dengan {len(chunks)} worker")
 
 # Main script
 if __name__ == "__main__":
-    for i in range(1, 20):
-        result = scrape('https://bkpsdm.medan.go.id/simpeg/?mod=data_pegawai')
+    parser = argparse.ArgumentParser(description="Scraping data pegawai secara paralel")
+    parser.add_argument("--workers", type=int, default=4, help="Jumlah browser paralel")
+    parser.add_argument("--start", type=int, default=0, help="Index awal pegawai")
+    parser.add_argument("--total", type=int, default=841, help="Jumlah data")
+    parser.add_argument(
+        "--output", default="DUKPNSFULLjuli.json", help="Lokasi file output JSON"
+    )
+    args = parser.parse_args()
+
+    scrape(
+        "https://bkpsdm.medan.go.id/simpeg/?mod=data_pegawai",
+        workers=args.workers,
+        start_index=args.start,
+        total_data=args.total,
+        output_file=args.output,
+    )
 
 
 # cara run program scrapping

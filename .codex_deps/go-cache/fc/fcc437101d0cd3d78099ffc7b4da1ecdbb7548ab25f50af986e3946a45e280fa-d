@@ -1,0 +1,6 @@
+./compress.go
+./decompress.go
+./encryption.go
+./parse.go
+./project.go
+./record.go

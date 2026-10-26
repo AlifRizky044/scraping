@@ -1,0 +1,6 @@
+./codepage.go
+./doc.go
+./model.go
+./normalize.go
+./read.go
+./write.go

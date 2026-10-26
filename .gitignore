@@ -22,6 +22,10 @@ chatbot/models/*.pkl
 *.log
 chatbot/logs/*.csv
 
+# Temporary HTTP cache for the Bapenda news scraper
+output/bapenda_cache/
+output/bapenda_gallery_cache/
+
 # Environment files
 .env
 chatbot/.env

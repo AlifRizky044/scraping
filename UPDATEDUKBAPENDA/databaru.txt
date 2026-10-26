@@ -1,0 +1,2851 @@
+<div id="main-body">
+			<script type="text/javascript">
+var id_pegawai="20779";
+</script>
+
+<!-- JAVASCRIPT PAGE -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+   ambil_tanggal("tanggal_lahir");
+   
+   $("#frm").submit(function(){
+        if(frm.nip.value == "" || frm.nama_pegawai.value == "" || frm.id_jenis_kepegawaian.value == 0 || frm.id_kedudukan_kepegawaian.value == 0 || frm.id_status_kepegawaian.value == 0 || frm.id_agama.value == 0 || frm.id_jenis_kelamin.value == 0){
+			var pesan ="Maaf!! Data dibawah ini harus diisi : <ol>";
+			if(frm.nip.value == "" ){
+				pesan += "<li>NIP</li>";
+				document.getElementById("nip").style.borderColor = "red"; 
+			} 
+			if( frm.nama_pegawai.value == "" ){
+				pesan += "<li>Nama Pegawai</li>";
+				document.getElementById("nama_pegawai").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kepegawaian.value == 0 ){
+				pesan += "<li>Jenis Kepegawaian</li>" ;
+				document.getElementById("id_jenis_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_kedudukan_kepegawaian.value == 0 ){
+				pesan += "<li>Kedudukan Kepegawaian</li>" ;
+				document.getElementById("id_kedudukan_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_status_kepegawaian.value == 0 ){
+				pesan += "<li>Status Kepegawaian</li>" ;
+				document.getElementById("id_status_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_agama.value == 0 ){
+				pesan +=  "<li>Agama</li>";
+				document.getElementById("id_agama").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kelamin.value == 0){
+				pesan += "<li>Jenis Kelamin</li>" ;
+				document.getElementById("id_jenis_kelamin").style.borderColor = "red"; 
+			}
+			pesan += "<ol>";
+            jAlert(pesan, "PERHATIAN");
+            return false;
+        }
+        
+   }); 
+   
+   	$("#input_password").dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_1" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_2" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_3" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+
+	$( "#pnl_upload_4" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_5" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_6" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_7" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });	
+	$( "#pnl_upload_8" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_9" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_catatan" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade" 
+    });	
+});
+
+function upload_pasfoto(){ 
+		$("#id_pegawai_5").val(id_pegawai);
+		$("#pnl_upload_1").dialog("open");
+}
+
+function upload_karpeg(){
+		$("#id_pegawai_6").val(id_pegawai); 
+		$("#pnl_upload_2").dialog("open");
+}
+
+function upload_konversi_nip(){
+		$("#id_pegawai_8").val(id_pegawai); 
+		$("#pnl_upload_4").dialog("open");
+}
+
+function upload_ktp(){
+		$("#id_pegawai_7").val(id_pegawai); 
+		$("#pnl_upload_3").dialog("open");
+}
+
+function upload_npwp(){
+		$("#id_pegawai_9").val(id_pegawai); 
+		$("#pnl_upload_5").dialog("open");
+}
+function upload_taspen(){
+		$("#id_pegawai_10").val(id_pegawai); 
+		$("#pnl_upload_6").dialog("open");
+}
+function upload_kelahiran(){
+		$("#id_pegawai_11").val(id_pegawai); 
+		$("#pnl_upload_7").dialog("open");
+}
+function upload_pencantuman_gelar(){
+		$("#id_pegawai_12").val(id_pegawai); 
+		$("#pnl_upload_8").dialog("open");
+}
+function upload_askes_pribadi(){
+		$("#id_pegawai_13").val(id_pegawai); 
+		$("#pnl_upload_9").dialog("open");
+}
+
+function catatan_upload(id_pegawai){
+	$("#id_pegawai2").val(id_pegawai);
+	$("#catatan_karpeg_dan_pasfoto").html(catatan_karpeg_dan_pasfoto);
+	$("#pnl_catatan").dialog("open");
+}
+
+function something_wrong(what_is_wrong) {
+        jAlert(what_is_wrong, "PERHATIAN");
+}
+
+function success(ada){
+    jAlert("Data pegawai berhasil disimpan", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function success_upload(){
+    jAlert("File berhasil diupload", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function show_password_oto(){
+	$("#id_pegawaix").val(id_pegawai);
+	$("#input_password").dialog("open");
+}
+
+function hold(){
+    jAlert("Data sementara berhasil disimpan untuk diotorisasi", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}   
+
+function approval(id_app){
+	$("#id_approval").val(id_app);
+	if(id_app==1){
+	jAlert("<b>Data akan diotorisasi dahulu oleh pejabat berwenang</b>", "PERHATIAN", function(r){
+			$("#frm_edit").submit();
+		});
+	}else if(id_app==0){
+		$("#frm_edit").submit();
+	}
+}
+
+ function success_catatan(){
+	jAlert("<b>Catatan berhasil disimpan.</b>", "PERHATIAN", function(r){
+			document.location.href="?mod=edit_pegawai&id_ver=99";
+		});	
+} 
+
+function lanjut(){
+		upload_pasfoto();
+}
+
+/*Fungsi Untuk Hapus*/
+ function notif(){
+    jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+ function success_hapus(){
+    jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+
+ function hapus_pasfoto(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ 
+ function hapus_karpeg(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_ktp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_konversi_nip(){
+	 jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ function hapus_npwp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_taspen(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){ 
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_kelahiran(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_pencantuman_gelar(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_askes_pribadi(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_tolak(){
+	jConfirm("Anda yakin akan menghapus riwayat tolak ini?", "PERHATIAN", function(r){
+		if(r){
+		 document.location.href = "php/hapus_tolak_edit_pegawai.php?id_pegawai=" + id_pegawai;
+        }
+    });
+ }
+ 
+function kembali(){
+		var id_author=0;
+		if(id_author>0){
+			document.location.href="?mod=otorisasi_data";
+		}else{
+			document.location.href="?mod=verifikasi_data_pegawai";
+		}
+}
+	
+</script>
+
+<style>
+#id_status_kepegawaian{color : #00000 !important; }	
+
+#id_jenis_kepegawaian{color : #00000 !important; }	
+ 
+
+#id_kedudukan_kepegawaian{color : #00000 !important; }	
+
+#id_golongan_darah{color : #00000 !important; }	
+
+#id_jenis_kelamin{color : #00000 !important; }	
+
+#id_agama{color : #00000 !important; }	
+
+#id_rambut{color : #00000 !important; }	
+
+#id_bentuk_muka{color : #00000 !important; }	
+
+#id_warna_kulit{color : #00000 !important; }	
+
+#id_status_pernikahan{color : #00000 !important; }	
+
+</style>
+<form name="frm" id="frm" action="php/edit_pegawai.php" method="post" target="sbm_target">
+<div class="panelcontainer panelform" style="width: 100%;">
+    <h3 style="text-align: left;">LIHAT PROFIL DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+				        <div class="kelang"></div><table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			
+			
+            <tbody><tr>
+                <td> <label>NIP : </label>
+										<input type="text" readonly="readonly" id="nip" name="nip" placeholder=":: NIP Pegawai ::" title="NIP Pegawai" value="19860206 201101 1 011">
+									<input type="hidden" name="id_pegawai" title="ID Pegawai" value="20779">
+                
+				</td>
+                <td> <label>NIP Lama : </label>
+											<input type="text" readonly="readonly" name="nip_lama" placeholder=":: NIP Lama ::" title="NIP Lama" value="">
+									</td>
+				            </tr>
+			
+			<tr>
+                <td> <label>No KTP : </label>
+											<input type="text" readonly="readonly" name="ktp" placeholder=":: No. Kartu Tanda Penduduk (KTP) ::" title="Kartu Tanda Penduduk (KTP)" value="1271120602860002">
+								   </td>
+               <td> <label>No Taspen : </label>
+										<input type="text" readonly="readonly" name="taspen" placeholder=":: No. Taspen ::" title="Taspen" value="">
+					                </td>
+			
+                <td> <label>No Karpeg : </label>
+											<input type="text" readonly="readonly" name="no_karpeg" id="no_karpeg" placeholder=":: No. Karpeg ::" title="Nomor Karpeg" value="6274861000341803">
+					                </td>
+                <td> <label>No Askes : </label>
+											<input type="text" readonly="readonly" name="no_askes" id="no_askes" placeholder=":: No. Askes ::" title="Nomor Askes" value="0000208322807">
+					                </td>
+           
+                <td> <label>No NPWP : </label>
+											<input type="text" readonly="readonly" name="npwp" placeholder=":: No. NPWP ::" title="NPWP" value="09.909.704.0-112.000">
+					                </td>
+            </tr>
+        </tbody></table>
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"> <label>Gelar Depan : </label>
+												<input type="text" id="gelar_depan" readonly="readonly" name="gelar_depan" placeholder=":: Gelar Depan ::" title="Gelar Depan" value="">
+					 
+				</td>
+                <td> <label>Nama Lengkap (Tanpa Gelar) : </label>
+													<input type="text" id="nama_pegawai" name="nama_pegawai" readonly="readonly" placeholder=":: Nama Pegawai ::" title="Nama Pegawai" value="ADIANTO R HARAHAP">
+									</td>
+                <td width="25%"> <label>Gelar Belakang : </label>
+													<input type="text" id="gelar_belakang" name="gelar_belakang" readonly="readonly" placeholder=":: Gelar Belakang ::" title="Gelar Belakang" value="S.H.">
+									</td>
+            </tr>
+        </tbody></table>
+		
+       	<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>
+				<td width="33%"> <label>Jenis Kepegawaian : </label>
+                    <select id="id_jenis_kepegawaian" name="id_jenis_kepegawaian">
+                       <option selected="selected" value="4">PNS Daerah Otonom</option>                    </select>
+                </td>
+				<td> <label>Kedudukan Kepegawaian : </label>
+                    <select id="id_kedudukan_kepegawaian" name="id_kedudukan_kepegawaian">
+                             <option selected="selected" value="1">Aktif</option>                    </select>
+                </td>
+                <td width="33%"> <label>Status Kepegawaian : </label>	 
+                    <select name="id_status_kepegawaian" id="id_status_kepegawaian">
+					<option value="2" selected="selected">PNS</option>	
+                    </select>
+                </td>
+                
+            </tr>
+		</tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="33%"> <label>Tempat Lahir : </label>
+											<input type="text" id="tempat_lahir" readonly="readonly" name="tempat_lahir" placeholder=":: Tempat Lahir ::" title="Tempat Lahir" value="MEDAN">
+									</td>
+                <td width="33%"> <label>Tanggal Lahir : </label>
+											<input type="text" readonly="readonly" name="tanggal_lahir" id="tanggal_lahir" placeholder=":: Tanggal Lahir ::" title="Tanggal Lahir" value="1986-02-06" class="hasDatepicker">	
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				<td> <label>Agama : </label>
+                    <select id="id_agama" name="id_agama">
+                    <option value="0">:: Agama ::</option><option selected="selected" value="1">Islam</option><option value="2">Kristen Katolik</option><option value="3">Kristen Protestan</option><option value="4">Hindu</option><option value="5">Budha</option><option value="6">Kong Hu Chu</option><option value="7">Lainnya</option>                    </select>
+                </td>
+				<td> <label>Status Pernikahan : </label>
+                    <select id="id_status_pernikahan" name="id_status_pernikahan">
+                        <option selected="selected" value="1">Menikah</option>                    </select>
+                </td>
+				
+            </tr>
+        
+            <tr>    
+                <td><label>Jenis Kelamin : </label>
+					<select id="id_jenis_kelamin" name="id_jenis_kelamin">
+					<option selected="selected" value="1">Laki-laki</option><option value="2">Perempuan</option>					</select>
+				</td>
+			
+				<td><label> Golongan Darah : </label>
+                    <select id="id_golongan_darah" name="id_golongan_darah">
+                        <option selected="selected" value="4">O</option>                    </select>
+                </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="50%"> <label> Alamat : </label>
+											<input type="text" id="alamat" name="alamat" placeholder=":: Alamat ::" title="Alamat" value="JL. RAWE 1 LINGKUNGAN 12">
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"><label>Provinsi : </label>
+											<input type="text" id="id_provinsi" name="id_provinsi" placeholder=":: Provinsi ::" title="id_provinsi" value="Sumatera Utara">
+					                    
+                </td>
+                <td width="25%"><label>Kabupaten/Kota : </label>
+											<input type="text" id="id_kabupaten" name="id_kabupaten" placeholder=":: Kabupaten / Kota::" title="id_kabupaten" value="KOTA MEDAN">
+					                    
+                </td>
+                <td width="25%"><label>Kecamatan : </label>
+											<input type="text" id="id_kecamatan" name="id_kecamatan" placeholder=":: Kecamatan ::" title="id_kecamatan" value="MEDAN LABUHAN">
+					                    
+                </td>
+                <td width="25%"><label>Kelurahan/Desa : </label>
+											<input type="text" id="id_kelurahan" name="id_kelurahan" placeholder=":: Kelurahan / Desa ::" title="id_kelurahan" value="TANGKAHAN">
+					                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				 <td><label>RT : </label>
+											<input type="text" id="rt" name="rt" placeholder=":: RT ::" title="RT" value="">
+					                </td>
+                <td><label>RW : </label>
+											<input type="text" id="rw" name="rw" placeholder=":: RW ::" title="RW" value="">
+									</td>
+                <td><label>Kode Pos : </label>
+											<input type="text" id="kode_pos" name="kode_pos" placeholder=":: Kode Pos ::" title="Kode Pos" value="">
+								   </td>
+			</tr></tbody></table>
+			<table border="0px" cellspacing="0" cellpadding="0" width="100%">  
+                <tbody><tr><td width="33%"><label>No Telp : </label>
+											<input type="text" id="no_telp" name="no_telp" placeholder=":: Nomor Telepon ::" title="Nomor Telepon" value="">
+									</td>
+                <td width="33%"><label>No Handphone : </label>
+											<input type="text" id="no_hp" name="no_hp" placeholder=":: Nomor HP ::" title="Nomor HP" value="082361525244">
+									</td>
+                <td width="33%"> <label> Email : </label>
+											<input type="text" id="email" name="email" placeholder=":: Email ::" value="adirahalim.86@gmail.com">
+								   </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="20%"><label>Tinggi (cm) : </label>
+											<input type="text" id="tinggi" name="tinggi" placeholder=":: Tinggi ::" title="Tinggi" value="160">
+									</td>
+                <td width="20%"><label>Berat (Kg) : </label>
+											<input type="text" id="berat" name="berat" placeholder=":: Berat ::" title="Berat" value="60">
+									</td>
+                <td width="20%"><label>Bentuk Rambut : </label>
+                    <select id="id_rambut" name="id_rambut">
+                        <option value="0">:: Bentuk Rambut ::</option>
+                        <option value="4">Botak</option><option selected="" value="5">Cepak</option><option value="1">Ikal</option><option value="2">Keriting</option><option value="3">Lurus</option><option value="6">Tin tin</option>                    </select>
+                </td>
+                <td width="20%"><label>Bentuk Muka : </label>
+                    <select name="id_bentuk_muka" id="id_bentuk_muka">
+                        <option value="0">:: Bentuk Muka ::</option>
+                        <option selected="selected" value="2">Lonjong</option><option value="1">Oval</option><option value="3">Petak</option><option value="4">Pipih</option>                    </select>
+                </td>
+                <td width="20%"><label>Warna Kulit : </label>
+                    <select name="id_warna_kulit" id="id_warna_kulit">
+                        <option value="0">:: Warna Kulit ::</option>
+                        <option value="1">Hitam</option><option selected="selected" value="3">Kuning Langsat</option><option value="4">Kuning Mongol</option><option value="2">Putih</option>                    </select>
+                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				
+				<td><label>Suku : </label>
+											<input type="text" id="id_suku" name="id_suku" placeholder=":: Suku ::" title="id_suku" value="BATAK MANDAILING">
+					                </td>
+                <td><label>Marga : </label>
+											<input type="text" id="marga" name="marga" placeholder=":: Marga ::" title="Marga" value="HARAHAP">
+									</td>
+                
+                
+            </tr>
+            <tr>
+                <td width="34%"><label>Ciri Khas : </label>
+											<input type="text" name="ciri_khas" id="ciri_khas" placeholder=":: Ciri Khas ::" title="Ciri Khas" value="">
+						
+                </td>
+                <td width="33%"><label>Cacat Tubuh : </label>
+											<input type="text" name="cacat_tubuh" id="cacat_tubuh" placeholder=":: Cacat Tubuh ::" title="Cacat Tubuh" value="">
+					 
+			   </td> 
+                <td width="33%"><label>Hobi : </label>
+											<input type="text" name="hobi" id="hobi" placeholder=":: Hobi ::" title="Hobi" value="OLAH RAGA">
+								   </td>
+            </tr>
+        </tbody></table>
+		<br>
+		<h3>CATATAN DARI BKD: </h3>&nbsp;<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>	
+				
+							</tr>
+			<tr></tr>
+			</tbody></table>
+		
+		<!--Ini untuk Tombol Simpan dan Reset-->
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td style="text-align: left;">
+				                </td>
+            </tr>
+        </tbody></table>
+			
+							
+	</div>
+</div>
+</form>
+<div class="kelang"></div>
+<div class="panelcontainer panelform" style="width: 100%;">
+	<h3 style="text-align: left;">SCAN BERKAS PENDUKUNG DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+		<thead>
+			<tr>
+						<td width="35%">SCAN BERKAS</td>
+			<td width="10%">BELUM DIVERIFIKASI</td>
+			<td width="10%">SUDAH DIVERIFIKASI</td>
+			<td width="10%">STATUS FILE UPLOAD</td>
+			<td width="10%">&nbsp;</td>
+			<td width="10%">&nbsp;</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr><td width="35%'">1. Pasfoto berwarna</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=20779&amp;type=pasfoto" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%'">2. Scan Kartu Pegawai Negeri Sipil atau Kartu PNS Elektronik (KPE)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=20779&amp;type=karpeg" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">3. Kartu Tanda Penduduk (KTP)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=20779&amp;type=scan_ktp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">4. SK Konversi NIP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">5. NPWP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=20779&amp;type=scan_npwp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">6. Taspen</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">7. Akta Kelahiran</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">8. SK Pencantuman Gelar</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">9. Askes Pribadi</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=20779&amp;type=askes_pribadi" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr>				</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<!--	DIALOG BOX	--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- END OF DIALOG BOX -->
+
+<!-- DIALOG BOX -->
+
+<!-- END OF DIALOG BOX -->
+<!-- SUBMIT TARGET -->
+<iframe src="" name="sbm_target" style="display: none;"></iframe>
+<!-- END OF SUBMIT TARGET -->		</div>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SD</td><td align="center" class=" ">SD</td><td align="center" class=" ">SD SWASTA BINA TARUNA 1 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">SOPHAR SITUMORANG</td><td align="center" class=" ">3274/ML/I/98</td><td align="center" class=" ">13 Juni 1998</td><td align="center" class=" ">30,43</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10765" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMP</td><td align="center" class=" ">SLTP</td><td align="center" class=" ">SLTP PGRI 3 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">DRS. TAMI SEMBIRING</td><td align="center" class=" ">552/I/20/01</td><td align="center" class=" ">27 Juni 2001</td><td align="center" class=" ">36,86</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10766" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMA</td><td align="center" class=" ">SMA</td><td align="center" class=" ">SMA NEGERI 16 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" ">IPA</td><td align="center" class=" ">Ir. BURHANUDDIN HARAHAP</td><td align="center" class=" ">2958/R.01/03/04</td><td align="center" class=" ">14 Juni 2004</td><td align="center" class=" ">66,74</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10767" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">S1 (Sarjana)</td><td align="center" class=" ">S-1 Ilmu Hukum</td><td align="center" class=" ">UNIVERSITAS DARMAWANGSA</td><td align="center" class=" ">MEDAN</td><td align="center" class=" ">Ilmu Hukum</td><td align="center" class=" ">ASMADINATA,SH.,M.Hum</td><td align="center" class=" ">673/FHK/DW/2009</td><td align="center" class=" ">30 Desember 2009</td><td align="center" class=" ">3,02</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10768" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SD</td><td align="center" class=" ">SD</td><td align="center" class=" ">SD SWASTA BINA TARUNA 1 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">SOPHAR SITUMORANG</td><td align="center" class=" ">3274/ML/I/98</td><td align="center" class=" ">13 Juni 1998</td><td align="center" class=" ">30,43</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10765" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMP</td><td align="center" class=" ">SLTP</td><td align="center" class=" ">SLTP PGRI 3 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">DRS. TAMI SEMBIRING</td><td align="center" class=" ">552/I/20/01</td><td align="center" class=" ">27 Juni 2001</td><td align="center" class=" ">36,86</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10766" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMA</td><td align="center" class=" ">SMA</td><td align="center" class=" ">SMA NEGERI 16 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" ">IPA</td><td align="center" class=" ">Ir. BURHANUDDIN HARAHAP</td><td align="center" class=" ">2958/R.01/03/04</td><td align="center" class=" ">14 Juni 2004</td><td align="center" class=" ">66,74</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10767" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">S1 (Sarjana)</td><td align="center" class=" ">S-1 Ilmu Hukum</td><td align="center" class=" ">UNIVERSITAS DARMAWANGSA</td><td align="center" class=" ">MEDAN</td><td align="center" class=" ">Ilmu Hukum</td><td align="center" class=" ">ASMADINATA,SH.,M.Hum</td><td align="center" class=" ">673/FHK/DW/2009</td><td align="center" class=" ">30 Desember 2009</td><td align="center" class=" ">3,02</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_pendidikan&amp;id=10768" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Analis Hukum</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Dinas Pendapatan Kota Medan</td><td align="center" class=" ">01-01-2011</td><td align="center" class=" ">813/638.K<br>11-04-2011</td><td align="center" class=" ">WALIKOTA MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td align="center" class=" ">Tidak Ada</td><td style="text-align:center;" class=" ">Belum Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Struktural</td><td align="center" class=" ">Sekretaris Lurah Tanah Enam Ratus Kecamatan Medan Marelan Kota Medan</td><td align="center" class=" "></td><td align="center" class=" ">IV.b</td><td align="center" class=" ">Kelurahan Tanah Enam Ratus Kecamatan Medan Marelan Kota Medan</td><td align="center" class=" ">06-05-2013</td><td align="center" class=" ">821.4/923.K<br>06-05-2013</td><td align="center" class=" ">Walikota Medan</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=158288" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Struktural</td><td align="center" class=" ">Kepala Seksi Ketentraman dan Ketertiban Umum Kelurahan Paya Pasir Kecamatan Medan Marelan Kota Medan</td><td align="center" class=" "></td><td align="center" class=" ">IV.b</td><td align="center" class=" ">Kelurahan Paya Pasir Kecamatan Medan Marelan Kota Medan</td><td align="center" class=" ">23-03-2018</td><td align="center" class=" ">821.2/187.K<br>23-03-2018</td><td align="center" class=" ">Walikota Medan</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=205917" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Struktural</td><td align="center" class=" ">Kepala Seksi Ketenteraman dan Ketertiban Umum Kecamatan Medan Deli Kota Medan</td><td align="center" class=" "></td><td align="center" class=" ">IV.a</td><td align="center" class=" ">Seksi Ketenteraman dan Ketertiban Umum Kecamatan Medan Deli Kota Medan</td><td align="center" class=" ">19-08-2019</td><td align="center" class=" ">821.2/1080.K<br>19-08-2019</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">Pindah Antar SKPD / Mutasi Unor</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=210985" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">5</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">PELAKSANA</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Kecamatan Medan Marelan Kota Medan</td><td align="center" class=" ">27-07-2022</td><td align="center" class=" ">821.2/1946.K<br>27-07-2022</td><td align="center" class=" ">Wali Kota Medan</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=228964" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">6</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Pelaksana</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Inspektorat Kota Medan</td><td align="center" class=" ">24-08-2022</td><td align="center" class=" ">824.3/2153.K<br>24-08-2022</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=229187" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">7</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Analis Kinerja</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Inspektorat Kota Medan</td><td align="center" class=" ">01-09-2022</td><td align="center" class=" ">821.29/2216.K<br>13-09-2022</td><td align="center" class=" ">Sekretaris Daerah</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=229703" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">8</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Penelaah Teknis Kebijakan</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Inspektorat Kota Medan</td><td align="center" class=" ">01-01-2024</td><td align="center" class=" ">800.1.3.3/007.K<br>08-01-2024</td><td align="center" class=" ">Sekretaris Daerah</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=243874" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">9</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Penelaah Teknis Kebijakan</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Seksi Pembangunan Pemberdayaan Masyarakat Kecamatan Medan Labuhan Kota Medan</td><td align="center" class=" ">02-02-2024</td><td align="center" class=" ">800.1.3.1/064.K<br>02-02-2024</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">Pindah Antar SKPD / Mutasi Unor</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=246107" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">10</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Penelaah Teknis Kebijakan</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Badan Pendapatan Daerah Kota Medan</td><td align="center" class=" ">01-10-2026</td><td align="center" class=" ">800.1.3.1/397.K<br>29-09-2026</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">Pindah Antar SKPD / Mutasi Unor</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=20779&amp;type=tbl_riwayat_jabatan&amp;id=268181" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr></tbody>
+
+
+<div id="main-body">
+			<script type="text/javascript">
+var id_pegawai="31139";
+</script>
+
+<!-- JAVASCRIPT PAGE -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+   ambil_tanggal("tanggal_lahir");
+   
+   $("#frm").submit(function(){
+        if(frm.nip.value == "" || frm.nama_pegawai.value == "" || frm.id_jenis_kepegawaian.value == 0 || frm.id_kedudukan_kepegawaian.value == 0 || frm.id_status_kepegawaian.value == 0 || frm.id_agama.value == 0 || frm.id_jenis_kelamin.value == 0){
+			var pesan ="Maaf!! Data dibawah ini harus diisi : <ol>";
+			if(frm.nip.value == "" ){
+				pesan += "<li>NIP</li>";
+				document.getElementById("nip").style.borderColor = "red"; 
+			} 
+			if( frm.nama_pegawai.value == "" ){
+				pesan += "<li>Nama Pegawai</li>";
+				document.getElementById("nama_pegawai").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kepegawaian.value == 0 ){
+				pesan += "<li>Jenis Kepegawaian</li>" ;
+				document.getElementById("id_jenis_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_kedudukan_kepegawaian.value == 0 ){
+				pesan += "<li>Kedudukan Kepegawaian</li>" ;
+				document.getElementById("id_kedudukan_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_status_kepegawaian.value == 0 ){
+				pesan += "<li>Status Kepegawaian</li>" ;
+				document.getElementById("id_status_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_agama.value == 0 ){
+				pesan +=  "<li>Agama</li>";
+				document.getElementById("id_agama").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kelamin.value == 0){
+				pesan += "<li>Jenis Kelamin</li>" ;
+				document.getElementById("id_jenis_kelamin").style.borderColor = "red"; 
+			}
+			pesan += "<ol>";
+            jAlert(pesan, "PERHATIAN");
+            return false;
+        }
+        
+   }); 
+   
+   	$("#input_password").dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_1" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_2" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_3" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+
+	$( "#pnl_upload_4" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_5" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_6" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_7" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });	
+	$( "#pnl_upload_8" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_9" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_catatan" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade" 
+    });	
+});
+
+function upload_pasfoto(){ 
+		$("#id_pegawai_5").val(id_pegawai);
+		$("#pnl_upload_1").dialog("open");
+}
+
+function upload_karpeg(){
+		$("#id_pegawai_6").val(id_pegawai); 
+		$("#pnl_upload_2").dialog("open");
+}
+
+function upload_konversi_nip(){
+		$("#id_pegawai_8").val(id_pegawai); 
+		$("#pnl_upload_4").dialog("open");
+}
+
+function upload_ktp(){
+		$("#id_pegawai_7").val(id_pegawai); 
+		$("#pnl_upload_3").dialog("open");
+}
+
+function upload_npwp(){
+		$("#id_pegawai_9").val(id_pegawai); 
+		$("#pnl_upload_5").dialog("open");
+}
+function upload_taspen(){
+		$("#id_pegawai_10").val(id_pegawai); 
+		$("#pnl_upload_6").dialog("open");
+}
+function upload_kelahiran(){
+		$("#id_pegawai_11").val(id_pegawai); 
+		$("#pnl_upload_7").dialog("open");
+}
+function upload_pencantuman_gelar(){
+		$("#id_pegawai_12").val(id_pegawai); 
+		$("#pnl_upload_8").dialog("open");
+}
+function upload_askes_pribadi(){
+		$("#id_pegawai_13").val(id_pegawai); 
+		$("#pnl_upload_9").dialog("open");
+}
+
+function catatan_upload(id_pegawai){
+	$("#id_pegawai2").val(id_pegawai);
+	$("#catatan_karpeg_dan_pasfoto").html(catatan_karpeg_dan_pasfoto);
+	$("#pnl_catatan").dialog("open");
+}
+
+function something_wrong(what_is_wrong) {
+        jAlert(what_is_wrong, "PERHATIAN");
+}
+
+function success(ada){
+    jAlert("Data pegawai berhasil disimpan", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function success_upload(){
+    jAlert("File berhasil diupload", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function show_password_oto(){
+	$("#id_pegawaix").val(id_pegawai);
+	$("#input_password").dialog("open");
+}
+
+function hold(){
+    jAlert("Data sementara berhasil disimpan untuk diotorisasi", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}   
+
+function approval(id_app){
+	$("#id_approval").val(id_app);
+	if(id_app==1){
+	jAlert("<b>Data akan diotorisasi dahulu oleh pejabat berwenang</b>", "PERHATIAN", function(r){
+			$("#frm_edit").submit();
+		});
+	}else if(id_app==0){
+		$("#frm_edit").submit();
+	}
+}
+
+ function success_catatan(){
+	jAlert("<b>Catatan berhasil disimpan.</b>", "PERHATIAN", function(r){
+			document.location.href="?mod=edit_pegawai&id_ver=99";
+		});	
+} 
+
+function lanjut(){
+		upload_pasfoto();
+}
+
+/*Fungsi Untuk Hapus*/
+ function notif(){
+    jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+ function success_hapus(){
+    jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+
+ function hapus_pasfoto(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ 
+ function hapus_karpeg(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_ktp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_konversi_nip(){
+	 jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ function hapus_npwp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_taspen(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){ 
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_kelahiran(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_pencantuman_gelar(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_askes_pribadi(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_tolak(){
+	jConfirm("Anda yakin akan menghapus riwayat tolak ini?", "PERHATIAN", function(r){
+		if(r){
+		 document.location.href = "php/hapus_tolak_edit_pegawai.php?id_pegawai=" + id_pegawai;
+        }
+    });
+ }
+ 
+function kembali(){
+		var id_author=0;
+		if(id_author>0){
+			document.location.href="?mod=otorisasi_data";
+		}else{
+			document.location.href="?mod=verifikasi_data_pegawai";
+		}
+}
+	
+</script>
+
+<style>
+#id_status_kepegawaian{color : #00000 !important; }	
+
+#id_jenis_kepegawaian{color : #00000 !important; }	
+ 
+
+#id_kedudukan_kepegawaian{color : #00000 !important; }	
+
+#id_golongan_darah{color : #00000 !important; }	
+
+#id_jenis_kelamin{color : #00000 !important; }	
+
+#id_agama{color : #00000 !important; }	
+
+#id_rambut{color : #00000 !important; }	
+
+#id_bentuk_muka{color : #00000 !important; }	
+
+#id_warna_kulit{color : #00000 !important; }	
+
+#id_status_pernikahan{color : #00000 !important; }	
+
+</style>
+<form name="frm" id="frm" action="php/edit_pegawai.php" method="post" target="sbm_target">
+<div class="panelcontainer panelform" style="width: 100%;">
+    <h3 style="text-align: left;">LIHAT PROFIL DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+				        <div class="kelang"></div><table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			
+			
+            <tbody><tr>
+                <td> <label>NIP : </label>
+										<input type="text" readonly="readonly" id="nip" name="nip" placeholder=":: NIP Pegawai ::" title="NIP Pegawai" value="19990403 202308 1 002">
+									<input type="hidden" name="id_pegawai" title="ID Pegawai" value="31139">
+                
+				</td>
+                <td> <label>NIP Lama : </label>
+											<input type="text" readonly="readonly" name="nip_lama" placeholder=":: NIP Lama ::" title="NIP Lama" value="">
+									</td>
+				            </tr>
+			
+			<tr>
+                <td> <label>No KTP : </label>
+											<input type="text" readonly="readonly" name="ktp" placeholder=":: No. Kartu Tanda Penduduk (KTP) ::" title="Kartu Tanda Penduduk (KTP)" value="1271010304990001">
+								   </td>
+               <td> <label>No Taspen : </label>
+										<input type="text" readonly="readonly" name="taspen" placeholder=":: No. Taspen ::" title="Taspen" value="">
+					                </td>
+			
+                <td> <label>No Karpeg : </label>
+											<input type="text" readonly="readonly" name="no_karpeg" id="no_karpeg" placeholder=":: No. Karpeg ::" title="Nomor Karpeg" value="A 202400015529">
+					                </td>
+                <td> <label>No Askes : </label>
+											<input type="text" readonly="readonly" name="no_askes" id="no_askes" placeholder=":: No. Askes ::" title="Nomor Askes" value="">
+					                </td>
+           
+                <td> <label>No NPWP : </label>
+											<input type="text" readonly="readonly" name="npwp" placeholder=":: No. NPWP ::" title="NPWP" value="62.442.030.3-111.000">
+					                </td>
+            </tr>
+        </tbody></table>
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"> <label>Gelar Depan : </label>
+												<input type="text" id="gelar_depan" readonly="readonly" name="gelar_depan" placeholder=":: Gelar Depan ::" title="Gelar Depan" value="">
+					 
+				</td>
+                <td> <label>Nama Lengkap (Tanpa Gelar) : </label>
+													<input type="text" id="nama_pegawai" name="nama_pegawai" readonly="readonly" placeholder=":: Nama Pegawai ::" title="Nama Pegawai" value="DEDE AMBIA">
+									</td>
+                <td width="25%"> <label>Gelar Belakang : </label>
+													<input type="text" id="gelar_belakang" name="gelar_belakang" readonly="readonly" placeholder=":: Gelar Belakang ::" title="Gelar Belakang" value="S.Tr.I.P.">
+									</td>
+            </tr>
+        </tbody></table>
+		
+       	<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>
+				<td width="33%"> <label>Jenis Kepegawaian : </label>
+                    <select id="id_jenis_kepegawaian" name="id_jenis_kepegawaian">
+                       <option selected="selected" value="4">PNS Daerah Otonom</option>                    </select>
+                </td>
+				<td> <label>Kedudukan Kepegawaian : </label>
+                    <select id="id_kedudukan_kepegawaian" name="id_kedudukan_kepegawaian">
+                             <option selected="selected" value="1">Aktif</option>                    </select>
+                </td>
+                <td width="33%"> <label>Status Kepegawaian : </label>	 
+                    <select name="id_status_kepegawaian" id="id_status_kepegawaian">
+					<option value="2" selected="selected">PNS</option>	
+                    </select>
+                </td>
+                
+            </tr>
+		</tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="33%"> <label>Tempat Lahir : </label>
+											<input type="text" id="tempat_lahir" readonly="readonly" name="tempat_lahir" placeholder=":: Tempat Lahir ::" title="Tempat Lahir" value="MEDAN">
+									</td>
+                <td width="33%"> <label>Tanggal Lahir : </label>
+											<input type="text" readonly="readonly" name="tanggal_lahir" id="tanggal_lahir" placeholder=":: Tanggal Lahir ::" title="Tanggal Lahir" value="1999-04-03" class="hasDatepicker">	
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				<td> <label>Agama : </label>
+                    <select id="id_agama" name="id_agama">
+                    <option value="0">:: Agama ::</option><option selected="selected" value="1">Islam</option><option value="2">Kristen Katolik</option><option value="3">Kristen Protestan</option><option value="4">Hindu</option><option value="5">Budha</option><option value="6">Kong Hu Chu</option><option value="7">Lainnya</option>                    </select>
+                </td>
+				<td> <label>Status Pernikahan : </label>
+                    <select id="id_status_pernikahan" name="id_status_pernikahan">
+                        <option selected="selected" value="4">Belum Menikah</option>                    </select>
+                </td>
+				
+            </tr>
+        
+            <tr>    
+                <td><label>Jenis Kelamin : </label>
+					<select id="id_jenis_kelamin" name="id_jenis_kelamin">
+					<option selected="selected" value="1">Laki-laki</option><option value="2">Perempuan</option>					</select>
+				</td>
+			
+				<td><label> Golongan Darah : </label>
+                    <select id="id_golongan_darah" name="id_golongan_darah">
+                                            </select>
+                </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="50%"> <label> Alamat : </label>
+											<input type="text" id="alamat" name="alamat" placeholder=":: Alamat ::" title="Alamat" value="JL MAHKAMAH NO 40 B MEDAN">
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"><label>Provinsi : </label>
+											<input type="text" id="id_provinsi" name="id_provinsi" placeholder=":: Provinsi ::" title="id_provinsi" value="SUMATERA UTARA">
+					                    
+                </td>
+                <td width="25%"><label>Kabupaten/Kota : </label>
+											<input type="text" id="id_kabupaten" name="id_kabupaten" placeholder=":: Kabupaten / Kota::" title="id_kabupaten" value="MEDAN">
+					                    
+                </td>
+                <td width="25%"><label>Kecamatan : </label>
+											<input type="text" id="id_kecamatan" name="id_kecamatan" placeholder=":: Kecamatan ::" title="id_kecamatan" value="MEDAN KOTA">
+					                    
+                </td>
+                <td width="25%"><label>Kelurahan/Desa : </label>
+											<input type="text" id="id_kelurahan" name="id_kelurahan" placeholder=":: Kelurahan / Desa ::" title="id_kelurahan" value="MESJID">
+					                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				 <td><label>RT : </label>
+											<input type="text" id="rt" name="rt" placeholder=":: RT ::" title="RT" value="-">
+					                </td>
+                <td><label>RW : </label>
+											<input type="text" id="rw" name="rw" placeholder=":: RW ::" title="RW" value="-">
+									</td>
+                <td><label>Kode Pos : </label>
+											<input type="text" id="kode_pos" name="kode_pos" placeholder=":: Kode Pos ::" title="Kode Pos" value="-">
+								   </td>
+			</tr></tbody></table>
+			<table border="0px" cellspacing="0" cellpadding="0" width="100%">  
+                <tbody><tr><td width="33%"><label>No Telp : </label>
+											<input type="text" id="no_telp" name="no_telp" placeholder=":: Nomor Telepon ::" title="Nomor Telepon" value="">
+									</td>
+                <td width="33%"><label>No Handphone : </label>
+											<input type="text" id="no_hp" name="no_hp" placeholder=":: Nomor HP ::" title="Nomor HP" value="082167708510">
+									</td>
+                <td width="33%"> <label> Email : </label>
+											<input type="text" id="email" name="email" placeholder=":: Email ::" value="ambiadede9@gmail.com">
+								   </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="20%"><label>Tinggi (cm) : </label>
+											<input type="text" id="tinggi" name="tinggi" placeholder=":: Tinggi ::" title="Tinggi" value="0">
+									</td>
+                <td width="20%"><label>Berat (Kg) : </label>
+											<input type="text" id="berat" name="berat" placeholder=":: Berat ::" title="Berat" value="0">
+									</td>
+                <td width="20%"><label>Bentuk Rambut : </label>
+                    <select id="id_rambut" name="id_rambut">
+                        <option value="0">:: Bentuk Rambut ::</option>
+                        <option value="4">Botak</option><option value="5">Cepak</option><option value="1">Ikal</option><option value="2">Keriting</option><option value="3">Lurus</option><option value="6">Tin tin</option>                    </select>
+                </td>
+                <td width="20%"><label>Bentuk Muka : </label>
+                    <select name="id_bentuk_muka" id="id_bentuk_muka">
+                        <option value="0">:: Bentuk Muka ::</option>
+                        <option value="2">Lonjong</option><option value="1">Oval</option><option value="3">Petak</option><option value="4">Pipih</option>                    </select>
+                </td>
+                <td width="20%"><label>Warna Kulit : </label>
+                    <select name="id_warna_kulit" id="id_warna_kulit">
+                        <option value="0">:: Warna Kulit ::</option>
+                        <option value="1">Hitam</option><option value="3">Kuning Langsat</option><option value="4">Kuning Mongol</option><option value="2">Putih</option>                    </select>
+                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				
+				<td><label>Suku : </label>
+											<input type="text" id="id_suku" name="id_suku" placeholder=":: Suku ::" title="id_suku" value="">
+					                </td>
+                <td><label>Marga : </label>
+											<input type="text" id="marga" name="marga" placeholder=":: Marga ::" title="Marga" value="">
+									</td>
+                
+                
+            </tr>
+            <tr>
+                <td width="34%"><label>Ciri Khas : </label>
+											<input type="text" name="ciri_khas" id="ciri_khas" placeholder=":: Ciri Khas ::" title="Ciri Khas" value="">
+						
+                </td>
+                <td width="33%"><label>Cacat Tubuh : </label>
+											<input type="text" name="cacat_tubuh" id="cacat_tubuh" placeholder=":: Cacat Tubuh ::" title="Cacat Tubuh" value="">
+					 
+			   </td> 
+                <td width="33%"><label>Hobi : </label>
+											<input type="text" name="hobi" id="hobi" placeholder=":: Hobi ::" title="Hobi" value="">
+								   </td>
+            </tr>
+        </tbody></table>
+		<br>
+		<h3>CATATAN DARI BKD: </h3>&nbsp;<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>	
+				
+							</tr>
+			<tr></tr>
+			</tbody></table>
+		
+		<!--Ini untuk Tombol Simpan dan Reset-->
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td style="text-align: left;">
+				                </td>
+            </tr>
+        </tbody></table>
+			
+							
+	</div>
+</div>
+</form>
+<div class="kelang"></div>
+<div class="panelcontainer panelform" style="width: 100%;">
+	<h3 style="text-align: left;">SCAN BERKAS PENDUKUNG DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+		<thead>
+			<tr>
+						<td width="35%">SCAN BERKAS</td>
+			<td width="10%">BELUM DIVERIFIKASI</td>
+			<td width="10%">SUDAH DIVERIFIKASI</td>
+			<td width="10%">STATUS FILE UPLOAD</td>
+			<td width="10%">&nbsp;</td>
+			<td width="10%">&nbsp;</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr><td width="35%'">1. Pasfoto berwarna</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=31139&amp;type=pasfoto" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%'">2. Scan Kartu Pegawai Negeri Sipil atau Kartu PNS Elektronik (KPE)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=31139&amp;type=karpeg" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">3. Kartu Tanda Penduduk (KTP)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=31139&amp;type=scan_ktp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">4. SK Konversi NIP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">5. NPWP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=31139&amp;type=scan_npwp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">6. Taspen</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">7. Akta Kelahiran</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=31139&amp;type=akta_kelahiran" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">8. SK Pencantuman Gelar</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">9. Askes Pribadi</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">10. Surat Ijin Belajar (Pasca Sarjana)</td><td align="center" width="10%">&nbsp;</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=31139&amp;type=surat_ib&amp;pend=9" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left">&nbsp;</td><td width="10%" align="left">&nbsp;</td></tr>				</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<!--	DIALOG BOX	--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- END OF DIALOG BOX -->
+
+<!-- DIALOG BOX -->
+
+<!-- END OF DIALOG BOX -->
+<!-- SUBMIT TARGET -->
+<iframe src="" name="sbm_target" style="display: none;"></iframe>
+<!-- END OF SUBMIT TARGET -->		</div>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SD</td><td align="center" class=" ">SD</td><td align="center" class=" ">SD NEGERI NO 067952 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">INDRAWATI, S.Pd</td><td align="center" class=" ">DN-07 DD 0020117</td><td align="center" class=" ">20 Juni 2011</td><td align="center" class=" ">8.00</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_pendidikan&amp;id=135079" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMP</td><td align="center" class=" ">SMP</td><td align="center" class=" ">SMP NEGERI 28 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">HORAS POHAN, S.Pd</td><td align="center" class=" ">DN-07 DI 0024981</td><td align="center" class=" ">14 Juni 2014</td><td align="center" class=" ">7.50</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_pendidikan&amp;id=135081" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMA</td><td align="center" class=" ">SMA</td><td align="center" class=" ">SMA NEGERI 2 MEDAN</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">Drs. SUTRISNO, M.Pd</td><td align="center" class=" ">DN-07 MA/13 0000919</td><td align="center" class=" ">02 Mei 2017</td><td align="center" class=" ">91</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_pendidikan&amp;id=135080" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">D-IV</td><td align="center" class=" ">D-IV STPDN</td><td align="center" class=" ">INSTITUT PEMERINTAHAN DALAM NEGERI</td><td align="center" class=" ">SUMEDANG</td><td align="center" class=" ">STPDN</td><td align="center" class=" ">Dr. Drs. HADI PRABOWO, M.M</td><td align="center" class=" ">65302-2023-000863</td><td align="center" class=" ">06 Juni 2023</td><td align="center" class=" ">3.56</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_pendidikan&amp;id=135072" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">1</td><td align="center" class=" ">Penata Muda (III/a)</td><td align="center" class=" ">01-08-2023</td><td align="center" class=" ">800.1.2.5-1564 TAHUN 2023</td><td align="center" class=" ">31-07-2023</td><td align="center" class=" ">MENTERI DALAM NEGERI</td><td align="center" class=" ">00</td><td align="center" class=" ">00</td><td align="center" class=" ">Tidak Ada</td><td style="text-align:center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_riwayat_pangkat&amp;id=1792547" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Kementerian Dalam Negeri</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Pemerintah Kota Medan</td><td align="center" class=" ">01-10-2024</td><td align="center" class=" ">00147/KEP/AU/12008/2024<br>27-09-2024</td><td align="center" class=" ">KEPALA BADAN KEPEGAWAIAN NEGARA</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_riwayat_jabatan&amp;id=249367" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">PELAKSANA</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kota Medan</td><td align="center" class=" ">22-11-2024</td><td align="center" class=" ">800.1.3.1/1289.K<br>22-11-2024</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_riwayat_jabatan&amp;id=249359" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Penelaah Teknis Kebijakan</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kota Medan</td><td align="center" class=" ">01-12-2024</td><td align="center" class=" ">800.1.3.3/1367.K<br>18-12-2024</td><td align="center" class=" ">Pj. Sekretaris Daerah</td><td align="center" class=" ">Mutasi Jabatan</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_riwayat_jabatan&amp;id=249446" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Penelaah Teknis Kebijakan</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Badan Pendapatan Daerah Kota Medan</td><td align="center" class=" ">01-10-2026</td><td align="center" class=" ">800.1.3.1/402.K<br>02-10-2026</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">Pindah Antar SKPD / Mutasi Unor</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=31139&amp;type=tbl_riwayat_jabatan&amp;id=268207" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr></tbody>
+
+
+<div id="main-body">
+			<script type="text/javascript">
+var id_pegawai="41401";
+</script>
+
+<!-- JAVASCRIPT PAGE -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+   ambil_tanggal("tanggal_lahir");
+   
+   $("#frm").submit(function(){
+        if(frm.nip.value == "" || frm.nama_pegawai.value == "" || frm.id_jenis_kepegawaian.value == 0 || frm.id_kedudukan_kepegawaian.value == 0 || frm.id_status_kepegawaian.value == 0 || frm.id_agama.value == 0 || frm.id_jenis_kelamin.value == 0){
+			var pesan ="Maaf!! Data dibawah ini harus diisi : <ol>";
+			if(frm.nip.value == "" ){
+				pesan += "<li>NIP</li>";
+				document.getElementById("nip").style.borderColor = "red"; 
+			} 
+			if( frm.nama_pegawai.value == "" ){
+				pesan += "<li>Nama Pegawai</li>";
+				document.getElementById("nama_pegawai").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kepegawaian.value == 0 ){
+				pesan += "<li>Jenis Kepegawaian</li>" ;
+				document.getElementById("id_jenis_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_kedudukan_kepegawaian.value == 0 ){
+				pesan += "<li>Kedudukan Kepegawaian</li>" ;
+				document.getElementById("id_kedudukan_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_status_kepegawaian.value == 0 ){
+				pesan += "<li>Status Kepegawaian</li>" ;
+				document.getElementById("id_status_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_agama.value == 0 ){
+				pesan +=  "<li>Agama</li>";
+				document.getElementById("id_agama").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kelamin.value == 0){
+				pesan += "<li>Jenis Kelamin</li>" ;
+				document.getElementById("id_jenis_kelamin").style.borderColor = "red"; 
+			}
+			pesan += "<ol>";
+            jAlert(pesan, "PERHATIAN");
+            return false;
+        }
+        
+   }); 
+   
+   	$("#input_password").dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_1" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_2" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_3" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+
+	$( "#pnl_upload_4" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_5" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_6" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_7" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });	
+	$( "#pnl_upload_8" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_9" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_catatan" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade" 
+    });	
+});
+
+function upload_pasfoto(){ 
+		$("#id_pegawai_5").val(id_pegawai);
+		$("#pnl_upload_1").dialog("open");
+}
+
+function upload_karpeg(){
+		$("#id_pegawai_6").val(id_pegawai); 
+		$("#pnl_upload_2").dialog("open");
+}
+
+function upload_konversi_nip(){
+		$("#id_pegawai_8").val(id_pegawai); 
+		$("#pnl_upload_4").dialog("open");
+}
+
+function upload_ktp(){
+		$("#id_pegawai_7").val(id_pegawai); 
+		$("#pnl_upload_3").dialog("open");
+}
+
+function upload_npwp(){
+		$("#id_pegawai_9").val(id_pegawai); 
+		$("#pnl_upload_5").dialog("open");
+}
+function upload_taspen(){
+		$("#id_pegawai_10").val(id_pegawai); 
+		$("#pnl_upload_6").dialog("open");
+}
+function upload_kelahiran(){
+		$("#id_pegawai_11").val(id_pegawai); 
+		$("#pnl_upload_7").dialog("open");
+}
+function upload_pencantuman_gelar(){
+		$("#id_pegawai_12").val(id_pegawai); 
+		$("#pnl_upload_8").dialog("open");
+}
+function upload_askes_pribadi(){
+		$("#id_pegawai_13").val(id_pegawai); 
+		$("#pnl_upload_9").dialog("open");
+}
+
+function catatan_upload(id_pegawai){
+	$("#id_pegawai2").val(id_pegawai);
+	$("#catatan_karpeg_dan_pasfoto").html(catatan_karpeg_dan_pasfoto);
+	$("#pnl_catatan").dialog("open");
+}
+
+function something_wrong(what_is_wrong) {
+        jAlert(what_is_wrong, "PERHATIAN");
+}
+
+function success(ada){
+    jAlert("Data pegawai berhasil disimpan", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function success_upload(){
+    jAlert("File berhasil diupload", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function show_password_oto(){
+	$("#id_pegawaix").val(id_pegawai);
+	$("#input_password").dialog("open");
+}
+
+function hold(){
+    jAlert("Data sementara berhasil disimpan untuk diotorisasi", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}   
+
+function approval(id_app){
+	$("#id_approval").val(id_app);
+	if(id_app==1){
+	jAlert("<b>Data akan diotorisasi dahulu oleh pejabat berwenang</b>", "PERHATIAN", function(r){
+			$("#frm_edit").submit();
+		});
+	}else if(id_app==0){
+		$("#frm_edit").submit();
+	}
+}
+
+ function success_catatan(){
+	jAlert("<b>Catatan berhasil disimpan.</b>", "PERHATIAN", function(r){
+			document.location.href="?mod=edit_pegawai&id_ver=99";
+		});	
+} 
+
+function lanjut(){
+		upload_pasfoto();
+}
+
+/*Fungsi Untuk Hapus*/
+ function notif(){
+    jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+ function success_hapus(){
+    jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+
+ function hapus_pasfoto(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ 
+ function hapus_karpeg(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_ktp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_konversi_nip(){
+	 jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ function hapus_npwp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_taspen(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){ 
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_kelahiran(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_pencantuman_gelar(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_askes_pribadi(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_tolak(){
+	jConfirm("Anda yakin akan menghapus riwayat tolak ini?", "PERHATIAN", function(r){
+		if(r){
+		 document.location.href = "php/hapus_tolak_edit_pegawai.php?id_pegawai=" + id_pegawai;
+        }
+    });
+ }
+ 
+function kembali(){
+		var id_author=0;
+		if(id_author>0){
+			document.location.href="?mod=otorisasi_data";
+		}else{
+			document.location.href="?mod=verifikasi_data_pegawai";
+		}
+}
+	
+</script>
+
+<style>
+#id_status_kepegawaian{color : #00000 !important; }	
+
+#id_jenis_kepegawaian{color : #00000 !important; }	
+ 
+
+#id_kedudukan_kepegawaian{color : #00000 !important; }	
+
+#id_golongan_darah{color : #00000 !important; }	
+
+#id_jenis_kelamin{color : #00000 !important; }	
+
+#id_agama{color : #00000 !important; }	
+
+#id_rambut{color : #00000 !important; }	
+
+#id_bentuk_muka{color : #00000 !important; }	
+
+#id_warna_kulit{color : #00000 !important; }	
+
+#id_status_pernikahan{color : #00000 !important; }	
+
+</style>
+<form name="frm" id="frm" action="php/edit_pegawai.php" method="post" target="sbm_target">
+<div class="panelcontainer panelform" style="width: 100%;">
+    <h3 style="text-align: left;">LIHAT PROFIL DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+				        <div class="kelang"></div><table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			
+			
+            <tbody><tr>
+                <td> <label>NIP : </label>
+										<input type="text" readonly="readonly" id="nip" name="nip" placeholder=":: NIP Pegawai ::" title="NIP Pegawai" value="19990720 202208 2 001">
+									<input type="hidden" name="id_pegawai" title="ID Pegawai" value="41401">
+                
+				</td>
+                <td> <label>NIP Lama : </label>
+											<input type="text" readonly="readonly" name="nip_lama" placeholder=":: NIP Lama ::" title="NIP Lama" value="">
+									</td>
+				            </tr>
+			
+			<tr>
+                <td> <label>No KTP : </label>
+											<input type="text" readonly="readonly" name="ktp" placeholder=":: No. Kartu Tanda Penduduk (KTP) ::" title="Kartu Tanda Penduduk (KTP)" value="1276036007990001">
+								   </td>
+               <td> <label>No Taspen : </label>
+										<input type="text" readonly="readonly" name="taspen" placeholder=":: No. Taspen ::" title="Taspen" value="990720220820010">
+					                </td>
+			
+                <td> <label>No Karpeg : </label>
+											<input type="text" readonly="readonly" name="no_karpeg" id="no_karpeg" placeholder=":: No. Karpeg ::" title="Nomor Karpeg" value="A202300127381">
+					                </td>
+                <td> <label>No Askes : </label>
+											<input type="text" readonly="readonly" name="no_askes" id="no_askes" placeholder=":: No. Askes ::" title="Nomor Askes" value="0001861763411">
+					                </td>
+           
+                <td> <label>No NPWP : </label>
+											<input type="text" readonly="readonly" name="npwp" placeholder=":: No. NPWP ::" title="NPWP" value="53.129.445.2-114.000">
+					                </td>
+            </tr>
+        </tbody></table>
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"> <label>Gelar Depan : </label>
+												<input type="text" id="gelar_depan" readonly="readonly" name="gelar_depan" placeholder=":: Gelar Depan ::" title="Gelar Depan" value="">
+					 
+				</td>
+                <td> <label>Nama Lengkap (Tanpa Gelar) : </label>
+													<input type="text" id="nama_pegawai" name="nama_pegawai" readonly="readonly" placeholder=":: Nama Pegawai ::" title="Nama Pegawai" value="NAMIRA OKITA ZAHRA SIREGAR">
+									</td>
+                <td width="25%"> <label>Gelar Belakang : </label>
+													<input type="text" id="gelar_belakang" name="gelar_belakang" readonly="readonly" placeholder=":: Gelar Belakang ::" title="Gelar Belakang" value="S.Tr.IP">
+									</td>
+            </tr>
+        </tbody></table>
+		
+       	<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>
+				<td width="33%"> <label>Jenis Kepegawaian : </label>
+                    <select id="id_jenis_kepegawaian" name="id_jenis_kepegawaian">
+                       <option selected="selected" value="4">PNS Daerah Otonom</option>                    </select>
+                </td>
+				<td> <label>Kedudukan Kepegawaian : </label>
+                    <select id="id_kedudukan_kepegawaian" name="id_kedudukan_kepegawaian">
+                             <option selected="selected" value="1">Aktif</option>                    </select>
+                </td>
+                <td width="33%"> <label>Status Kepegawaian : </label>	 
+                    <select name="id_status_kepegawaian" id="id_status_kepegawaian">
+					<option value="2" selected="selected">PNS</option>	
+                    </select>
+                </td>
+                
+            </tr>
+		</tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="33%"> <label>Tempat Lahir : </label>
+											<input type="text" id="tempat_lahir" readonly="readonly" name="tempat_lahir" placeholder=":: Tempat Lahir ::" title="Tempat Lahir" value="MEDAN">
+									</td>
+                <td width="33%"> <label>Tanggal Lahir : </label>
+											<input type="text" readonly="readonly" name="tanggal_lahir" id="tanggal_lahir" placeholder=":: Tanggal Lahir ::" title="Tanggal Lahir" value="1999-07-20" class="hasDatepicker">	
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				<td> <label>Agama : </label>
+                    <select id="id_agama" name="id_agama">
+                    <option value="0">:: Agama ::</option><option selected="selected" value="1">Islam</option><option value="2">Kristen Katolik</option><option value="3">Kristen Protestan</option><option value="4">Hindu</option><option value="5">Budha</option><option value="6">Kong Hu Chu</option><option value="7">Lainnya</option>                    </select>
+                </td>
+				<td> <label>Status Pernikahan : </label>
+                    <select id="id_status_pernikahan" name="id_status_pernikahan">
+                        <option selected="selected" value="4">Belum Menikah</option>                    </select>
+                </td>
+				
+            </tr>
+        
+            <tr>    
+                <td><label>Jenis Kelamin : </label>
+					<select id="id_jenis_kelamin" name="id_jenis_kelamin">
+					<option value="1">Laki-laki</option><option selected="selected" value="2">Perempuan</option>					</select>
+				</td>
+			
+				<td><label> Golongan Darah : </label>
+                    <select id="id_golongan_darah" name="id_golongan_darah">
+                        <option selected="selected" value="4">O</option>                    </select>
+                </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="50%"> <label> Alamat : </label>
+											<input type="text" id="alamat" name="alamat" placeholder=":: Alamat ::" title="Alamat" value="JL. GUNUNG MARTIMBANG LK. III">
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"><label>Provinsi : </label>
+											<input type="text" id="id_provinsi" name="id_provinsi" placeholder=":: Provinsi ::" title="id_provinsi" value="SUMATERA UTARA">
+					                    
+                </td>
+                <td width="25%"><label>Kabupaten/Kota : </label>
+											<input type="text" id="id_kabupaten" name="id_kabupaten" placeholder=":: Kabupaten / Kota::" title="id_kabupaten" value="TEBING TINGGI">
+					                    
+                </td>
+                <td width="25%"><label>Kecamatan : </label>
+											<input type="text" id="id_kecamatan" name="id_kecamatan" placeholder=":: Kecamatan ::" title="id_kecamatan" value="RAMBUTAN">
+					                    
+                </td>
+                <td width="25%"><label>Kelurahan/Desa : </label>
+											<input type="text" id="id_kelurahan" name="id_kelurahan" placeholder=":: Kelurahan / Desa ::" title="id_kelurahan" value="RANTAU LABAN">
+					                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				 <td><label>RT : </label>
+											<input type="text" id="rt" name="rt" placeholder=":: RT ::" title="RT" value="000">
+					                </td>
+                <td><label>RW : </label>
+											<input type="text" id="rw" name="rw" placeholder=":: RW ::" title="RW" value="000">
+									</td>
+                <td><label>Kode Pos : </label>
+											<input type="text" id="kode_pos" name="kode_pos" placeholder=":: Kode Pos ::" title="Kode Pos" value="20614">
+								   </td>
+			</tr></tbody></table>
+			<table border="0px" cellspacing="0" cellpadding="0" width="100%">  
+                <tbody><tr><td width="33%"><label>No Telp : </label>
+											<input type="text" id="no_telp" name="no_telp" placeholder=":: Nomor Telepon ::" title="Nomor Telepon" value="">
+									</td>
+                <td width="33%"><label>No Handphone : </label>
+											<input type="text" id="no_hp" name="no_hp" placeholder=":: Nomor HP ::" title="Nomor HP" value="085261753500">
+									</td>
+                <td width="33%"> <label> Email : </label>
+											<input type="text" id="email" name="email" placeholder=":: Email ::" value="namiraokitazahra@gmail.com">
+								   </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="20%"><label>Tinggi (cm) : </label>
+											<input type="text" id="tinggi" name="tinggi" placeholder=":: Tinggi ::" title="Tinggi" value="162">
+									</td>
+                <td width="20%"><label>Berat (Kg) : </label>
+											<input type="text" id="berat" name="berat" placeholder=":: Berat ::" title="Berat" value="79">
+									</td>
+                <td width="20%"><label>Bentuk Rambut : </label>
+                    <select id="id_rambut" name="id_rambut">
+                        <option value="0">:: Bentuk Rambut ::</option>
+                        <option value="4">Botak</option><option value="5">Cepak</option><option selected="" value="1">Ikal</option><option value="2">Keriting</option><option value="3">Lurus</option><option value="6">Tin tin</option>                    </select>
+                </td>
+                <td width="20%"><label>Bentuk Muka : </label>
+                    <select name="id_bentuk_muka" id="id_bentuk_muka">
+                        <option value="0">:: Bentuk Muka ::</option>
+                        <option value="2">Lonjong</option><option selected="selected" value="1">Oval</option><option value="3">Petak</option><option value="4">Pipih</option>                    </select>
+                </td>
+                <td width="20%"><label>Warna Kulit : </label>
+                    <select name="id_warna_kulit" id="id_warna_kulit">
+                        <option value="0">:: Warna Kulit ::</option>
+                        <option value="1">Hitam</option><option selected="selected" value="3">Kuning Langsat</option><option value="4">Kuning Mongol</option><option value="2">Putih</option>                    </select>
+                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				
+				<td><label>Suku : </label>
+											<input type="text" id="id_suku" name="id_suku" placeholder=":: Suku ::" title="id_suku" value="Batak">
+					                </td>
+                <td><label>Marga : </label>
+											<input type="text" id="marga" name="marga" placeholder=":: Marga ::" title="Marga" value="SIREGAR">
+									</td>
+                
+                
+            </tr>
+            <tr>
+                <td width="34%"><label>Ciri Khas : </label>
+											<input type="text" name="ciri_khas" id="ciri_khas" placeholder=":: Ciri Khas ::" title="Ciri Khas" value="Lesung pipi">
+						
+                </td>
+                <td width="33%"><label>Cacat Tubuh : </label>
+											<input type="text" name="cacat_tubuh" id="cacat_tubuh" placeholder=":: Cacat Tubuh ::" title="Cacat Tubuh" value="">
+					 
+			   </td> 
+                <td width="33%"><label>Hobi : </label>
+											<input type="text" name="hobi" id="hobi" placeholder=":: Hobi ::" title="Hobi" value="Menulis">
+								   </td>
+            </tr>
+        </tbody></table>
+		<br>
+		<h3>CATATAN DARI BKD: </h3>&nbsp;<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>	
+				
+							</tr>
+			<tr></tr>
+			</tbody></table>
+		
+		<!--Ini untuk Tombol Simpan dan Reset-->
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td style="text-align: left;">
+				                </td>
+            </tr>
+        </tbody></table>
+			
+							
+	</div>
+</div>
+</form>
+<div class="kelang"></div>
+<div class="panelcontainer panelform" style="width: 100%;">
+	<h3 style="text-align: left;">SCAN BERKAS PENDUKUNG DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+		<thead>
+			<tr>
+						<td width="35%">SCAN BERKAS</td>
+			<td width="10%">BELUM DIVERIFIKASI</td>
+			<td width="10%">SUDAH DIVERIFIKASI</td>
+			<td width="10%">STATUS FILE UPLOAD</td>
+			<td width="10%">&nbsp;</td>
+			<td width="10%">&nbsp;</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr><td width="35%'">1. Pasfoto berwarna</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=41401&amp;type=pasfoto" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%'">2. Scan Kartu Pegawai Negeri Sipil atau Kartu PNS Elektronik (KPE)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=41401&amp;type=karpeg" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">3. Kartu Tanda Penduduk (KTP)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=41401&amp;type=scan_ktp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">4. SK Konversi NIP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">5. NPWP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=41401&amp;type=scan_npwp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">6. Taspen</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=41401&amp;type=scan_taspen" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">7. Akta Kelahiran</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=41401&amp;type=akta_kelahiran" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">8. SK Pencantuman Gelar</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">9. Askes Pribadi</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=41401&amp;type=askes_pribadi" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr>				</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<!--	DIALOG BOX	--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- END OF DIALOG BOX -->
+
+<!-- DIALOG BOX -->
+
+<!-- END OF DIALOG BOX -->
+<!-- SUBMIT TARGET -->
+<iframe src="" name="sbm_target" style="display: none;"></iframe>
+<!-- END OF SUBMIT TARGET -->		</div>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1">1</td><td align="center" class=" "><font color="red">sedang diverifikasi</font></td><td align="center" class=" ">SD</td><td align="center" class=" ">SD</td><td align="center" class=" ">Perguruan Inti Nusantara </td><td align="center" class=" ">Kota Tebing Tinggi</td><td align="center" class=" "></td><td align="center" class=" ">Elvi Mailani,S.Si</td><td align="center" class=" ">DN-07 Dd 0050855</td><td align="center" class=" ">00  0000</td><td align="center" class=" "></td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_temp.php?id_pegawai=41401&amp;type=tbl_pendidikan&amp;id=176187" target="_blank" class="link_auto_panel">Lihat</a></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><font color="red">Sedang diVerifikasi</font></td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">2</td><td align="center" class=" "><font color="red">sedang diverifikasi</font></td><td align="center" class=" ">SMP</td><td align="center" class=" ">SLTP</td><td align="center" class=" ">SMP NEGERI 1 TEBING TINGGI</td><td align="center" class=" ">Kota Tebing Tinggi</td><td align="center" class=" "></td><td align="center" class=" ">Drs. H. Adrul</td><td align="center" class=" ">DN-07 DI 0048193</td><td align="center" class=" ">00  0000</td><td align="center" class=" "></td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_temp.php?id_pegawai=41401&amp;type=tbl_pendidikan&amp;id=176188" target="_blank" class="link_auto_panel">Lihat</a></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><font color="red">Sedang diVerifikasi</font></td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1">3</td><td align="center" class=" "><font color="red">sedang diverifikasi</font></td><td align="center" class=" ">SMA</td><td align="center" class=" ">SLTA</td><td align="center" class=" ">SMA NEGERI 1 TEBING TINGGI</td><td align="center" class=" ">Kota Tebing Tinggi</td><td align="center" class=" "></td><td align="center" class=" ">Drs. Sariono</td><td align="center" class=" ">DN-07 Ma/13 0006660</td><td align="center" class=" ">00  0000</td><td align="center" class=" "></td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_temp.php?id_pegawai=41401&amp;type=tbl_pendidikan&amp;id=176189" target="_blank" class="link_auto_panel">Lihat</a></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><font color="red">Sedang diVerifikasi</font></td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">D-IV</td><td align="center" class=" ">D-IV Praktik Perpolisian Tata Pamong</td><td align="center" class=" ">INSTITUT PEMERINTAHAN DALAM NEGERI</td><td align="center" class=" ">JATINANGOR</td><td align="center" class=" "></td><td align="center" class=" ">Dr. Hadi Prabowo, M.M</td><td align="center" class=" ">55222-2022-001614</td><td align="center" class=" ">14 Juni 2022</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=41401&amp;type=tbl_pendidikan&amp;id=176175" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">1</td><td align="center" class=" ">Penata Muda (III/a)</td><td align="center" class=" ">01-08-2022</td><td align="center" class=" ">813.3-3521</td><td align="center" class=" ">29-07-2022</td><td align="center" class=" ">Menteri Dalam Negeri</td><td align="center" class=" ">0</td><td align="center" class=" ">0</td><td align="center" class=" ">Tidak Ada</td><td style="text-align:center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=41401&amp;type=tbl_riwayat_pangkat&amp;id=1797175" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">2</td><td align="center" class=" ">Penata Muda Tk. I (III/b)</td><td align="center" class=" ">01-08-2026</td><td align="center" class=" ">424/KPTS/2026</td><td align="center" class=" ">29-07-2026</td><td align="center" class=" ">Walikota Padangsidimpuan</td><td align="center" class=" ">4</td><td align="center" class=" ">0</td><td align="center" class=" ">Tidak Ada</td><td align="center" class=" ">Tidak Ada</td><td style="text-align:center;" class=" ">Belum Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Analis Hasil Pengawasan dan Pengaduan Masyarakat</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Kementerian Dalam Negeri</td><td align="center" class=" ">01-11-2023</td><td align="center" class=" ">800.1.2.5-5994<br>31-10-2023</td><td align="center" class=" ">Menteri Dalam Negeri</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=41401&amp;type=tbl_riwayat_jabatan&amp;id=268255" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Analis Pelayanan</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Sekretariat Daerah Kota Padangsidimpuan</td><td align="center" class=" ">29-12-2023</td><td align="center" class=" ">800/3882/2023<br>29-12-2023</td><td align="center" class=" ">Pj. Wali Kota Padangsidimpuan</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=41401&amp;type=tbl_riwayat_jabatan&amp;id=268254" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">PENELAAH TEKNIS KEBIJAKAN</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">SEKRETARIAT DAERAH KOTA PADANGSIDIMPUAN</td><td align="center" class=" ">30-04-2026</td><td align="center" class=" ">252/KPTS/2026<br>30-04-2026</td><td align="center" class=" ">WALI KOTA PADANGSIDIMPUAN</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=41401&amp;type=tbl_riwayat_jabatan&amp;id=268253" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Pengolah Data dan Informasi</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Badan Pendapatan Daerah Kota Medan</td><td align="center" class=" ">01-10-2026</td><td align="center" class=" ">800.1.3.1/1512.K<br>28-09-2026</td><td align="center" class=" ">Wali Kota Medan</td><td align="center" class=" ">Pindah Masuk</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=41401&amp;type=tbl_riwayat_jabatan&amp;id=268213" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr></tbody>
+
+
+
+<div id="main-body">
+			<script type="text/javascript">
+var id_pegawai="25303";
+</script>
+
+<!-- JAVASCRIPT PAGE -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+   ambil_tanggal("tanggal_lahir");
+   
+   $("#frm").submit(function(){
+        if(frm.nip.value == "" || frm.nama_pegawai.value == "" || frm.id_jenis_kepegawaian.value == 0 || frm.id_kedudukan_kepegawaian.value == 0 || frm.id_status_kepegawaian.value == 0 || frm.id_agama.value == 0 || frm.id_jenis_kelamin.value == 0){
+			var pesan ="Maaf!! Data dibawah ini harus diisi : <ol>";
+			if(frm.nip.value == "" ){
+				pesan += "<li>NIP</li>";
+				document.getElementById("nip").style.borderColor = "red"; 
+			} 
+			if( frm.nama_pegawai.value == "" ){
+				pesan += "<li>Nama Pegawai</li>";
+				document.getElementById("nama_pegawai").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kepegawaian.value == 0 ){
+				pesan += "<li>Jenis Kepegawaian</li>" ;
+				document.getElementById("id_jenis_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_kedudukan_kepegawaian.value == 0 ){
+				pesan += "<li>Kedudukan Kepegawaian</li>" ;
+				document.getElementById("id_kedudukan_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_status_kepegawaian.value == 0 ){
+				pesan += "<li>Status Kepegawaian</li>" ;
+				document.getElementById("id_status_kepegawaian").style.borderColor = "red"; 
+			} 
+			if( frm.id_agama.value == 0 ){
+				pesan +=  "<li>Agama</li>";
+				document.getElementById("id_agama").style.borderColor = "red"; 
+			} 
+			if( frm.id_jenis_kelamin.value == 0){
+				pesan += "<li>Jenis Kelamin</li>" ;
+				document.getElementById("id_jenis_kelamin").style.borderColor = "red"; 
+			}
+			pesan += "<ol>";
+            jAlert(pesan, "PERHATIAN");
+            return false;
+        }
+        
+   }); 
+   
+   	$("#input_password").dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_1" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_2" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_3" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+
+	$( "#pnl_upload_4" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_5" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_6" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_7" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });	
+	$( "#pnl_upload_8" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_upload_9" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade"
+    });
+	$( "#pnl_catatan" ).dialog({
+            autoOpen: false,
+    		height: "auto",
+    		width: "800",
+    		modal: true,
+            show: "fade",
+    		hide: "fade" 
+    });	
+});
+
+function upload_pasfoto(){ 
+		$("#id_pegawai_5").val(id_pegawai);
+		$("#pnl_upload_1").dialog("open");
+}
+
+function upload_karpeg(){
+		$("#id_pegawai_6").val(id_pegawai); 
+		$("#pnl_upload_2").dialog("open");
+}
+
+function upload_konversi_nip(){
+		$("#id_pegawai_8").val(id_pegawai); 
+		$("#pnl_upload_4").dialog("open");
+}
+
+function upload_ktp(){
+		$("#id_pegawai_7").val(id_pegawai); 
+		$("#pnl_upload_3").dialog("open");
+}
+
+function upload_npwp(){
+		$("#id_pegawai_9").val(id_pegawai); 
+		$("#pnl_upload_5").dialog("open");
+}
+function upload_taspen(){
+		$("#id_pegawai_10").val(id_pegawai); 
+		$("#pnl_upload_6").dialog("open");
+}
+function upload_kelahiran(){
+		$("#id_pegawai_11").val(id_pegawai); 
+		$("#pnl_upload_7").dialog("open");
+}
+function upload_pencantuman_gelar(){
+		$("#id_pegawai_12").val(id_pegawai); 
+		$("#pnl_upload_8").dialog("open");
+}
+function upload_askes_pribadi(){
+		$("#id_pegawai_13").val(id_pegawai); 
+		$("#pnl_upload_9").dialog("open");
+}
+
+function catatan_upload(id_pegawai){
+	$("#id_pegawai2").val(id_pegawai);
+	$("#catatan_karpeg_dan_pasfoto").html(catatan_karpeg_dan_pasfoto);
+	$("#pnl_catatan").dialog("open");
+}
+
+function something_wrong(what_is_wrong) {
+        jAlert(what_is_wrong, "PERHATIAN");
+}
+
+function success(ada){
+    jAlert("Data pegawai berhasil disimpan", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function success_upload(){
+    jAlert("File berhasil diupload", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}
+
+function show_password_oto(){
+	$("#id_pegawaix").val(id_pegawai);
+	$("#input_password").dialog("open");
+}
+
+function hold(){
+    jAlert("Data sementara berhasil disimpan untuk diotorisasi", "PERHATIAN", function(r){
+		document.location.href="?mod=edit_pegawai";
+	}); 
+}   
+
+function approval(id_app){
+	$("#id_approval").val(id_app);
+	if(id_app==1){
+	jAlert("<b>Data akan diotorisasi dahulu oleh pejabat berwenang</b>", "PERHATIAN", function(r){
+			$("#frm_edit").submit();
+		});
+	}else if(id_app==0){
+		$("#frm_edit").submit();
+	}
+}
+
+ function success_catatan(){
+	jAlert("<b>Catatan berhasil disimpan.</b>", "PERHATIAN", function(r){
+			document.location.href="?mod=edit_pegawai&id_ver=99";
+		});	
+} 
+
+function lanjut(){
+		upload_pasfoto();
+}
+
+/*Fungsi Untuk Hapus*/
+ function notif(){
+    jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+ function success_hapus(){
+    jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+        document.location.href="?mod=edit_pegawai";
+    });
+}
+
+ function hapus_pasfoto(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_pasfoto2.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ 
+ function hapus_karpeg(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_karpeg2.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_ktp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_ktp.php?id_pegawai=" + id_pegawai;
+				});
+        }
+    });
+ }
+ 
+ function hapus_konversi_nip(){
+	 jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+		if(r){
+			var modul_user = 16;
+			if(modul_user==1 || modul_user==100)
+				jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+			else
+				jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+					document.location.href = "php/upload_data/hapus_konversi_nip.php?id_pegawai=" + id_pegawai;
+				});
+		}
+    });
+ }
+ function hapus_npwp(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_npwp.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_taspen(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){ 
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_taspen.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_kelahiran(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_akta_kelahiran.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_pencantuman_gelar(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_pencantuman_gelar.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ function hapus_askes_pribadi(){
+	jConfirm("Anda yakin akan menghapus file upload ini?", "PERHATIAN", function(r){
+    if(r){
+		var modul_user = 16;
+		if(modul_user==1 || modul_user==100)
+			jAlert("<b>Data Hapus Ini Akan diVerifikasi Terlebih Dahulu Oleh Admin</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+		else
+			jAlert("<b>Data Berhasil Dihapus</b>", "PERHATIAN", function(r){
+				document.location.href = "php/upload_data/hapus_askes_pribadi.php?id_pegawai=" + id_pegawai;
+			});
+        }
+    });
+ }
+ 
+ function hapus_tolak(){
+	jConfirm("Anda yakin akan menghapus riwayat tolak ini?", "PERHATIAN", function(r){
+		if(r){
+		 document.location.href = "php/hapus_tolak_edit_pegawai.php?id_pegawai=" + id_pegawai;
+        }
+    });
+ }
+ 
+function kembali(){
+		var id_author=0;
+		if(id_author>0){
+			document.location.href="?mod=otorisasi_data";
+		}else{
+			document.location.href="?mod=verifikasi_data_pegawai";
+		}
+}
+	
+</script>
+
+<style>
+#id_status_kepegawaian{color : #00000 !important; }	
+
+#id_jenis_kepegawaian{color : #00000 !important; }	
+ 
+
+#id_kedudukan_kepegawaian{color : #00000 !important; }	
+
+#id_golongan_darah{color : #00000 !important; }	
+
+#id_jenis_kelamin{color : #00000 !important; }	
+
+#id_agama{color : #00000 !important; }	
+
+#id_rambut{color : #00000 !important; }	
+
+#id_bentuk_muka{color : #00000 !important; }	
+
+#id_warna_kulit{color : #00000 !important; }	
+
+#id_status_pernikahan{color : #00000 !important; }	
+
+</style>
+<form name="frm" id="frm" action="php/edit_pegawai.php" method="post" target="sbm_target">
+<div class="panelcontainer panelform" style="width: 100%;">
+    <h3 style="text-align: left;">LIHAT PROFIL DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+				        <div class="kelang"></div><table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			
+			
+            <tbody><tr>
+                <td> <label>NIP : </label>
+										<input type="text" readonly="readonly" id="nip" name="nip" placeholder=":: NIP Pegawai ::" title="NIP Pegawai" value="19850207 201412 2 002">
+									<input type="hidden" name="id_pegawai" title="ID Pegawai" value="25303">
+                
+				</td>
+                <td> <label>NIP Lama : </label>
+											<input type="text" readonly="readonly" name="nip_lama" placeholder=":: NIP Lama ::" title="NIP Lama" value="">
+									</td>
+				            </tr>
+			
+			<tr>
+                <td> <label>No KTP : </label>
+											<input type="text" readonly="readonly" name="ktp" placeholder=":: No. Kartu Tanda Penduduk (KTP) ::" title="Kartu Tanda Penduduk (KTP)" value="1271184702850001">
+								   </td>
+               <td> <label>No Taspen : </label>
+										<input type="text" readonly="readonly" name="taspen" placeholder=":: No. Taspen ::" title="Taspen" value="850207141220020">
+					                </td>
+			
+                <td> <label>No Karpeg : </label>
+											<input type="text" readonly="readonly" name="no_karpeg" id="no_karpeg" placeholder=":: No. Karpeg ::" title="Nomor Karpeg" value="A06018955">
+					                </td>
+                <td> <label>No Askes : </label>
+											<input type="text" readonly="readonly" name="no_askes" id="no_askes" placeholder=":: No. Askes ::" title="Nomor Askes" value="0001174460591">
+					                </td>
+           
+                <td> <label>No NPWP : </label>
+											<input type="text" readonly="readonly" name="npwp" placeholder=":: No. NPWP ::" title="NPWP" value="058824830114000">
+					                </td>
+            </tr>
+        </tbody></table>
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"> <label>Gelar Depan : </label>
+												<input type="text" id="gelar_depan" readonly="readonly" name="gelar_depan" placeholder=":: Gelar Depan ::" title="Gelar Depan" value="">
+					 
+				</td>
+                <td> <label>Nama Lengkap (Tanpa Gelar) : </label>
+													<input type="text" id="nama_pegawai" name="nama_pegawai" readonly="readonly" placeholder=":: Nama Pegawai ::" title="Nama Pegawai" value="RATIH SORAYA">
+									</td>
+                <td width="25%"> <label>Gelar Belakang : </label>
+													<input type="text" id="gelar_belakang" name="gelar_belakang" readonly="readonly" placeholder=":: Gelar Belakang ::" title="Gelar Belakang" value="">
+									</td>
+            </tr>
+        </tbody></table>
+		
+       	<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>
+				<td width="33%"> <label>Jenis Kepegawaian : </label>
+                    <select id="id_jenis_kepegawaian" name="id_jenis_kepegawaian">
+                       <option selected="selected" value="4">PNS Daerah Otonom</option>                    </select>
+                </td>
+				<td> <label>Kedudukan Kepegawaian : </label>
+                    <select id="id_kedudukan_kepegawaian" name="id_kedudukan_kepegawaian">
+                             <option selected="selected" value="1">Aktif</option>                    </select>
+                </td>
+                <td width="33%"> <label>Status Kepegawaian : </label>	 
+                    <select name="id_status_kepegawaian" id="id_status_kepegawaian">
+					<option value="2" selected="selected">PNS</option>	
+                    </select>
+                </td>
+                
+            </tr>
+		</tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="33%"> <label>Tempat Lahir : </label>
+											<input type="text" id="tempat_lahir" readonly="readonly" name="tempat_lahir" placeholder=":: Tempat Lahir ::" title="Tempat Lahir" value="MEDAN">
+									</td>
+                <td width="33%"> <label>Tanggal Lahir : </label>
+											<input type="text" readonly="readonly" name="tanggal_lahir" id="tanggal_lahir" placeholder=":: Tanggal Lahir ::" title="Tanggal Lahir" value="1985-02-07" class="hasDatepicker">	
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				<td> <label>Agama : </label>
+                    <select id="id_agama" name="id_agama">
+                    <option value="0">:: Agama ::</option><option selected="selected" value="1">Islam</option><option value="2">Kristen Katolik</option><option value="3">Kristen Protestan</option><option value="4">Hindu</option><option value="5">Budha</option><option value="6">Kong Hu Chu</option><option value="7">Lainnya</option>                    </select>
+                </td>
+				<td> <label>Status Pernikahan : </label>
+                    <select id="id_status_pernikahan" name="id_status_pernikahan">
+                                            </select>
+                </td>
+				
+            </tr>
+        
+            <tr>    
+                <td><label>Jenis Kelamin : </label>
+					<select id="id_jenis_kelamin" name="id_jenis_kelamin">
+					<option value="1">Laki-laki</option><option selected="selected" value="2">Perempuan</option>					</select>
+				</td>
+			
+				<td><label> Golongan Darah : </label>
+                    <select id="id_golongan_darah" name="id_golongan_darah">
+                                            </select>
+                </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="50%"> <label> Alamat : </label>
+											<input type="text" id="alamat" name="alamat" placeholder=":: Alamat ::" title="Alamat" value="JL SIKAMBING BELAKANG NO 16-A">
+								   </td>
+            </tr>
+        </tbody></table>
+        
+        <table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="25%"><label>Provinsi : </label>
+											<input type="text" id="id_provinsi" name="id_provinsi" placeholder=":: Provinsi ::" title="id_provinsi" value="SUMATERA UTARA">
+					                    
+                </td>
+                <td width="25%"><label>Kabupaten/Kota : </label>
+											<input type="text" id="id_kabupaten" name="id_kabupaten" placeholder=":: Kabupaten / Kota::" title="id_kabupaten" value="MEDAN">
+					                    
+                </td>
+                <td width="25%"><label>Kecamatan : </label>
+											<input type="text" id="id_kecamatan" name="id_kecamatan" placeholder=":: Kecamatan ::" title="id_kecamatan" value="MEDAN PETISAH">
+					                    
+                </td>
+                <td width="25%"><label>Kelurahan/Desa : </label>
+											<input type="text" id="id_kelurahan" name="id_kelurahan" placeholder=":: Kelurahan / Desa ::" title="id_kelurahan" value="SEKIP">
+					                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				 <td><label>RT : </label>
+											<input type="text" id="rt" name="rt" placeholder=":: RT ::" title="RT" value="">
+					                </td>
+                <td><label>RW : </label>
+											<input type="text" id="rw" name="rw" placeholder=":: RW ::" title="RW" value="">
+									</td>
+                <td><label>Kode Pos : </label>
+											<input type="text" id="kode_pos" name="kode_pos" placeholder=":: Kode Pos ::" title="Kode Pos" value="">
+								   </td>
+			</tr></tbody></table>
+			<table border="0px" cellspacing="0" cellpadding="0" width="100%">  
+                <tbody><tr><td width="33%"><label>No Telp : </label>
+											<input type="text" id="no_telp" name="no_telp" placeholder=":: Nomor Telepon ::" title="Nomor Telepon" value="">
+									</td>
+                <td width="33%"><label>No Handphone : </label>
+											<input type="text" id="no_hp" name="no_hp" placeholder=":: Nomor HP ::" title="Nomor HP" value="081260843789">
+									</td>
+                <td width="33%"> <label> Email : </label>
+											<input type="text" id="email" name="email" placeholder=":: Email ::" value="ratih.soraya85@gmail.com">
+								   </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td width="20%"><label>Tinggi (cm) : </label>
+											<input type="text" id="tinggi" name="tinggi" placeholder=":: Tinggi ::" title="Tinggi" value="156">
+									</td>
+                <td width="20%"><label>Berat (Kg) : </label>
+											<input type="text" id="berat" name="berat" placeholder=":: Berat ::" title="Berat" value="52">
+									</td>
+                <td width="20%"><label>Bentuk Rambut : </label>
+                    <select id="id_rambut" name="id_rambut">
+                        <option value="0">:: Bentuk Rambut ::</option>
+                        <option value="4">Botak</option><option value="5">Cepak</option><option value="1">Ikal</option><option value="2">Keriting</option><option selected="" value="3">Lurus</option><option value="6">Tin tin</option>                    </select>
+                </td>
+                <td width="20%"><label>Bentuk Muka : </label>
+                    <select name="id_bentuk_muka" id="id_bentuk_muka">
+                        <option value="0">:: Bentuk Muka ::</option>
+                        <option value="2">Lonjong</option><option selected="selected" value="1">Oval</option><option value="3">Petak</option><option value="4">Pipih</option>                    </select>
+                </td>
+                <td width="20%"><label>Warna Kulit : </label>
+                    <select name="id_warna_kulit" id="id_warna_kulit">
+                        <option value="0">:: Warna Kulit ::</option>
+                        <option value="1">Hitam</option><option selected="selected" value="3">Kuning Langsat</option><option value="4">Kuning Mongol</option><option value="2">Putih</option>                    </select>
+                </td>
+            </tr>
+        </tbody></table>
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+				
+				<td><label>Suku : </label>
+											<input type="text" id="id_suku" name="id_suku" placeholder=":: Suku ::" title="id_suku" value="0">
+					                </td>
+                <td><label>Marga : </label>
+											<input type="text" id="marga" name="marga" placeholder=":: Marga ::" title="Marga" value="">
+									</td>
+                
+                
+            </tr>
+            <tr>
+                <td width="34%"><label>Ciri Khas : </label>
+											<input type="text" name="ciri_khas" id="ciri_khas" placeholder=":: Ciri Khas ::" title="Ciri Khas" value="">
+						
+                </td>
+                <td width="33%"><label>Cacat Tubuh : </label>
+											<input type="text" name="cacat_tubuh" id="cacat_tubuh" placeholder=":: Cacat Tubuh ::" title="Cacat Tubuh" value="">
+					 
+			   </td> 
+                <td width="33%"><label>Hobi : </label>
+											<input type="text" name="hobi" id="hobi" placeholder=":: Hobi ::" title="Hobi" value="">
+								   </td>
+            </tr>
+        </tbody></table>
+		<br>
+		<h3>CATATAN DARI BKD: </h3>&nbsp;<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+			<tbody><tr>	
+				
+							</tr>
+			<tr></tr>
+			</tbody></table>
+		
+		<!--Ini untuk Tombol Simpan dan Reset-->
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td style="text-align: left;">
+				                </td>
+            </tr>
+        </tbody></table>
+			
+							
+	</div>
+</div>
+</form>
+<div class="kelang"></div>
+<div class="panelcontainer panelform" style="width: 100%;">
+	<h3 style="text-align: left;">SCAN BERKAS PENDUKUNG DATA UTAMA PEGAWAI</h3>
+	<div class="bodypanel bodyfilter" id="bodyfilter">
+		<table border="0px" cellspacing="0" cellpadding="0" width="100%">
+		<thead>
+			<tr>
+						<td width="35%">SCAN BERKAS</td>
+			<td width="10%">BELUM DIVERIFIKASI</td>
+			<td width="10%">SUDAH DIVERIFIKASI</td>
+			<td width="10%">STATUS FILE UPLOAD</td>
+			<td width="10%">&nbsp;</td>
+			<td width="10%">&nbsp;</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr><td width="35%'">1. Pasfoto berwarna</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=25303&amp;type=pasfoto" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%'">2. Scan Kartu Pegawai Negeri Sipil atau Kartu PNS Elektronik (KPE)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=25303&amp;type=karpeg" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">3. Kartu Tanda Penduduk (KTP)</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=25303&amp;type=scan_ktp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">4. SK Konversi NIP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">5. NPWP</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=25303&amp;type=scan_npwp" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">6. Taspen</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=25303&amp;type=scan_taspen" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">7. Akta Kelahiran</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=25303&amp;type=akta_kelahiran" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">8. SK Pencantuman Gelar</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%">Tidak Ada</td><td width="10%" align="center">Belum Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr><tr><td width="35%">9. Askes Pribadi</td><td align="center" width="10%">Tidak Ada</td><td align="center" width="10%"><a href="php/upload_data/lihat_upload_peg_asli.php?id_pegawai=25303&amp;type=askes_pribadi" target="_blank" class="link_auto_panel">Lihat</a></td><td width="10%" align="center">Ada</td><td width="10%" align="left"></td><td width="10%" align="left"></td></tr>				</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<!--	DIALOG BOX	--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- END OF DIALOG BOX -->
+
+<!-- DIALOG BOX -->
+
+<!-- END OF DIALOG BOX -->
+<!-- SUBMIT TARGET -->
+<iframe src="" name="sbm_target" style="display: none;"></iframe>
+<!-- END OF SUBMIT TARGET -->		</div>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SD</td><td align="center" class=" ">SD</td><td align="center" class=" ">SD Negeri 060874</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">Ratna Lela Pane </td><td align="center" class=" ">0243388</td><td align="center" class=" ">06 April 1996</td><td align="center" class=" ">41,79</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_pendidikan&amp;id=5397" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMP</td><td align="center" class=" ">Madrasah Tsanawiyah</td><td align="center" class=" ">MTsN 2 Medan</td><td align="center" class=" ">MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">Drs. H. Farid Ilyas</td><td align="center" class=" ">E. IV/b/MTs.625/0123/99</td><td align="center" class=" ">06 Januari 1999</td><td align="center" class=" ">34,53</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_pendidikan&amp;id=5398" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">SMA</td><td align="center" class=" ">SLTA</td><td align="center" class=" ">SMU SWASTA F. TANDEAN</td><td align="center" class=" ">TEBING TINGGI</td><td align="center" class=" ">IPA</td><td align="center" class=" ">Rosok Djendana</td><td align="center" class=" ">420/09/K/2002</td><td align="center" class=" ">15 Juni 2002</td><td align="center" class=" ">52,62</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_pendidikan&amp;id=5399" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">1</td><td align="center" class=" ">Pengatur Muda (II/a)</td><td align="center" class=" ">01-12-2014</td><td align="center" class=" ">813.2/2266 TAHUN 2014</td><td align="center" class=" ">16-12-2014</td><td align="center" class=" ">Walikota Tebing Tinggi</td><td align="center" class=" ">10</td><td align="center" class=" ">05</td><td align="center" class=" ">Tidak Ada</td><td style="text-align:center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_pangkat&amp;id=189504" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">2</td><td align="center" class=" ">Pengatur Muda Tk. I (II/b)</td><td align="center" class=" ">01-04-2019</td><td align="center" class=" ">823.1.2.3/328.K</td><td align="center" class=" ">12-03-2019</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">14</td><td align="center" class=" ">09</td><td align="center" class=" ">Tidak Ada</td><td style="text-align:center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_pangkat&amp;id=1780800" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">3</td><td align="center" class=" ">Pengatur (II/c)</td><td align="center" class=" ">01-04-2023</td><td align="center" class=" ">823.3/285.K</td><td align="center" class=" ">00-00-0000</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">18</td><td align="center" class=" ">09</td><td align="center" class=" ">Tidak Ada</td><td style="text-align:center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_pangkat&amp;id=1787834" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>catatan belum ada</b></td></tr></tbody>
+<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">1</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Staf</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">TK Negeri Pembina Kec. Rambutan</td><td align="center" class=" ">01-12-2014</td><td align="center" class=" ">813.2/2266 TAHUN 2014<br>16-12-2014</td><td align="center" class=" ">Walikota Tebing Tinggi</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_jabatan&amp;id=190946" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">2</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Pelaksana</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Kecamatan Medan Petisah</td><td align="center" class=" ">03-10-2016</td><td align="center" class=" ">824.3/785 K<br>03-10-2016</td><td align="center" class=" ">Walikota Medan</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_jabatan&amp;id=190942" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">3</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Bendahara</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Kecamatan Medan Petisah Kota Medan</td><td align="center" class=" ">01-01-2020</td><td align="center" class=" ">821.29/1487.K<br>23-12-2019</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" "></td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_jabatan&amp;id=213335" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="even"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">4</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Pengadministrasi Perkantoran</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Kecamatan Medan Johor Kota Medan</td><td align="center" class=" ">14-06-2024</td><td align="center" class=" ">800.1.3.1/190.K<br>14-06-2024</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">Pindah Antar SKPD / Mutasi Unor</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_jabatan&amp;id=247330" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr><tr class="odd"><td align="center" class="  sorting_1"><div class="lampu_3">&nbsp;</div></td><td align="center" class=" ">5</td><td align="center" class=" "><button type="button" class="btn btn-success" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td><td align="center" class=" ">Fungsional Umum / Pelaksana</td><td align="center" class=" ">Pengadministrasi Perkantoran</td><td align="center" class=" "></td><td align="center" class=" "></td><td align="center" class=" ">Badan Pendapatan Daerah Kota Medan</td><td align="center" class=" ">01-10-2026</td><td align="center" class=" ">800.1.3.1/397.K<br>29-09-2026</td><td align="center" class=" ">WALI KOTA MEDAN</td><td align="center" class=" ">Pindah Antar SKPD / Mutasi Unor</td><td align="center" class=" ">Tidak Ada</td><td style="text-align: center;" class=" "><a href="php/upload_data/lihat_upload_sk_all_asli.php?id_pegawai=25303&amp;type=tbl_riwayat_jabatan&amp;id=268188" target="_blank" class="link_auto_panel">Lihat</a></td><td style="text-align:center;" class=" ">Ada</td><td style="text-align: left;" width="10%" class=" "><b>belum ada</b></td></tr></tbody>
